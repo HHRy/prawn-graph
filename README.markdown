@@ -21,8 +21,7 @@ compatible version of prawn-graph.
 
 Using graphs in your PDF is as straightforward as:
 
-<code>
-  # test.rb
+<pre>
   require 'rubygems'
   require 'prawn/core'
   require 'prawn/graph'
@@ -33,4 +32,4 @@ Using graphs in your PDF is as straightforward as:
     test 'Graph Example'
     bar_graph data at => [10,10]
   end
-</code>
+</pre>
