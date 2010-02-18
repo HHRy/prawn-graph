@@ -1,5 +1,10 @@
 module Prawn
   module Chart
+    
+    # Prawn::Chart::Grid represents the area whcih your data will be plotted. It
+    # is drawn before your data is plotted and serves to mark where the axes of
+    # your plot will be and to give an indication of scale.
+    #
     class Grid
 
       attr_accessor :width, :height, :point, :spacing, :document

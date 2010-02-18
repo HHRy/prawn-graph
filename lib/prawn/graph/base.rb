@@ -1,12 +1,46 @@
 module Prawn
   module Chart
     
+    # Prawn::Chart::Base implements the common methods shared by most of the graphs
+    # and charts whcih will need to be plotted. 
     #
+    # All Prawn::Chart::Base instances and their children will have the following
+    # associated with them:
+    #
+    #   1. A Prawn::Chart::Grid  which is where the graph will be drawn
+    #   2. A refernce to the Prawn::Document being affected
+    #   3. A set of data to be plotted.
+    #
+    # A public draw method is available which does what it says on the tin and... 
+    # well.. draws the graph on the document it has a reference to.
     #
     class Base
       
       attr_accessor :grid, :headings, :values, :highest_value, :document, :colour
       
+      # Returns a new instance of a graph to be drawn, really only useful for the
+      # subclasses which actually have a plot_values method declared so the data
+      # is actually rendered as a graph.
+      #
+      # Takes an Array of +data+, which should contain complete rows of data for
+      # values to be plotted; a reference to a +document+ which should be an 
+      # instance of Prawn::Document and an +options+ with at least a value for :at
+      # specified.
+      #
+      # Options are:
+      #
+      #  :at , which should be an Array representing the point at which the graph
+      #  should be drawn.
+      #
+      #  :title, the title for this graph, wil be rendered centered to the top of 
+      #  the Grid.
+      #
+      #  :label_x, a label to be shown along the X axis of he graph, rendered centered
+      #  on the grid.
+      #
+      #  :label_y, a label to be shown along the Y axis of he graph, rendered centered
+      #  on the grid and rotated to be perpendicular to the axis.
+      #
       def initialize(data, document, options = {})
         if options[:at].nil? || options[:at].empty?
           raise Prawn::Errors::NoGraphStartSet,
@@ -21,6 +55,8 @@ module Prawn
         @grid = Prawn::Chart::Grid.new(grid_x_start, grid_y_start, grid_width, grid_height, opts[:spacing], document)
       end
   
+      # Draws the graph on the document which we have a reference to.
+      #
       def draw
         @grid.draw
         label_axes
