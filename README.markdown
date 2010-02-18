@@ -1,7 +1,20 @@
-# prawn-graph - Easy Graphing for Prawn
+# Prawn::Graph - Easy Graphing for Prawn
 
-Ryan Stenhouse <ryan@ryanstenhouse.eu> 
-February 2010.
+Prawn::Graph copyrighted free software by Ryan Stenhouse
+<ryan@ryanstenhouse.eu> with contributions form the community.
+
+It extends Prawn::Core to add the ability for people to natively
+draw graphs and charts in their PDFs.
+
+Because Prawn::Graph only uses the native PDF drawing functions
+exposed by Prawn, it removes the need to depend on projects like
+Gruff to insert graphs in your documents. The results may not be
+as pretty (yet), but the file-size differences are dramatic.
+
+By default, graphs are drawn in monochrome, as that's likely how
+they will be printed. You can pass an option to each of the graph
+methods which will draw them in colour.
+
 
 ## Branches
 
