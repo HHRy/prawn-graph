@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'rake'
 require "rake/gempackagetask" 
+require "rake/rdoctask"
 
 PRAWN_GRAPH_VERSION = '0.0.1'
 
@@ -26,6 +27,18 @@ spec = Gem::Specification.new do |spec|
   An extension to Prawn that provides the ability to draw basic graphs and charts natively in your PDFs.
 END_DESC
 end
+
+desc "genrates documentation"
+Rake::RDocTask.new do |rdoc|
+  rdoc.rdoc_files.include( "README.markdown",
+                           "COPYING",
+                           "LICENSE", 
+                           "HACKING", "lib/" )
+  rdoc.main     = "README.markdown"
+  rdoc.rdoc_dir = "doc/html"
+  rdoc.title    = "Prawn Documentation"
+end     
+
  
 Rake::GemPackageTask.new(spec) do |pkg|
   pkg.need_zip = true
