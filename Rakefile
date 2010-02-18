@@ -22,6 +22,7 @@ spec = Gem::Specification.new do |spec|
   spec.author = "Ryan Stenhouse"
   spec.email = " ryan@ryanstenhouse.eu"
   spec.rubyforge_project = "prawn"
+  spec.add_dependency 'prawn'
   spec.homepage = "http://ryanstenhouse.eu"
   spec.description = <<END_DESC
   An extension to Prawn that provides the ability to draw basic graphs and charts natively in your PDFs.
