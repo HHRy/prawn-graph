@@ -1,6 +1,6 @@
 module Prawn
   module Chart
-    class Line < Bar
+    class Line < Base
 
       private
       

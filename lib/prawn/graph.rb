@@ -2,6 +2,7 @@ require 'bigdecimal'
 
 require File.dirname(__FILE__) + '/graph/errors'
 require File.dirname(__FILE__) + '/graph/chart'
+require File.dirname(__FILE__) + '/graph/base'
 require File.dirname(__FILE__) + '/graph/grid'
 require File.dirname(__FILE__) + '/graph/bar'
 require File.dirname(__FILE__) + '/graph/line'
