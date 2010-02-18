@@ -15,6 +15,10 @@ By default, graphs are drawn in monochrome, as that's likely how
 they will be printed. You can pass an option to each of the graph
 methods which will draw them in colour.
 
+**Notice!** Much like Prawn, this software should be considered to
+be in early alpha state at best. It's not recommended for use in 
+a production environment unless you're happy to put up with bugs and
+are willing to help fix them!
 
 ## Branches
 
@@ -29,7 +33,7 @@ Installing and running prawn-graph is very easy:
 
   * <tt>gem install prawn prawn-graph</tt>
 
-Will give you the latest stable version of Prawn and the latest
+Will give you the latest 'stable' version of Prawn and the latest
 compatible version of prawn-graph. 
 
 Using graphs in your PDF is as straightforward as:
