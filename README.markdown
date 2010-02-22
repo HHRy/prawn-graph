@@ -20,18 +20,11 @@ be in early alpha state at best. It's not recommended for use in
 a production environment unless you're happy to put up with bugs and
 are willing to help fix them!
 
-## Branches
-
-The master branch of this repository tracks edge Prawn and will
-be updated to reflect any changes there. If you need to work on
-a version which is compatible with the current stable release,
-0.7.*, then please use the <tt>stable-compat</tt> branch instead.
-
 ## Installing & Using through RubyGems
 
 Installing and running prawn-graph is very easy:
 
-  * <tt>gem install prawn prawn-graph</tt>
+  * <tt>gem install prawn-graph</tt>
 
 Will give you the latest 'stable' version of Prawn and the latest
 compatible version of prawn-graph. 
