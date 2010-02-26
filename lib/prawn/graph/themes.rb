@@ -34,6 +34,12 @@ module Prawn
         @@_themes_list[theme.name.to_sym] = theme
       end    
 
+      # Returns an array of the themes currently registered.
+      #
+      def self.list
+        @@_themes_list.keys
+      end
+      
       protected 
 
       # Hook into method_missing to allow us to do things like:
@@ -74,6 +80,22 @@ module Prawn
             @font_colour = theme_hash['font_color']        
           end
         end
+      
+        # Returns the next colour in the array of colours associated
+        # with this theme. If it gets to the end, it starts again from
+        # the beginning.
+        #
+        def next_colour
+          unless @current_colour
+            @current_colour = 0
+            return @colours[0]
+          end
+          @current_colour += 1
+          @current_colour = 0 if @current_colour == @colours.nitems
+          @colours[@current_colour]
+        end
+        alias next_color next_colour
+
       end
     end
 

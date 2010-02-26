@@ -9,12 +9,13 @@ module Prawn
 
       attr_accessor :width, :height, :point, :spacing, :document
 
-      def initialize(grid_x_start, grid_y_start, grid_width, grid_height, spacing, document)
+      def initialize(grid_x_start, grid_y_start, grid_width, grid_height, spacing, document, theme)
         @point = [grid_x_start, grid_y_start]
         @width = grid_width
         @height = grid_height
         @spacing = spacing
         @document = document
+        @theme = theme
       end
 
       def start_x; @point.first; end

@@ -53,11 +53,7 @@ module Prawn
         @values.each do |value|
           @document.move_to [base_x + last_position, base_y]
           bar_height = calculate_point_height_from value
-          if @colour
-            @document.stroke_color [rand(255), rand(255), rand(255), 0]
-          else
-            @document.stroke_color 'AAAAAA'
-          end
+          @document.stroke_color @theme.next_colour
           @document.stroke_line_to [base_x + last_position, base_y + bar_height]
           last_position += point_spacing
         end

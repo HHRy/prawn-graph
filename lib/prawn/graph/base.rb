@@ -41,18 +41,21 @@ module Prawn
       #  :label_y, a label to be shown along the Y axis of he graph, rendered centered
       #  on the grid and rotated to be perpendicular to the axis.
       #
+      # :theme, the theme to be used to draw this graph, defaults to monochrome.
+      #
       def initialize(data, document, options = {})
         if options[:at].nil? || options[:at].empty?
           raise Prawn::Errors::NoGraphStartSet,
-            "you must specify options[:at] as the coordinates wher you" +
+            "you must specify options[:at] as the coordinates where you" +
             " wish this graph to be drawn from."
         end
-        opts = { :width => 500, :height => 200, :spacing => 20 }.merge(options)
+        opts = { :theme => Prawn::Chart::Themes.monochrome, :width => 500, :height => 200, :spacing => 20 }.merge(options)
         (@headings, @values, @highest_value) = process_the data
         (grid_x_start, grid_y_start, grid_width, grid_height) = parse_sizing_from opts 
         @colour = (!opts[:use_color].nil? || !opts[:use_colour].nil?)
         @document = document
-        @grid = Prawn::Chart::Grid.new(grid_x_start, grid_y_start, grid_width, grid_height, opts[:spacing], document)
+        @theme = opts[:theme]
+        @grid = Prawn::Chart::Grid.new(grid_x_start, grid_y_start, grid_width, grid_height, opts[:spacing], document, @theme)
       end
   
       # Draws the graph on the document which we have a reference to.
