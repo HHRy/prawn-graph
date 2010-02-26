@@ -1,6 +1,8 @@
 name: odeo
-title: Keynote Theme
+title: Odeo Theme
 font_color: 'FFFFFF'
+marker_color: 'FFFFFF'
+stroke_grid_markers: 0
 background_colour: 'FF47A4'
 colours:
  - '202020'

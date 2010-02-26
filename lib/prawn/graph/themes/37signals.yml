@@ -1,7 +1,9 @@
 name: 37signals
 title: 37 Signals Theme
 font_color: 'FFFFFF'
+marker_color: 'FFFFFF'
 background_colour: 'D1EDF5'
+stroke_grid_markers: 0
 colours:
  - '339933'
  - 'cc99cc'

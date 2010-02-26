@@ -54,12 +54,7 @@ module Prawn
  
   
       class Theme
-        attr_accessor :name, :title, :colours, :font_colour
-
-        alias :colors :colours
-        alias :colors= :colours=
-        alias :font_color :font_colour
-        alias :font_color= :font_colour=
+        attr_accessor :name, :title, :colours, :font_colour, :background_colour, :marker_colour
 
         # Creates a new theme from a theme hash. The hash comes from the 
         # library parsing YAML definitions of a theme. 
@@ -79,6 +74,20 @@ module Prawn
           elsif theme_hash.keys.include?('font_color')
             @font_colour = theme_hash['font_color']        
           end
+
+          if theme_hash.keys.include?('background_colour') 
+            @background_colour = theme_hash['background_colour']        
+          elsif theme_hash.keys.include?('background_color')
+            @background_colour = theme_hash['background_color']        
+          end
+
+          if theme_hash.keys.include?('marker_colour') 
+            @marker_colour = theme_hash['marker_colour']        
+          elsif theme_hash.keys.include?('marker_color')
+            @marker_colour = theme_hash['marker_color']        
+          end
+
+          @stroke_grid_markers = theme_hash['stroke_grid_markers'].to_i
         end
       
         # Returns the next colour in the array of colours associated
@@ -95,6 +104,10 @@ module Prawn
           @colours[@current_colour]
         end
         alias next_color next_colour
+
+        def stroke_grid_markers?
+          @stroke_grid_markers == 1
+        end
 
       end
     end

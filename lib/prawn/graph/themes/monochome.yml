@@ -1,6 +1,8 @@
 name: monochrome
 title: Monochrome Theme
 font_color: '000000'
+marker_color: '000000'
 background_colour: 'FFFFFF'
+stroke_grid_markers: 1
 colours:
  - 'AAAAAA'
