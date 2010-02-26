@@ -1,0 +1,12 @@
+name: 37signals
+title: 37 Signals Theme
+font_color: 'FFFFFF'
+background_colour: 'D1EDF5'
+colours:
+ - '339933'
+ - 'cc99cc'
+ - '336699'
+ - 'FFF804'
+ - 'ff0000'
+ - 'cf5910'
+ - '000000'
