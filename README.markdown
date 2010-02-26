@@ -26,8 +26,9 @@ Installing and running prawn-graph is very easy:
 
   * <tt>gem install prawn-graph</tt>
 
-Will give you the latest 'stable' version of Prawn and the latest
-compatible version of prawn-graph. 
+Gem version 0.3 is compatible with the latest 0.8 stable release
+of prawn. If you're still using 0.7, then install version 0.2 of
+prawn-graph.
 
 Using graphs in your PDF is as straightforward as:
 
@@ -43,3 +44,21 @@ Using graphs in your PDF is as straightforward as:
     bar_graph data at => [10,10]
   end
 </pre>
+
+## Using Themes
+
+At the moment, work is underway on implementing 'Themes' within
+Prawn::Graph, which are hugely inspired by (and are indeed based on
+the actual themes from) Gruff. 
+
+To find the list of available themes, use:
+
+    Prawn::Chart::Themes.list 
+
+The default theme which will be used for rendering is:
+
+    Prawn::Chart::Theme.monochrome
+
+This in-line with the design decision of Prawn::Graph to render in
+monochrome by default, since most of our users are likely to be 
+printing these documents!

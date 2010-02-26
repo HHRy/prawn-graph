@@ -1,0 +1,10 @@
+name: monochrome
+title: Monochrome Theme
+font_color: '000000'
+colours:
+ - 'AAAAAA'
+ - 'AAAAAA'
+ - 'AAAAAA'
+ - 'AAAAAA'
+ - 'AAAAAA'
+ - 'AAAAAA'

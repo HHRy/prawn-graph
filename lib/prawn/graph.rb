@@ -6,10 +6,13 @@ require File.dirname(__FILE__) + '/graph/base'
 require File.dirname(__FILE__) + '/graph/grid'
 require File.dirname(__FILE__) + '/graph/bar'
 require File.dirname(__FILE__) + '/graph/line'
+require File.dirname(__FILE__) + '/graph/themes'
 
 module Prawn
 
   class Document
+
+    Prawn::Chart::Themes.initialize_themes
 
     # Draws a fairly simple bar chart. Data should be passed in as an array of
     # arrays, much like how Tables are dealt with:
