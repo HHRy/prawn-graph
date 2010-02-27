@@ -3,7 +3,7 @@ require 'rake'
 require "rake/gempackagetask" 
 require "rake/rdoctask"
 
-PRAWN_GRAPH_VERSION = '0.0.3'
+PRAWN_GRAPH_VERSION = '0.0.4'
 
 spec = Gem::Specification.new do |spec|
   spec.name = "prawn-graph"
