@@ -5,7 +5,8 @@ options = {
             :title => 'Average litter size per kind of animal',
             :label_x => 'Kind of animal',
             :label_y => 'Average litter size',
-            :at => [10,10],
+            :theme => Prawn::Chart::Themes.monochrome ,
+            :at => [10,10]
           }
 
 data =    [
