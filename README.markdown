@@ -45,6 +45,11 @@ Using graphs in your PDF is as straightforward as:
   end
 </pre>
 
+## Documentation
+
+Documentation for Prawn::Graph is available in available at [its project page on my website][2] and also 
+on [the project's wiki on github][1]. 
+
 ## Using Themes
 
 At the moment, work is underway on implementing 'Themes' within
@@ -62,3 +67,6 @@ The default theme which will be used for rendering is:
 This in-line with the design decision of Prawn::Graph to render in
 monochrome by default, since most of our users are likely to be 
 printing these documents!
+
+[1]: http://wiki.github.com/HHRy/prawn-graph/
+[2]: http://bit.ly/aKNukb
