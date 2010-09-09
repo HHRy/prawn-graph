@@ -210,7 +210,7 @@ module Prawn
       alias calculate_y_axis_centre_point calculate_y_axis_center_point
 
       def calculate_plot_spacing
-        (@grid.width / @values.nitems)
+        (@grid.width / @values.count)
       end
 
       def calculate_bar_width

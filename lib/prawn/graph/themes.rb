@@ -100,7 +100,7 @@ module Prawn
             return @colours[0]
           end
           @current_colour += 1
-          @current_colour = 0 if @current_colour == @colours.nitems
+          @current_colour = 0 if @current_colour == @colours.count
           @colours[@current_colour]
         end
         alias next_color next_colour
