@@ -37,11 +37,11 @@ Using graphs in your PDF is as straightforward as:
   require 'prawn/core'
   require 'prawn/graph'
 
-  data = [ ['A', 10], ['B', 11], ['C' 12] ]
+  data = [ ['A', 10], ['B', 11], ['C', 12] ]
 
   Prawn::Document.generate('test.pdf') do
-    test 'Graph Example'
-    bar_graph data at => [10,10]
+    text 'Graph Example'
+    bar_chart data, :at => [10,10]
   end
 </pre>
 
