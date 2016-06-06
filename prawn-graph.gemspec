@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Ryan Stenhouse"]
   spec.email         = ["ryan@ryanstenhouse.eu"]
 
-  spec.summary       = %q{Graphing library for PRawn}
-  spec.description   = %q{A simple way to add graphs and charts to Prawn PDF documents.}
+  spec.summary       = %q{Simple graphs for PDF documents}
+  spec.description   = %q{An extension to Prawn that provides the ability to draw basic graphs and charts natively in your PDFs.}
   spec.homepage      = "https://ryanstenhouse.jp"
   spec.license       = "MIT"
 
@@ -23,5 +23,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
 
-  spec.add_dependency 'prawn', '~> 2.1'
+  spec.add_runtime_dependency "prawn", ">= 0.11.1", "< 3"
 end
