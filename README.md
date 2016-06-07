@@ -3,6 +3,7 @@
 [![Gem Version](https://badge.fury.io/rb/prawn-graph.svg)](https://badge.fury.io/rb/prawn-graph)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://sujrd.mit-license.org)
 [![Code Climate](https://codeclimate.com/github/HHRy/prawn-graph/badges/gpa.svg)](https://codeclimate.com/github/HHRy/prawn-graph)
+[![Test Coverage](https://codeclimate.com/github/HHRy/prawn-graph/badges/coverage.svg)](https://codeclimate.com/github/HHRy/prawn-graph/coverage)
 [![Build Status](https://travis-ci.org/HHRy/prawn-graph.svg?branch=master)](https://travis-ci.org/HHRy/prawn-graph)
 
 
