@@ -16,7 +16,6 @@ module Prawn
             @colour = false
             @document = document
             @theme = Prawn::Graph::Theme::Default
-            off = 20
             @grid = Prawn::Graph::Charts::Legacy::Grid.new(grid_x_start, grid_y_start, grid_width, grid_height, opts[:spacing], document, Prawn::Graph::Theme::Default)
           end
 
@@ -96,8 +95,7 @@ module Prawn
           # method, which does the actual real heavy lifting of drawing the graph.
           #
           def plot_values
-            raise Prawn::Errors::NoPlotValuesMethod, 'subclasses of Prawn::Chart::Base must implement '
-                                                  +  'their own plot_values method.'
+            raise RuntimeError.new('subclasses of Prawn::Chart::Base must implement their own plot_values method')
           end
 
           def reset
