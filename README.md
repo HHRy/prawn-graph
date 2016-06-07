@@ -13,6 +13,37 @@ are dramatic.
 
 By default, graphs are drawn in monochrome, as that's likely how they will be printed. 
 
+## Compatibility
+
+The gem is  only tested against Ruby version 2.0 and greater. Older Ruby versions may work but are not 
+officially supported. We aim for compatibilty with 1.x and 2.x series of prawn. Any incomaptibilities
+should be treated as bugs and added to the [issue tracker][2]. 
+
+Unlike previous version of prawn-graph, this version does not at this time include a theme api or the 
+ability to change the colors used to render the graph. 
+
+
+## IMPORTANT - READ THIS BEFORE USING
+
+prawn-graph is currently being rewritten to have its internal components replaced with new, properly
+test-driven bits of code to draw the various cool graphs and charts that people would like to use in
+their PDFs.
+
+Right now, the "legacy" drawing code is what is ultimately being used to render any graphs being 
+generated. The newness instead is that project is compatible with all modern versions of prawn and
+therefore are useful again.
+
+This means that for now any existing rendering bugs still remain. If you find any, please be
+[a good citizen][2] and [report them][2].
+
+To use prawn-graph with these caveats, you can add the following to your `Gemfile`:
+
+```Gemfile
+ gem 'prawn-graph', '1.0.0.pre1'
+```
+
+Alternatively, you can use Rubygems directly: `gem install prawn-graph --pre`.
+ 
 ## Acknowledgements
 
 With thanks to [株式会社アルム][3] ([Allm Inc][4]) for allowing Ryan Stenhouse the time to rebuild this version of
@@ -64,16 +95,6 @@ Option      | Data type | Description
     bar_graph data, at: [10,20], width: 200
   end
 ```
-
-
-## Compatibility
-
-The gem is  only tested against Ruby version 2.0 and greater. Older Ruby versions may work but are not 
-officially supported. We aim for compatibilty with 1.x and 2.x series of prawn. Any incomaptibilities
-should be treated as bugs and added to the [issue tracker][2]. 
-
-Unlike previous version of prawn-graph, this version does not at this time include a theme api or the 
-ability to change the colors used to render the graph. 
 
 ## Development
 
