@@ -17,6 +17,11 @@ are dramatic.
 
 By default, graphs are drawn in monochrome, as that's likely how they will be printed. 
 
+This is free and open source software released under ther terms of the [MIT Licence](http://opensource.org/licenses/MIT).
+
+Its copyright is held by Ryan Stenhouse and the [other contributors][8] and it was first released in 
+2010.
+
 ## Compatibility
 
 The gem is  only tested against Ruby version 2.0 and greater. Older Ruby versions may work but are not 
@@ -53,6 +58,9 @@ Alternatively, you can use Rubygems directly: `gem install prawn-graph --pre`.
 With thanks to [株式会社アルム][3] ([Allm Inc][4]) for allowing Ryan Stenhouse the time to rebuild this version of
 prawn-graph. This updated version of prawn-graph was inspired and guided by [prawn-svg][1] by [Roger Nesbitt][6]. 
 It also uses some of [prawn-svg][1]'s document size calculation code.
+
+Prawn Graph was originally sponsored by and built for use at [Purchasing Card Consultancy Ltd][7] while
+Ryan Stenhouse was employed there.
 
 ## Supported graph / chart types
 
@@ -115,9 +123,6 @@ Bug reports and pull requests are welcome [on GitHub][2]. This project is intend
 safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) 
 code of conduct.
 
-## License
-
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
 
 [1]: https://github.com/mogest/prawn-svg/
@@ -126,3 +131,5 @@ The gem is available as open source under the terms of the [MIT License](http://
 [4]: http://www.allm.net/en/
 [5]: http://github.com/prawnpdf/prawn/
 [6]: https://github.com/mogest/
+[7]: http://www.pccl.co.uk/
+[8]: https://github.com/HHRy/prawn-graph/blob/master/CONTRIBUTORS.md
