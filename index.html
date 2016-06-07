@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Prawn-graph by HHRy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Prawn-graph</h1>
+      <h2 class="project-tagline">Prawn::Graph adds straightforward native graph drawing to Prawn without the need to depend on anything else. All generated graphs are pure PDF Vector Images. It results in smaller document sizes and less complication.</h2>
+      <a href="https://github.com/HHRy/prawn-graph" class="btn">View on GitHub</a>
+      <a href="https://github.com/HHRy/prawn-graph/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/HHRy/prawn-graph/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="prawngraph---easy-graphing-for-prawn" class="anchor" href="#prawngraph---easy-graphing-for-prawn" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Prawn::Graph - Easy Graphing for Prawn</h1>
+
+<p><a href="https://badge.fury.io/rb/prawn-graph"><img src="https://badge.fury.io/rb/prawn-graph.svg" alt="Gem Version"></a>
+<a href="http://sujrd.mit-license.org"><img src="http://img.shields.io/:license-mit-blue.svg" alt="License"></a></p>
+
+<p>An extension for the <a href="http://github.com/prawnpdf/prawn/">prawn pdf library</a> which adds the ability to draw graphs (or charts if
+you perfer) in PDF documents.</p>
+
+<p>Because Prawn::Graph only uses the native PDF drawing functions exposed by Prawn, it removes the need to 
+depend on projects like Gruff to generate heavy PNG / JPG images of such graphs and charts and then include
+those large blobs in your documents. The results may not be as pretty (yet), but the file-size differences 
+are dramatic.</p>
+
+<p>By default, graphs are drawn in monochrome, as that's likely how they will be printed. </p>
+
+<h2>
+<a id="compatibility" class="anchor" href="#compatibility" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compatibility</h2>
+
+<p>The gem is  only tested against Ruby version 2.0 and greater. Older Ruby versions may work but are not 
+officially supported. We aim for compatibilty with 1.x and 2.x series of prawn. Any incomaptibilities
+should be treated as bugs and added to the <a href="https://github.com/hhry/prawn-graph/issues/">issue tracker</a>. </p>
+
+<p>Unlike previous version of prawn-graph, this version does not at this time include a theme api or the 
+ability to change the colors used to render the graph. </p>
+
+<h2>
+<a id="important---read-this-before-using" class="anchor" href="#important---read-this-before-using" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>IMPORTANT - READ THIS BEFORE USING</h2>
+
+<p>prawn-graph is currently being rewritten to have its internal components replaced with new, properly
+test-driven bits of code to draw the various cool graphs and charts that people would like to use in
+their PDFs.</p>
+
+<p>Right now, the "legacy" drawing code is what is ultimately being used to render any graphs being 
+generated. The newness instead is that project is compatible with all modern versions of prawn and
+therefore are useful again.</p>
+
+<p>This means that for now any existing rendering bugs still remain. If you find any, please be
+<a href="https://github.com/hhry/prawn-graph/issues/">a good citizen</a> and <a href="https://github.com/hhry/prawn-graph/issues/">report them</a>.</p>
+
+<p>To use prawn-graph with these caveats, you can add the following to your <code>Gemfile</code>:</p>
+
+<pre lang="Gemfile"><code> gem 'prawn-graph', '1.0.0.pre1'
+</code></pre>
+
+<p>Alternatively, you can use Rubygems directly: <code>gem install prawn-graph --pre</code>.</p>
+
+<h2>
+<a id="acknowledgements" class="anchor" href="#acknowledgements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Acknowledgements</h2>
+
+<p>With thanks to <a href="http://www.allm.net/">株式会社アルム</a> (<a href="http://www.allm.net/en/">Allm Inc</a>) for allowing Ryan Stenhouse the time to rebuild this version of
+prawn-graph. This updated version of prawn-graph was inspired and guided by <a href="https://github.com/mogest/prawn-svg/">prawn-svg</a> by <a href="https://github.com/mogest/">Roger Nesbitt</a>. 
+It also uses some of <a href="https://github.com/mogest/prawn-svg/">prawn-svg</a>'s document size calculation code.</p>
+
+<h2>
+<a id="supported-graph--chart-types" class="anchor" href="#supported-graph--chart-types" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Supported graph / chart types</h2>
+
+<p>This version of Prawn::Graph supports the following graph / chart types:</p>
+
+<ul>
+<li> Bar Charts </li>
+<li> Line Charts</li>
+</ul>
+
+<p>Is your favourite chart type not supported yet? <a href="https://github.com/hhry/prawn-graph/issues/">Please request it</a>, or if you are feeling particularly
+adventurous - please add it!</p>
+
+<h2>
+<a id="using-prawn-graph" class="anchor" href="#using-prawn-graph" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Using prawn-graph</h2>
+
+<div class="highlight highlight-source-ruby"><pre>  <span class="pl-k">require</span> <span class="pl-s"><span class="pl-pds">'</span>prawn-graph<span class="pl-pds">'</span></span>
+
+  data <span class="pl-k">=</span> [ [<span class="pl-s"><span class="pl-pds">'</span>A<span class="pl-pds">'</span></span>, <span class="pl-c1">10</span>], [<span class="pl-s"><span class="pl-pds">'</span>B<span class="pl-pds">'</span></span>, <span class="pl-c1">11</span>], [<span class="pl-s"><span class="pl-pds">'</span>C<span class="pl-pds">'</span></span>, <span class="pl-c1">12</span>] ]
+
+  <span class="pl-c1">Prawn</span>::<span class="pl-c1">Document</span>.generate(<span class="pl-s"><span class="pl-pds">'</span>test.pdf<span class="pl-pds">'</span></span>) <span class="pl-k">do</span>
+    text <span class="pl-s"><span class="pl-pds">'</span>Graph Example<span class="pl-pds">'</span></span>
+    bar_graph data
+  <span class="pl-k">end</span></pre></div>
+
+<p>When called with just a set of data, prawn-graph will do its best to make the graph fit in the 
+available space. For a little more control over how the graphs are rendered in the document
+you can pass the following options:</p>
+
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Data type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:at</td>
+<td>[integer, integer]</td>
+<td>Specify the location on the page you want the graph to appear.</td>
+</tr>
+<tr>
+<td>:width</td>
+<td>integer</td>
+<td>Desired width of the graph.  Defaults to horizontal space available.</td>
+</tr>
+<tr>
+<td>:height</td>
+<td>integer</td>
+<td>Desired height of the graph.  Defaults to vertical space available.</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example</h3>
+
+<div class="highlight highlight-source-ruby"><pre>  <span class="pl-k">require</span> <span class="pl-s"><span class="pl-pds">'</span>prawn-graph<span class="pl-pds">'</span></span>
+
+  data <span class="pl-k">=</span> [ [<span class="pl-s"><span class="pl-pds">'</span>A<span class="pl-pds">'</span></span>, <span class="pl-c1">10</span>], [<span class="pl-s"><span class="pl-pds">'</span>B<span class="pl-pds">'</span></span>, <span class="pl-c1">11</span>], [<span class="pl-s"><span class="pl-pds">'</span>C<span class="pl-pds">'</span></span>, <span class="pl-c1">12</span>] ]
+
+  <span class="pl-c1">Prawn</span>::<span class="pl-c1">Document</span>.generate(<span class="pl-s"><span class="pl-pds">'</span>test.pdf<span class="pl-pds">'</span></span>) <span class="pl-k">do</span>
+    text <span class="pl-s"><span class="pl-pds">'</span>Graph Example<span class="pl-pds">'</span></span>
+    bar_graph data, <span class="pl-c1">at:</span> [<span class="pl-c1">10</span>,<span class="pl-c1">20</span>], <span class="pl-c1">width:</span> <span class="pl-c1">200</span>
+  <span class="pl-k">end</span></pre></div>
+
+<h2>
+<a id="development" class="anchor" href="#development" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Development</h2>
+
+<p>After checking out the repo, run <code>bin/setup</code> to install dependencies. Then, run <code>rake spec</code> to run the tests. You can
+also  run <code>bin/console</code> for an interactive prompt that will allow you to experiment.</p>
+
+<p>To install this gem onto your local machine, run <code>bundle exec rake install</code>. To release a new version, update the 
+version number in <code>version.rb</code>, and then run <code>bundle exec rake release</code>, which will create a git tag for the version, 
+push git commits and tags, and push the <code>.gem</code> file to <a href="https://rubygems.org">rubygems.org</a>.</p>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>Bug reports and pull requests are welcome <a href="https://github.com/hhry/prawn-graph/issues/">on GitHub</a>. This project is intended to be a 
+safe, welcoming space for collaboration, and contributors are expected to adhere to the <a href="http://contributor-covenant.org">Contributor Covenant</a> 
+code of conduct.</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>The gem is available as open source under the terms of the <a href="http://opensource.org/licenses/MIT">MIT License</a>.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/HHRy/prawn-graph">Prawn-graph</a> is maintained by <a href="https://github.com/HHRy">HHRy</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
