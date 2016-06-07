@@ -7,13 +7,13 @@ module Prawn
 
           attr_accessor :width, :height, :point, :spacing, :document
 
-          def initialize(grid_x_start, grid_y_start, grid_width, grid_height, spacing, document, theme)
+          def initialize(grid_x_start, grid_y_start, grid_width, grid_height, spacing, document, theme = Prawn::Graph::Theme::Default)
             @point = [grid_x_start, grid_y_start]
             @width = grid_width
             @height = grid_height
             @spacing = spacing
             @document = document
-            @theme = theme
+            @theme = Prawn::Graph::Theme::Default
           end
 
           def start_x; @point.first; end
@@ -22,8 +22,8 @@ module Prawn
           # Draws the Grid on the specified Prawn::Document
           #
           def draw
-            @document.stroke_color @theme.marker_colour
-            if @theme.stroke_grid_markers?
+            @document.stroke_color @theme.markers
+            if @theme.stroke_grid_markers
               (@height / @spacing).times do |x|
                 offset = @spacing * (x + 1)
                 @document.move_to [@point.first, (@point.last + offset)]

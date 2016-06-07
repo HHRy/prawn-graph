@@ -16,7 +16,7 @@ module Prawn
             @values.each do |value|
               @document.move_to [base_x + last_position, base_y]
               bar_height = calculate_point_height_from value
-              @document.stroke_color @theme.next_colour
+              @document.stroke_color @theme.series.sample
               @document.stroke_line_to [base_x + last_position, base_y + bar_height]
               last_position += point_spacing
             end

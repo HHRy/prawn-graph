@@ -8,19 +8,14 @@ module Prawn
           attr_accessor :grid, :headings, :values, :highest_value, :document, :colour
           
           def initialize(data, document, options = {})
-            if options[:at].nil? || options[:at].empty?
-              raise Prawn::Errors::NoGraphStartSet,
-                "you must specify options[:at] as the coordinates where you" +
-                " wish this graph to be drawn from."
-            end
-            opts = { :theme => Prawn::Chart::Themes.monochrome, :width => 500, :height => 200, :spacing => 20 }.merge(options)
+            opts = { :theme => Prawn::Graph::Theme::Default, :width => 500, :height => 200, :spacing => 20 }.merge(options)
             (@headings, @values, @highest_value) = process_the data
             (grid_x_start, grid_y_start, grid_width, grid_height) = parse_sizing_from opts 
-            @colour = (!opts[:use_color].nil? || !opts[:use_colour].nil?)
+            @colour = false
             @document = document
-            @theme = opts[:theme]
+            @theme = Prawn::Graph::Theme::Default
             off = 20
-            @grid = Prawn::Chart::Grid.new(grid_x_start, grid_y_start, grid_width, grid_height, opts[:spacing], document, @theme)
+            @grid = Prawn::Chart::Grid.new(grid_x_start, grid_y_start, grid_width, grid_height, opts[:spacing], document, Prawn::Graph::Theme::Default)
           end
 
           # Draws the graph on the document which we have a reference to.
@@ -45,13 +40,13 @@ module Prawn
           private
 
           def draw_bounding_box
-            @document.fill_color @theme.background_colour
+            @document.fill_color @theme.background
             @document.fill_and_stroke_rectangle [(@point.first - 10), (@point.last + ( @total_height + 40 ))], @document.bounds.width, (@total_height + 40)
             @document.fill_color '000000'
           end   
 
           def label_axes
-            @document.fill_color @theme.font_colour
+            @document.fill_color @theme.title
             base_x = @grid.start_x + 1
             base_y = @grid.start_y + 1
 
@@ -68,31 +63,31 @@ module Prawn
               @document.draw_text heading, :at => [last_position, base_y - 15 ], :size => 5
               last_position += point_spacing
             end
-            @document.fill_color @theme.background_colour
+            @document.fill_color @theme.background
           end
 
           def draw_title
-            @document.fill_color @theme.font_colour
+            @document.fill_color @theme.title
             x_coord = calculate_x_axis_center_point(@title, 10)
             y_coord = @grid.start_y + @grid.height + 10
             @document.draw_text @title, :at => [x_coord, y_coord] ,:size => 10
-            @document.fill_color @theme.background_colour
+            @document.fill_color @theme.background
           end
 
           def draw_x_axis_label
-            @document.fill_color @theme.font_colour
+            @document.fill_color @theme.axes
             x_coord = calculate_x_axis_center_point(@x_label, 8)
             y_coord = @grid.start_y - 30
             @document.draw_text @x_label, :at => [x_coord, y_coord] ,:size => 8
-            @document.fill_color @theme.background_colour
+            @document.fill_color @theme.background
           end
 
           def draw_y_axis_label
-            @document.fill_color @theme.font_colour
+            @document.fill_color @theme.axes
             y_coord = calculate_y_axis_center_point(@y_label, 8)
             x_coord = @grid.start_x - 30
             @document.draw_text @y_label, :at => [x_coord, y_coord] ,:size => 8, :rotate => 90
-            @document.fill_color @theme.background_colour
+            @document.fill_color @theme.background
           end
           
           # All subclasses of Prawn::Chart::Base must implement thier own plot_values

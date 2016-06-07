@@ -19,12 +19,12 @@ module Prawn
               bar_height = calculate_point_height_from value
               point = [base_x + last_position, base_y + bar_height]
               p << point
-              @document.fill_color @theme.colours.first
+              @document.fill_color @theme.series.last
               @document.fill_circle_at point, :radius => 1
               last_position += point_spacing
             end
             @document.line_width 2
-            @document.stroke_color @theme.colours.first
+            @document.stroke_color @theme.series.last
             p.each_with_index do |point,i|
               next if point == p.last
               @document.move_to point
