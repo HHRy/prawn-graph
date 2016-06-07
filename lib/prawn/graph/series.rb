@@ -8,7 +8,7 @@ module Prawn
       attr_accessor :values, :title, :type
       VALID_TYPES = [ :bar, :line ]
 
-      def initialize(values = [], title = "", type = :bar)
+      def initialize(values = [], title = nil, type = :bar)
         @values   = values
         @title    = title
         @type     = type
@@ -28,6 +28,10 @@ module Prawn
 
       def size
         @values.size
+      end
+
+      def to_a
+        [title, @values].compact.flatten
       end
     end
   end

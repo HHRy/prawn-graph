@@ -38,4 +38,21 @@ describe Prawn::Graph::Series do
     end
   end
 
+  describe "When it is turning itself into an array" do
+    it "correctly marshalls titles and values when both are set" do
+      series = Prawn::Graph::Series.new([1,2], 'A')
+      expect(series.to_a).to eql(["A", 1, 2])
+    end
+
+    it "returns an empty array with the default values" do
+      series = Prawn::Graph::Series.new()
+      expect(series.to_a).to eql([])
+    end
+
+    it "returns just the values when no title is set" do
+      series = Prawn::Graph::Series.new([1,2,3])
+      expect(series.to_a).to eql([1,2,3])
+    end
+  end
+
 end
