@@ -1,3 +1,5 @@
+require "bigdecimal" 
+
 module Prawn
   module Graph
     module Charts
@@ -8,14 +10,14 @@ module Prawn
           attr_accessor :grid, :headings, :values, :highest_value, :document, :colour
           
           def initialize(data, document, options = {})
-            opts = { :theme => Prawn::Graph::Theme::Default, :width => 500, :height => 200, :spacing => 20 }.merge(options)
+            opts = { :theme => Prawn::Graph::Theme::Default, :width => 500, :height => 200, :spacing => 20, :at => [0,0] }.merge(options)
             (@headings, @values, @highest_value) = process_the data
             (grid_x_start, grid_y_start, grid_width, grid_height) = parse_sizing_from opts 
             @colour = false
             @document = document
             @theme = Prawn::Graph::Theme::Default
             off = 20
-            @grid = Prawn::Chart::Grid.new(grid_x_start, grid_y_start, grid_width, grid_height, opts[:spacing], document, Prawn::Graph::Theme::Default)
+            @grid = Prawn::Graph::Charts::Legacy::Grid.new(grid_x_start, grid_y_start, grid_width, grid_height, opts[:spacing], document, Prawn::Graph::Theme::Default)
           end
 
           # Draws the graph on the document which we have a reference to.
