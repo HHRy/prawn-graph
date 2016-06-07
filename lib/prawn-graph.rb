@@ -1,8 +1,9 @@
 require "prawn"
-
-module Prawn
-  module Graph
-  end
-end
-
 require "prawn/graph/version"
+
+require "prawn/graph/extension"
+require "prawn/graph/charts"
+
+
+
+Prawn::Document.extensions << Prawn::Graph::Extension
