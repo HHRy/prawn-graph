@@ -38,9 +38,14 @@ module Prawn
         end
 
         def draw
+          chart_object.draw
         end
 
         private
+
+        def chart_object
+          raise RuntimeError.new("I need to be subclassed.")
+        end
 
         def series_type
           :bar
