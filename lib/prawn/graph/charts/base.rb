@@ -4,14 +4,22 @@ module Prawn
 
       class Base
         VALID_OPTIONS = [:at, :width, :height]
-        attr_reader :data, :prawn, :document, :options, :headings, :values, :lowest_value, :highest_value
+        attr_reader :series, :prawn, :options, :lowest_value, :highest_value
 
         def initialize(data, prawn, options = {}, &block)
           Prawn.verify_options VALID_OPTIONS, options
-          @data = data
+          @series = []
+          data.each do |s|
+            title = s.shift
+            @series << Prawn::Graph::Series.new(s, title, series_type)
+          end
           @prawn = prawn
           @options = options
-          (@headings, @values, @lowest_value, @highest_value) = process_the data
+          calculate_extreme_values!
+        end
+
+        def titles
+          @series.collect(&:title)
         end
 
         def position
@@ -21,6 +29,15 @@ module Prawn
         end
 
         private
+
+        def series_type
+          :bar
+        end
+
+        def calculate_extreme_values!
+          @lowest_value = @series.collect(&:min).min
+          @highest_value = @series.collect(&:max).max
+        end
 
         def process_the(data_array)
           col = []

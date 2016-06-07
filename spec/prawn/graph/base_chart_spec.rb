@@ -21,14 +21,14 @@ describe Prawn::Graph::Charts::Base do
     end
 
     describe "parsing the provided data" do
-      it "correctly populates the headings" do
+      it "correctly populates the titles" do
         subject = Prawn::Graph::Charts::Base.new(data, prawn)
-        expect(subject.headings).to eq(['A','B','C'])
+        expect(subject.titles).to eq(['A','B','C'])
       end
 
-      it "correctly populates the values" do
+      it "correctly populates the series" do
         subject = Prawn::Graph::Charts::Base.new(data, prawn)
-        expect(subject.values).to eq([2,8,23])
+        expect(subject.series.size).to eq(3)
       end
 
       it "correctly sets the minimum value" do
