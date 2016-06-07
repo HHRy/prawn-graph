@@ -2,6 +2,8 @@
 
 [![Gem Version](https://badge.fury.io/rb/prawn-graph.svg)](https://badge.fury.io/rb/prawn-graph)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://sujrd.mit-license.org)
+[![Code Climate](https://codeclimate.com/github/HHRy/prawn-graph/badges/gpa.svg)](https://codeclimate.com/github/HHRy/prawn-graph)
+
 
 An extension for the [prawn pdf library][5] which adds the ability to draw graphs (or charts if
 you perfer) in PDF documents.
