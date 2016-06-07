@@ -6,11 +6,17 @@ require 'prawn/graph/version'
 Gem::Specification.new do |spec|
   spec.name          = "prawn-graph"
   spec.version       = Prawn::Graph::VERSION
-  spec.authors       = ["Ryan Stenhouse"]
-  spec.email         = ["ryan@ryanstenhouse.eu"]
+  spec.authors       = [
+                          "Ryan Stenhouse",
+                          "株式会社アルム (Allm Inc)", 
+                       ]
+  spec.email         = [
+                          "ryan@ryanstenhouse.jp",
+                          "r.stenhouse@allm.net",
+                       ]
 
-  spec.summary       = %q{Simple graphs for PDF documents}
-  spec.description   = %q{An extension to Prawn that provides the ability to draw basic graphs and charts natively in your PDFs.}
+  spec.summary       = %q{Easily add graphs to Prawn PDF documents}
+  spec.description   = %q{Prawn::Graph adds straightforward native graph drawing to Prawn without the need to depend on anything else. All generated graphs are pure PDF Vector Images. It results in smaller document sizes and less complication.}
   spec.homepage      = "https://ryanstenhouse.jp"
   spec.license       = "MIT"
 
