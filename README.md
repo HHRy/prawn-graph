@@ -60,7 +60,7 @@ Option      | Data type | Description
   data = [ ['A', 10], ['B', 11], ['C' 12] ]
 
   Prawn::Document.generate('test.pdf') do
-    text 'Graph Example
+    text 'Graph Example'
     bar_graph data, at: [10,20], width: 200
   end
 ```
