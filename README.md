@@ -65,7 +65,7 @@ adventurous - please add it!
 ```ruby
   require 'prawn-graph'
 
-  data = [ ['A', 10], ['B', 11], ['C' 12] ]
+  data = [ ['A', 10], ['B', 11], ['C', 12] ]
 
   Prawn::Document.generate('test.pdf') do
     text 'Graph Example'
@@ -88,7 +88,7 @@ Option      | Data type | Description
 ```ruby
   require 'prawn-graph'
 
-  data = [ ['A', 10], ['B', 11], ['C' 12] ]
+  data = [ ['A', 10], ['B', 11], ['C', 12] ]
 
   Prawn::Document.generate('test.pdf') do
     text 'Graph Example'
