@@ -15,7 +15,9 @@ module Prawn
         background:           'FFFFFF',
         grid:                 'F2F4F4',
         axes:                 '17202A',
+        markers:              '17202A',
         stroke_grid_markers:  true,
+        default:              '000000',
       })
     end
   end

@@ -8,11 +8,23 @@ module Prawn
 
         def initialize(data, prawn, options = {}, &block)
           Prawn.verify_options VALID_OPTIONS, options
+
+          if data.is_a?(Array) || (!data.is_a?(Array) && data.is_a?(Prawn::Graph::Series))
+            data = [ data ] unless data.is_a?(Array) 
+          else
+            raise ArgumentError.new("data must be a multidimensional Array, array of Prawn::Graph::Series or a single Prawn::Graph::Series")
+          end
+
           @series = []
           data.each do |s|
-            title = s.shift
-            @series << Prawn::Graph::Series.new(s, title, series_type)
+            if s.is_a?(Prawn::Graph::Series)
+              @series << s
+            else
+              title = s.shift
+              @series << Prawn::Graph::Series.new(s, title, series_type)
+            end
           end
+          
           @prawn = prawn
           @options = options
           calculate_extreme_values!
