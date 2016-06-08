@@ -21,30 +21,35 @@ module Prawn
 
           @align, @meet_or_slice = values
 
-          w_container, h_container = container_dimensions
-          w_object,    h_object    = object_dimensions
+          @w_container, @h_container = container_dimensions
+          @w_object,    @h_object    = object_dimensions
 
-          container_ratio = w_container / h_container.to_f
-          object_ratio    = w_object / h_object.to_f
+          @container_ratio = @w_container / @h_container.to_f
+          @object_ratio    = @w_object / @h_object.to_f
 
+          calculate_dimensions!
+        end
+
+        def calculate_dimensions!
           if @align == "none"
-            @width, @height = container_dimensions
+            @width  = @w_container
+            @height = @h_container
           else
             matches = @align.to_s.strip.match(/\Ax(Min|Mid|Max)Y(Min|Mid|Max)\z/i) || [nil, "Mid", "Mid"]
 
-            if (container_ratio > object_ratio) == slice?
-              @width, @height = [w_container, w_container / object_ratio]
+            if (@container_ratio > @object_ratio) == slice?
+              @width, @height = [@w_container, @w_container / @object_ratio]
               @y = case matches[2].downcase
                    when "min" then 0
-                   when "mid" then (h_container - w_container/object_ratio)/2
-                   when "max" then h_container - w_container/object_ratio
+                   when "mid" then (@h_container - @w_container/@object_ratio)/2
+                   when "max" then @h_container - @w_container/@object_ratio
                    end
             else
-              @width, @height = [h_container * object_ratio, h_container]
+              @width, @height = [@h_container * @object_ratio, @h_container]
               @x = case matches[1].downcase
                    when "min" then 0
-                   when "mid" then (w_container - h_container*object_ratio)/2
-                   when "max" then w_container - h_container*object_ratio
+                   when "mid" then (@w_container - @h_container*@object_ratio)/2
+                   when "max" then @w_container - @h_container*@object_ratio
                    end
             end
           end
