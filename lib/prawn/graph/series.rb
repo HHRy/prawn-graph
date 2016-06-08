@@ -21,19 +21,29 @@ module Prawn
         @values << value
       end
 
-      # @return [Integer] The smallest value stored in the +values+ of this Series.
+      # @return [Numeric] The smallest value stored in the +values+ of this Series.
       #
       def min
         @values.min || 0
       end
 
-      # @return [Integer] The largest value stored in the +values+ of this Series.
+      # @return [Numeric] The largest value stored in the +values+ of this Series.
       #
       def max
         @values.max || 0
       end
 
-      # @return [Integer] The size of the +values+ stored in this Series.
+      # @return [Numeric] The average value stored in the +values+ of this Series.
+      #
+      def avg
+        if size > 0
+          @values.inject(:+) / size
+        else
+          0
+        end
+      end
+
+      # @return [Numeric] The size of the +values+ stored in this Series.
       #
       def size
         @values.size
