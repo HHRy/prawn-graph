@@ -5,7 +5,7 @@ module Prawn
     # as the container in which your chart / graph will be sized to fit within. 
     #
     class Canvas
-      attr_reader :sizing, :series
+      attr_reader :sizing, :series, :prawn
 
       # @param series [Array[Prawn::Graph::Series]]
       # @param prawn [Prawn::Document]
@@ -27,6 +27,12 @@ module Prawn
       # @return [nil]
       #
       def draw
+        prawn.bounding_box(position, :width => @sizing.output_width, :height => @sizing.output_height) do
+          prawn.save_graphics_state do
+            clip_rectangle 0, 0, @sizing.output_width, @sizing.output_height
+            prawn.text "Graph goes here!"
+          end
+        end
       end
 
       # The coordinates which the canvas will be drawn at
@@ -56,12 +62,12 @@ module Prawn
       # upon.
       #
       def clip_rectangle(x, y, width, height)
-        @prawn.move_to x, y
-        @prawn.line_to x + width, y
-        @prawn.line_to x + width, y + height
-        @prawn.line_to x, y + height
-        @prawn.close_path
-        @prawn.add_content "W n"
+        prawn.move_to x, y
+        prawn.line_to x + width, y
+        prawn.line_to x + width, y + height
+        prawn.line_to x, y + height
+        prawn.close_path
+        prawn.add_content "W n"
       end
     end
   end
