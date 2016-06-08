@@ -40,6 +40,7 @@ describe Prawn::Graph::ChartComponents::Canvas do
 
         expect(subject.instance_variable_get :@prawn).to eq(prawn)
         expect(subject.instance_variable_get :@sizing).to be_a(Prawn::Graph::Calculations::DocumentSizing)
+        expect(subject.instance_variable_get :@theme).to eq(Prawn::Graph::Theme::Default)
       end
     end
   end

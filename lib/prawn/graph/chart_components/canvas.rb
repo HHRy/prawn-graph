@@ -20,6 +20,8 @@ module Prawn
           @prawn    = prawn
           @sizing   = Prawn::Graph::Calculations::DocumentSizing.new([prawn.bounds.width, prawn.bounds.height], options).calculate
 
+          @theme    = Prawn::Graph::Theme::Default
+
           yield self if block_given?
         end
 
