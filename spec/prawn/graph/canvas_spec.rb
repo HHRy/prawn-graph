@@ -43,4 +43,18 @@ describe Prawn::Graph::Canvas do
       end
     end
   end
+
+  describe "A valid instance of a Prawn::Graph::Canvas" do
+    describe "#position" do
+      it "defaults to [0,0] if no :at option is set" do
+        subject = Prawn::Graph::Canvas.new([Prawn::Graph::Series.new], prawn)
+        expect(subject.position).to eq([0,0])
+      end
+
+      it "returns the value provided in options if it is provided" do
+        subject = Prawn::Graph::Canvas.new([Prawn::Graph::Series.new], prawn, at: [ 100, 200 ])
+        expect(subject.position).to eq([100,200])
+      end
+    end
+  end
 end

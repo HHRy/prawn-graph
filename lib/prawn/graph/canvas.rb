@@ -14,9 +14,9 @@ module Prawn
       #
       def initialize(series, prawn, options = {}, &block)
         @series   = series
-
         verify_series_are_ok!
 
+        @options  = options
         @prawn    = prawn
         @sizing   = Prawn::Graph::Calculations::DocumentSizing.new([prawn.bounds.width, prawn.bounds.height], options).calculate
 
@@ -27,6 +27,13 @@ module Prawn
       # @return [nil]
       #
       def draw
+      end
+
+      # The coordinates which the canvas will be drawn at
+      # @return [Array] [X-Coord, Y-Coord]
+      #
+      def position
+        @options[:at] || [0, 0]
       end
 
       private
