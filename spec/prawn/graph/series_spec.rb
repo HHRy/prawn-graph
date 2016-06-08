@@ -15,6 +15,10 @@ describe Prawn::Graph::Series do
       expect(Prawn::Graph::Series.new([1,2,5,4,3]).size).to eq(5)
     end
 
+    it "knows its average value" do
+      expect(Prawn::Graph::Series.new([1,2,5,4,3]).avg).to eq(3)
+    end
+
     it "defaults to a bar chart" do
       expect(Prawn::Graph::Series.new([1,2,5,4,3]).type).to eq(:bar)
     end
@@ -31,6 +35,10 @@ describe Prawn::Graph::Series do
 
     it "has a size of 0" do
       expect(Prawn::Graph::Series.new().size).to eq(0)
+    end
+
+    it "has an average of 0" do
+      expect(Prawn::Graph::Series.new().avg).to eq(0)
     end
 
     it "defaults to a bar chart" do
