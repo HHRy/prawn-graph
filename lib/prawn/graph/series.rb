@@ -5,13 +5,25 @@ module Prawn
     # on a chart.
     #
     class Series
-      attr_accessor :values, :title, :type
-      VALID_TYPES = [ :bar, :line ]
+      attr_accessor :values, :options
 
-      def initialize(values = [], title = nil, type = :bar)
+      DEFAULT_OPTIONS = {
+        title:            nil,
+        type:             :bar,
+        mark_average:     false,
+        mark_minimum:     false,
+        mark_maximum:     false,
+      }
+
+      def initialize(values = [], options = {})
         @values   = values
-        @title    = title
-        @type     = type
+        @options  = OpenStruct.new(DEFAULT_OPTIONS.merge(options))
+      end
+
+      # @return [String] The value of +options.title+.
+      #
+      def title
+        options.title
       end
 
       # @param value [Object] a value to be added to the series. Must be of the same kind as other +values+.
@@ -54,7 +66,7 @@ module Prawn
       #
       def to_a
         warn "[DEPRECATION] Series#to_a is deprecated and will be removed in a future version of prawn-graph."
-        [title, @values].compact.flatten
+        [options.title, @values].compact.flatten
       end
     end
   end

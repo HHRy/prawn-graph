@@ -1,3 +1,4 @@
+require "ostruct"
 require "prawn"
 require "prawn/graph/version"
 require "prawn/graph/calculations"
