@@ -6,6 +6,7 @@
 [![Test Coverage](https://codeclimate.com/github/HHRy/prawn-graph/badges/coverage.svg)](https://codeclimate.com/github/HHRy/prawn-graph/coverage)
 [![Build Status](https://travis-ci.org/HHRy/prawn-graph.svg?branch=master)](https://travis-ci.org/HHRy/prawn-graph)
 [![security](https://hakiri.io/github/HHRy/prawn-graph/master.svg)](https://hakiri.io/github/HHRy/prawn-graph/master)
+![Maintained: yes](https://img.shields.io/badge/maintained-yes-brightgreen.png)
 
 An extension for the [prawn pdf library][5] which adds the ability to draw graphs (or charts if
 you perfer) in PDF documents.
