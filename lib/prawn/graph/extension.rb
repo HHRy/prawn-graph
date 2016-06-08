@@ -3,7 +3,7 @@ module Prawn
     module Extension
 
       # @deprecated bar_graph and bar_chart are deprecated and will be removed in a future version. Use the new graph / chart methods instead.
-      # Draws a bar graph into the PDF
+      # Draws a bar graph into the PDF using the legacy graph stuff. Please avoid.
       #
       # Example:
       #
@@ -16,7 +16,7 @@ module Prawn
       alias bar_chart bar_graph
 
       # @deprecated line_graph and line_chart are deprecated and will be removed in a future version. Use the new graph / chart methods instead.
-      # Draws a line graph into the PDF
+      # Draws a line graph into the PDF using the legacy graph stuff. Please avoid.
       #
       # Example:
       #
@@ -28,6 +28,8 @@ module Prawn
       end
       alias line_chart line_graph
 
+      
+      
       def graph(data, options = {}, &block)
         canvas = Prawn::Graph::Canvas.new(data, self, options, &block)
         canvas.draw
