@@ -1,5 +1,3 @@
-require 'ostruct'
-
 module Prawn
   module Graph
     module Theme
