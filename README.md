@@ -24,12 +24,12 @@ Its copyright is held by Ryan Stenhouse and the [other contributors][8] and it w
 
 ## Compatibility
 
-The gem is  only tested against Ruby version 2.0 and greater. Older Ruby versions may work but are not 
+This gem is built assuming a Ruby version of 2.0 or higher. Older Ruby versions may work but are not 
 officially supported. We aim for compatibilty with 1.x and 2.x series of prawn. Any incomaptibilities
-should be treated as bugs and added to the [issue tracker][2]. 
+with prawn versions should be treated as bugs and added to the [issue tracker][2]. 
 
-Unlike previous version of prawn-graph, this version does not at this time include a theme api or the 
-ability to change the colors used to render the graph. 
+We build automatically using Travis CI. Our [.travis.yml][9] file targets the same Ruby versions as
+[prawn itself][5] does.
 
 
 ### Legacy support and deprecation notices.
@@ -42,6 +42,9 @@ equivalents in version `0.0.4`. These methods are, however, deprecated and **wil
 These legacy methods will still be buggy as they are using the same rendering methods as before. Where possible
 you should use the new `graph` (aliased as `chart`) interface. Unless serious problems are uncovered, bugs
 reported with legacy rendering **will not be considered**.
+
+Unlike previous versions of `prawn-graph`, this version does not at this time include a theme api or the 
+ability to change the colors used to render the graph. 
 
 ## Installation
 
@@ -134,3 +137,4 @@ code of conduct.
 [6]: https://github.com/mogest/
 [7]: http://www.pccl.co.uk/
 [8]: https://github.com/HHRy/prawn-graph/blob/master/CONTRIBUTORS.md
+[9]: https://github.com/HHRy/prawn-graph/blob/master/.travis.yml
