@@ -16,8 +16,11 @@ module Prawn
         grid:                 'F2F4F4',
         axes:                 '17202A',
         markers:              '17202A',
-        stroke_grid_markers:  true,
+        stroke_grid_lines:    true,
         default:              '000000',
+        average:              '34495E',
+        max:                  '17202A',
+        min:                  '17202A',
       })
     end
   end
