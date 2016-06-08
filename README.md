@@ -10,6 +10,9 @@
 An extension for the [prawn pdf library][5] which adds the ability to draw graphs (or charts if
 you perfer) in PDF documents.
 
+If you're looking for the current stable released version of prawn-graph (0.0.4) - check out the stable branch. Just
+remmeber that this is not supported by the latest version of prawn and probably shouldn't be used.
+
 Because Prawn::Graph only uses the native PDF drawing functions exposed by Prawn, it removes the need to 
 depend on projects like Gruff to generate heavy PNG / JPG images of such graphs and charts and then include
 those large blobs in your documents. The results may not be as pretty (yet), but the file-size differences 
