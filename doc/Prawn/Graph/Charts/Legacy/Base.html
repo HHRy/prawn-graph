@@ -1,0 +1,745 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Prawn::Graph::Charts::Legacy::Base
+  
+    &mdash; Documentation by YARD 0.8.7.6
+  
+</title>
+
+  <link rel="stylesheet" href="../../../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../../../';
+  framesUrl = "../../../../frames.html#!Prawn/Graph/Charts/Legacy/Base.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../../_index.html">Index (B)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../../Prawn.html" title="Prawn (module)">Prawn</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../../Graph.html" title="Prawn::Graph (module)">Graph</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Charts.html" title="Prawn::Graph::Charts (module)">Charts</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Legacy.html" title="Prawn::Graph::Charts::Legacy (module)">Legacy</a></span></span>
+     &raquo; 
+    <span class="title">Base</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Prawn::Graph::Charts::Legacy::Base
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Prawn::Graph::Charts::Legacy::Base</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/prawn/graph/charts/legacy/base.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<div id="subclasses">
+  <h2>Direct Known Subclasses</h2>
+  <p class="children"><span class='object_link'><a href="Bar.html" title="Prawn::Graph::Charts::Legacy::Bar (class)">Bar</a></span>, <span class='object_link'><a href="Line.html" title="Prawn::Graph::Charts::Legacy::Line (class)">Line</a></span></p>
+</div>
+
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#colour-instance_method" title="#colour (instance method)">- (Object) <strong>colour</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute colour.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#document-instance_method" title="#document (instance method)">- (Object) <strong>document</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute document.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#grid-instance_method" title="#grid (instance method)">- (Object) <strong>grid</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute grid.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#headings-instance_method" title="#headings (instance method)">- (Object) <strong>headings</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute headings.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#highest_value-instance_method" title="#highest_value (instance method)">- (Object) <strong>highest_value</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute highest_value.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#values-instance_method" title="#values (instance method)">- (Object) <strong>values</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute values.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#draw-instance_method" title="#draw (instance method)">- (Object) <strong>draw</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Draws the graph on the document which we have a reference to.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Base) <strong>initialize</strong>(data, document, options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>A new instance of Base.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Prawn::Graph::Charts::Legacy::Base (class)">Base</a></span></tt>) <strong>initialize</strong>(data, document, options = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns a new instance of Base</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/prawn/graph/charts/legacy/base.rb', line 12</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='comma'>,</span> <span class='id identifier rubyid_document'>document</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='symbol'>:theme</span> <span class='op'>=&gt;</span> <span class='const'>Prawn</span><span class='op'>::</span><span class='const'>Graph</span><span class='op'>::</span><span class='const'>Theme</span><span class='op'>::</span><span class='const'>Default</span><span class='comma'>,</span> <span class='symbol'>:width</span> <span class='op'>=&gt;</span> <span class='int'>500</span><span class='comma'>,</span> <span class='symbol'>:height</span> <span class='op'>=&gt;</span> <span class='int'>200</span><span class='comma'>,</span> <span class='symbol'>:spacing</span> <span class='op'>=&gt;</span> <span class='int'>20</span><span class='comma'>,</span> <span class='symbol'>:at</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='int'>0</span><span class='comma'>,</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+  <span class='lparen'>(</span><span class='ivar'>@headings</span><span class='comma'>,</span> <span class='ivar'>@values</span><span class='comma'>,</span> <span class='ivar'>@highest_value</span><span class='rparen'>)</span> <span class='op'>=</span> <span class='id identifier rubyid_process_the'>process_the</span> <span class='id identifier rubyid_data'>data</span>
+  <span class='lparen'>(</span><span class='id identifier rubyid_grid_x_start'>grid_x_start</span><span class='comma'>,</span> <span class='id identifier rubyid_grid_y_start'>grid_y_start</span><span class='comma'>,</span> <span class='id identifier rubyid_grid_width'>grid_width</span><span class='comma'>,</span> <span class='id identifier rubyid_grid_height'>grid_height</span><span class='rparen'>)</span> <span class='op'>=</span> <span class='id identifier rubyid_parse_sizing_from'>parse_sizing_from</span> <span class='id identifier rubyid_opts'>opts</span> 
+  <span class='ivar'>@colour</span> <span class='op'>=</span> <span class='kw'>false</span>
+  <span class='ivar'>@document</span> <span class='op'>=</span> <span class='id identifier rubyid_document'>document</span>
+  <span class='ivar'>@theme</span> <span class='op'>=</span> <span class='const'>Prawn</span><span class='op'>::</span><span class='const'>Graph</span><span class='op'>::</span><span class='const'>Theme</span><span class='op'>::</span><span class='const'>Default</span>
+  <span class='ivar'>@grid</span> <span class='op'>=</span> <span class='const'>Prawn</span><span class='op'>::</span><span class='const'>Graph</span><span class='op'>::</span><span class='const'>Charts</span><span class='op'>::</span><span class='const'>Legacy</span><span class='op'>::</span><span class='const'>Grid</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_grid_x_start'>grid_x_start</span><span class='comma'>,</span> <span class='id identifier rubyid_grid_y_start'>grid_y_start</span><span class='comma'>,</span> <span class='id identifier rubyid_grid_width'>grid_width</span><span class='comma'>,</span> <span class='id identifier rubyid_grid_height'>grid_height</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:spacing</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_document'>document</span><span class='comma'>,</span> <span class='const'>Prawn</span><span class='op'>::</span><span class='const'>Graph</span><span class='op'>::</span><span class='const'>Theme</span><span class='op'>::</span><span class='const'>Default</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="colour=-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="colour-instance_method">
+  
+    - (<tt>Object</tt>) <strong>colour</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute colour</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+10
+11
+12</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/prawn/graph/charts/legacy/base.rb', line 10</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_colour'>colour</span>
+  <span class='ivar'>@colour</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="document=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="document-instance_method">
+  
+    - (<tt>Object</tt>) <strong>document</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute document</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+10
+11
+12</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/prawn/graph/charts/legacy/base.rb', line 10</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_document'>document</span>
+  <span class='ivar'>@document</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="grid=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="grid-instance_method">
+  
+    - (<tt>Object</tt>) <strong>grid</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute grid</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+10
+11
+12</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/prawn/graph/charts/legacy/base.rb', line 10</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_grid'>grid</span>
+  <span class='ivar'>@grid</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="headings=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="headings-instance_method">
+  
+    - (<tt>Object</tt>) <strong>headings</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute headings</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+10
+11
+12</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/prawn/graph/charts/legacy/base.rb', line 10</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_headings'>headings</span>
+  <span class='ivar'>@headings</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="highest_value=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="highest_value-instance_method">
+  
+    - (<tt>Object</tt>) <strong>highest_value</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute highest_value</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+10
+11
+12</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/prawn/graph/charts/legacy/base.rb', line 10</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_highest_value'>highest_value</span>
+  <span class='ivar'>@highest_value</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="values=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="values-instance_method">
+  
+    - (<tt>Object</tt>) <strong>values</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute values</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+10
+11
+12</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/prawn/graph/charts/legacy/base.rb', line 10</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_values'>values</span>
+  <span class='ivar'>@values</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="draw-instance_method">
+  
+    - (<tt>Object</tt>) <strong>draw</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Draws the graph on the document which we have a reference to.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/prawn/graph/charts/legacy/base.rb', line 24</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_draw'>draw</span>
+  <span class='id identifier rubyid_draw_bounding_box'>draw_bounding_box</span>
+  <span class='ivar'>@grid</span><span class='period'>.</span><span class='id identifier rubyid_draw'>draw</span>
+  <span class='id identifier rubyid_label_axes'>label_axes</span>
+  <span class='kw'>if</span> <span class='ivar'>@title</span>
+    <span class='id identifier rubyid_draw_title'>draw_title</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_plot_values'>plot_values</span>
+  <span class='kw'>if</span> <span class='ivar'>@x_label</span>
+    <span class='id identifier rubyid_draw_x_axis_label'>draw_x_axis_label</span>
+  <span class='kw'>end</span> 
+  <span class='kw'>if</span> <span class='ivar'>@y_label</span>
+    <span class='id identifier rubyid_draw_y_axis_label'>draw_y_axis_label</span>
+  <span class='kw'>end</span> 
+ <span class='id identifier rubyid_reset'>reset</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Wed Jun  8 20:02:02 2016 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.2.1).
+</div>
+
+  </body>
+</html>

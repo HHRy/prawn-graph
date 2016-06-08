@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.8.7.6
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!file.README.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'>
+<h1 id="label-Prawn-3A-3AGraph+-+Easy+Graphing+for+Prawn">Prawn::Graph - Easy Graphing for Prawn</h1>
+
+<p><a href="https://badge.fury.io/rb/prawn-graph"><img
+src="https://badge.fury.io/rb/prawn-graph.svg"></a> <a
+href="http://sujrd.mit-license.org"><img
+src="http://img.shields.io/:license-mit-blue.svg"></a> <a
+href="https://codeclimate.com/github/HHRy/prawn-graph"><img
+src="https://codeclimate.com/github/HHRy/prawn-graph/badges/gpa.svg"></a>
+<a href="https://codeclimate.com/github/HHRy/prawn-graph/coverage"><img
+src="https://codeclimate.com/github/HHRy/prawn-graph/badges/coverage.svg"></a>
+<a href="https://travis-ci.org/HHRy/prawn-graph"><img
+src="https://travis-ci.org/HHRy/prawn-graph.svg?branch=master"></a> <a
+href="https://hakiri.io/github/HHRy/prawn-graph/master"><img
+src="https://hakiri.io/github/HHRy/prawn-graph/master.svg"></a></p>
+
+<p>An extension for the <a href="http://github.com/prawnpdf/prawn/">prawn pdf
+library</a> which adds the ability to draw graphs (or charts if you perfer)
+in PDF documents.</p>
+
+<p><strong>If you&#39;re looking for the current stable released version of
+prawn-graph (0.0.4) - check out the stable branch. Just remmeber that this
+is not supported by the latest version of prawn and probably shouldn&#39;t
+be used.</strong></p>
+
+<p>Because Prawn::Graph only uses the native PDF drawing functions exposed by
+Prawn, it removes the need to depend on projects like Gruff to generate
+heavy PNG / JPG images of such graphs and charts and then include those
+large blobs in your documents. The results may not be as pretty (yet), but
+the file-size differences are dramatic.</p>
+
+<p>By default, graphs are drawn in monochrome, as that&#39;s likely how they
+will be printed.</p>
+
+<p>This is free and open source software released under ther terms of the <a
+href="http://opensource.org/licenses/MIT">MIT Licence</a>.</p>
+
+<p>Its copyright is held by Ryan Stenhouse and the <a
+href="https://github.com/HHRy/prawn-graph/blob/master/CONTRIBUTORS.md">other
+contributors</a> and it was first released in 2010.</p>
+
+<h2 id="label-Compatibility">Compatibility</h2>
+
+<p>The gem is only tested against Ruby version 2.0 and greater. Older Ruby
+versions may work but are not officially supported. We aim for compatibilty
+with 1.x and 2.x series of prawn. Any incomaptibilities should be treated
+as bugs and added to the <a
+href="https://github.com/hhry/prawn-graph/issues/">issue tracker</a>.</p>
+
+<p>Unlike previous version of prawn-graph, this version does not at this time
+include a theme api or the ability to change the colors used to render the
+graph.</p>
+
+<h2 id="label-IMPORTANT+-+READ+THIS+BEFORE+USING">IMPORTANT - READ THIS BEFORE USING</h2>
+
+<p>prawn-graph is currently being rewritten to have its internal components
+replaced with new, properly test-driven bits of code to draw the various
+cool graphs and charts that people would like to use in their PDFs.</p>
+
+<p>Right now, the “legacy” drawing code is what is ultimately being used to
+render any graphs being generated. The newness instead is that project is
+compatible with all modern versions of prawn and therefore are useful
+again.</p>
+
+<p>This means that for now any existing rendering bugs still remain. If you
+find any, please be <a href="https://github.com/hhry/prawn-graph/issues/">a
+good citizen</a> and <a
+href="https://github.com/hhry/prawn-graph/issues/">report them</a>.</p>
+
+<p>To use prawn-graph with these caveats, you can add the following to your
+<code>Gemfile</code>:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>prawn-graph</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>1.0.0.pre1</span><span class='tstring_end'>&#39;</span></span>
+</code></pre>
+
+<p>Alternatively, you can use Rubygems directly: <code>gem install prawn-graph
+--pre</code>.</p>
+
+<h2 id="label-Acknowledgements">Acknowledgements</h2>
+
+<p>With thanks to <a href="http://www.allm.net/">株式会社アルム</a> (<a
+href="http://www.allm.net/en/">Allm Inc</a>) for allowing Ryan Stenhouse
+the time to rebuild this version of prawn-graph. This updated version of
+prawn-graph was inspired and guided by <a
+href="https://github.com/mogest/prawn-svg/">prawn-svg</a> by <a
+href="https://github.com/mogest/">Roger Nesbitt</a>. It also uses some of
+prawn-svg[https://github.com/mogest/prawn-svg/]‘s document size
+calculation code.</p>
+
+<p>Prawn Graph was originally sponsored by and built for use at <a
+href="http://www.pccl.co.uk/">Purchasing Card Consultancy Ltd</a> while
+Ryan Stenhouse was employed there.</p>
+
+<h2 id="label-Supported+graph+-2F+chart+types">Supported graph / chart types</h2>
+
+<p>This version of Prawn::Graph supports the following graph / chart types:</p>
+<ul><li>
+<p>Bar Charts</p>
+</li><li>
+<p>Line Charts</p>
+</li></ul>
+
+<p>Is your favourite chart type not supported yet? <a
+href="https://github.com/hhry/prawn-graph/issues/">Please request it</a>,
+or if you are feeling particularly adventurous - please add it!</p>
+
+<h2 id="label-Using+prawn-graph">Using prawn-graph</h2>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>prawn-graph</span><span class='tstring_end'>&#39;</span></span>
+
+  <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='lbracket'>[</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>A</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='int'>10</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>B</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='int'>11</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>C</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='int'>12</span><span class='rbracket'>]</span> <span class='rbracket'>]</span>
+
+  <span class='const'>Prawn</span><span class='op'>::</span><span class='const'>Document</span><span class='period'>.</span><span class='id identifier rubyid_generate'>generate</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>test.pdf</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_text'>text</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Graph Example</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_bar_graph'>bar_graph</span> <span class='id identifier rubyid_data'>data</span>
+  <span class='kw'>end</span>
+</code></pre>
+
+<p>When called with just a set of data, prawn-graph will do its best to make
+the graph fit in the available space. For a little more control over how
+the graphs are rendered in the document you can pass the following options:</p>
+
+<p>Option | Data type | Description ———– | ——— | ———– :at | [integer, integer]
+| Specify the location on the page you want the graph to appear. :width |
+integer | Desired width of the graph. Defaults to horizontal space
+available. :height | integer | Desired height of the graph. Defaults to
+vertical space available.</p>
+
+<h3 id="label-Example">Example</h3>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>prawn-graph</span><span class='tstring_end'>&#39;</span></span>
+
+  <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='lbracket'>[</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>A</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='int'>10</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>B</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='int'>11</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>C</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='int'>12</span><span class='rbracket'>]</span> <span class='rbracket'>]</span>
+
+  <span class='const'>Prawn</span><span class='op'>::</span><span class='const'>Document</span><span class='period'>.</span><span class='id identifier rubyid_generate'>generate</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>test.pdf</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_text'>text</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Graph Example</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_bar_graph'>bar_graph</span> <span class='id identifier rubyid_data'>data</span><span class='comma'>,</span> <span class='label'>at:</span> <span class='lbracket'>[</span><span class='int'>10</span><span class='comma'>,</span><span class='int'>20</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='label'>width:</span> <span class='int'>200</span>
+  <span class='kw'>end</span>
+</code></pre>
+
+<h2 id="label-Development">Development</h2>
+
+<p>After checking out the repo, run <code>bin/setup</code> to install
+dependencies. Then, run <code>rake spec</code> to run the tests. You can
+also run <code>bin/console</code> for an interactive prompt that will allow
+you to experiment.</p>
+
+<p>To install this gem onto your local machine, run <code>bundle exec rake
+install</code>. To release a new version, update the version number in
+<code>version.rb</code>, and then run <code>bundle exec rake
+release</code>, which will create a git tag for the version, push git
+commits and tags, and push the <code>.gem</code> file to <a
+href="https://rubygems.org">rubygems.org</a>.</p>
+
+<h2 id="label-Contributing">Contributing</h2>
+
+<p>Bug reports and pull requests are welcome <a
+href="https://github.com/hhry/prawn-graph/issues/">on GitHub</a>. This
+project is intended to be a safe, welcoming space for collaboration, and
+contributors are expected to adhere to the <a
+href="http://contributor-covenant.org">Contributor Covenant</a> code of
+conduct.</p>
+</div></div>
+
+    <div id="footer">
+  Generated on Wed Jun  8 20:02:01 2016 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.2.1).
+</div>
+
+  </body>
+</html>
