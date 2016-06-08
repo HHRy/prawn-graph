@@ -2,6 +2,7 @@ module Prawn
   module Graph
     module Extension
 
+      # @deprecated bar_graph and bar_chart are deprecated and will be removed in a future version. Use the new graph / chart methods instead.
       # Draws a bar graph into the PDF
       #
       # Example:
@@ -9,10 +10,12 @@ module Prawn
       #  bar_graph [ ["A", 1], ["B", 2], ["C", 3] ], at: [10,10]
       #
       def bar_graph(data, options = {}, &block)
+        deprecate :bar_graph
         draw_graph(Prawn::Graph::Charts::Bar, data, options, &block)
       end
       alias bar_chart bar_graph
 
+      # @deprecated line_graph and line_chart are deprecated and will be removed in a future version. Use the new graph / chart methods instead.
       # Draws a line graph into the PDF
       #
       # Example:
@@ -20,9 +23,17 @@ module Prawn
       #  line_graph [ ["A", 1], ["B", 2], ["C", 3] ], at: [10,10]
       #
       def line_graph(data, options = {}, &block)
+        deprecate :line_graph
         draw_graph(Prawn::Graph::Charts::Line, data, options, &block)
       end
       alias line_chart line_graph
+
+      def graph(data, options = {}, &block)
+        canvas = Prawn::Graph::Canvas.new(data, self, options, &block)
+        canvas.draw
+        {warnings: [], width: self.bounds.width, height: self.bounds.height}
+      end
+      alias chart graph
 
       private
 
@@ -32,6 +43,9 @@ module Prawn
         {warnings: [], width: self.bounds.width, height: self.bounds.height}
       end
       
+      def deprecate(method)
+        warn "[DEPRECATION] #{method} is deprecated and will be removed in future versions of prawn-graph. Use chart or graph instead."
+      end
     end
   end
 end
