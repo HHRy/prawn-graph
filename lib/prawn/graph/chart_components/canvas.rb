@@ -29,9 +29,9 @@ module Prawn
         # @return [nil]
         #
         def draw
-          prawn.bounding_box(position, :width => @sizing.output_width, :height => @sizing.output_height) do
+          prawn.bounding_box(position, :width => @sizing.canvas_width, :height => @sizing.canvas_height) do
             prawn.save_graphics_state do
-              clip_rectangle 0, 0, @sizing.output_width, @sizing.output_height
+              clip_rectangle 0, 0, @sizing.canvas_width, @sizing.canvas_height
               @series.each do |series|
                 SeriesRenderer.new(series, self).draw
               end
