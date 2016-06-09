@@ -56,6 +56,7 @@ module Prawn
         end
 
         def calculate
+          calculate_width_and_height_of_canvas
           calculate_key_area
           calculate_title_area
           calculate_graph_area
@@ -63,6 +64,13 @@ module Prawn
           old_calculate
 
           self
+        end
+
+        def calculate_width_and_height_of_canvas
+          if @canvas_width.zero? && @canvas_height.zero?
+            @canvas_width   = BigDecimal(bounds[0]) 
+            @canvas_height  = BigDecimal(bounds[1]) 
+          end
         end
 
         def calculate_title_area
@@ -86,7 +94,6 @@ module Prawn
         def calculate_graph_area
           @graph_area[:width] = (canvas_width - @series_key_area[:width] - (2*hpadding))
           @graph_area[:x] = hpadding
-          
 
           if !@title_area.renderable?
             @graph_area[:y] = vpadding
