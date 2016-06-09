@@ -90,7 +90,7 @@ describe Prawn::Graph::Calculations::DocumentSizing do
         expect(sizing.title_area).to be_renderable
 
         expect(sizing.title_area[:width]).to eq(540)
-        expect(sizing.title_area[:height]).to eq(20)
+        expect(sizing.title_area[:height]).to eq(25)
         expect(sizing.title_area[:x]).to eq(30)
         expect(sizing.title_area[:y]).to eq(10)
       end
@@ -99,9 +99,9 @@ describe Prawn::Graph::Calculations::DocumentSizing do
         expect(sizing.graph_area).to_not be_nil
 
         expect(sizing.graph_area[:width]).to eq(540)
-        expect(sizing.graph_area[:height]).to eq(170)
+        expect(sizing.graph_area[:height]).to eq(165)
         expect(sizing.graph_area[:x]).to eq(30)
-        expect(sizing.graph_area[:y]).to eq(30)
+        expect(sizing.graph_area[:y]).to eq(35)
 
       end
     end
@@ -128,7 +128,7 @@ describe Prawn::Graph::Calculations::DocumentSizing do
         expect(sizing.title_area).to be_renderable
 
         expect(sizing.title_area[:width]).to eq(420)
-        expect(sizing.title_area[:height]).to eq(20)
+        expect(sizing.title_area[:height]).to eq(25)
         expect(sizing.title_area[:x]).to eq(30)
         expect(sizing.title_area[:y]).to eq(10)
       end
@@ -137,9 +137,9 @@ describe Prawn::Graph::Calculations::DocumentSizing do
         expect(sizing.graph_area).to_not be_nil
 
         expect(sizing.graph_area[:width]).to eq(420)
-        expect(sizing.graph_area[:height]).to eq(170)
+        expect(sizing.graph_area[:height]).to eq(165)
         expect(sizing.graph_area[:x]).to eq(30)
-        expect(sizing.graph_area[:y]).to eq(30)
+        expect(sizing.graph_area[:y]).to eq(35)
 
       end
     end

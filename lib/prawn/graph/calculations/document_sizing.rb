@@ -24,13 +24,14 @@ module Prawn
         end
 
 
-        def initialize(bounds, attributes = nil)
+        def initialize(bounds, attributes = nil, theme = Prawn::Graph::Theme::Default)
           @bounds = bounds
           set_from_attributes(attributes) if attributes
 
           @graph_area       = Dimensions.new({ width: 0, height: 0, x: 0, y: 0 })
           @title_area       = Dimensions.new({ width: 0, height: 0, x: 0, y: 0 })
           @series_key_area  = Dimensions.new({ width: 0, height: 0, x: 0, y: 0 })
+          @theme            = theme
         end
 
         def set_from_attributes(attributes)
@@ -69,7 +70,7 @@ module Prawn
             @title_area[:width] = (canvas_width - @series_key_area[:width] - (2*hpadding))
             @title_area[:x] = hpadding
             @title_area[:y] = vpadding
-            @title_area[:height] = 20
+            @title_area[:height] = vpadding + @theme.font_sizes.main_title
           end
         end
 

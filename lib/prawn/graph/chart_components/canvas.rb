@@ -18,9 +18,9 @@ module Prawn
 
           @options  = options
           @prawn    = prawn
-          @sizing   = Prawn::Graph::Calculations::DocumentSizing.new([prawn.bounds.width, prawn.bounds.height], options).calculate
-
           @theme    = Prawn::Graph::Theme::Default
+
+          @sizing   = Prawn::Graph::Calculations::DocumentSizing.new([prawn.bounds.width, prawn.bounds.height], options, @theme).calculate
 
           yield self if block_given?
         end
