@@ -44,8 +44,8 @@ module Prawn
 
         def calculate_width_and_height_of_canvas
           if @canvas_width.zero? && @canvas_height.zero?
-            @canvas_width   = BigDecimal(bounds[0]) 
-            @canvas_height  = BigDecimal(bounds[1]) 
+            @canvas_width   = BigDecimal(bounds[0], 10) 
+            @canvas_height  = BigDecimal(bounds[1], 10) 
           elsif !@canvas_width.zero? && @canvas_height.zero?
             @canvas_height  = (@canvas_width / bounds_aspect_ratio).round
           elsif !@canvas_height.zero? && @canvas_width.zero?
@@ -54,7 +54,7 @@ module Prawn
         end
 
         def bounds_aspect_ratio
-          BigDecimal(bounds[0]) / BigDecimal(bounds[1])
+          BigDecimal(bounds[0], 10) / BigDecimal(bounds[1], 10)
         end
 
         def calculate_title_area
@@ -83,7 +83,7 @@ module Prawn
             @graph_area[:y] = vpadding
             @graph_area[:height] = (canvas_height - vpadding)
           else
-            @graph_area[:y] = @title_area[:y] + @title_area[:height]
+            @graph_area[:y] = @title_area[:y] - @title_area[:height]
             @graph_area[:height] = (canvas_height - vpadding - @title_area[:height])
           end
         end

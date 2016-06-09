@@ -61,7 +61,7 @@ describe Prawn::Graph::Calculations::LayoutCalculator do
           expect(sizing.graph_area[:width]).to eq(1080)
           expect(sizing.graph_area[:height]).to eq(705)
           expect(sizing.graph_area[:x]).to eq(60)
-          expect(sizing.graph_area[:y]).to eq(95)
+          expect(sizing.graph_area[:y]).to eq(-15)
         end
       end
 
@@ -130,7 +130,7 @@ describe Prawn::Graph::Calculations::LayoutCalculator do
           expect(sizing.graph_area[:width]).to eq(840)
           expect(sizing.graph_area[:height]).to eq(705)
           expect(sizing.graph_area[:x]).to eq(60)
-          expect(sizing.graph_area[:y]).to eq(95)
+          expect(sizing.graph_area[:y]).to eq(-15)
         end
       end
     end
@@ -224,7 +224,7 @@ describe Prawn::Graph::Calculations::LayoutCalculator do
           expect(sizing.graph_area[:width]).to eq(540)
           expect(sizing.graph_area[:height]).to eq(165)
           expect(sizing.graph_area[:x]).to eq(30)
-          expect(sizing.graph_area[:y]).to eq(35)
+          expect(sizing.graph_area[:y]).to eq(-15 )
 
         end
       end
@@ -262,7 +262,7 @@ describe Prawn::Graph::Calculations::LayoutCalculator do
           expect(sizing.graph_area[:width]).to eq(420)
           expect(sizing.graph_area[:height]).to eq(165)
           expect(sizing.graph_area[:x]).to eq(30)
-          expect(sizing.graph_area[:y]).to eq(35)
+          expect(sizing.graph_area[:y]).to eq(-15)
 
         end
       end
@@ -324,7 +324,7 @@ describe Prawn::Graph::Calculations::LayoutCalculator do
           expect(sizing.graph_area[:width]).to eq(630)
           expect(sizing.graph_area[:height]).to eq(406)
           expect(sizing.graph_area[:x]).to eq(35)
-          expect(sizing.graph_area[:y]).to eq(61)
+          expect(sizing.graph_area[:y]).to eq(-15)
         end
       end
 
@@ -393,7 +393,7 @@ describe Prawn::Graph::Calculations::LayoutCalculator do
           expect(sizing.graph_area[:width]).to eq(490)
           expect(sizing.graph_area[:height]).to eq(406)
           expect(sizing.graph_area[:x]).to eq(35)
-          expect(sizing.graph_area[:y]).to eq(61)
+          expect(sizing.graph_area[:y]).to eq(-15)
         end
       end
     end
@@ -454,7 +454,7 @@ describe Prawn::Graph::Calculations::LayoutCalculator do
           expect(sizing.graph_area[:width]).to eq(743)
           expect(sizing.graph_area[:height]).to eq(479)
           expect(sizing.graph_area[:x]).to eq(41)
-          expect(sizing.graph_area[:y]).to eq(71)
+          expect(sizing.graph_area[:y]).to eq(-15)
         end
       end
 
@@ -523,7 +523,7 @@ describe Prawn::Graph::Calculations::LayoutCalculator do
           expect(sizing.graph_area[:width]).to eq(583)
           expect(sizing.graph_area[:height]).to eq(479)
           expect(sizing.graph_area[:x]).to eq(41)
-          expect(sizing.graph_area[:y]).to eq(71)
+          expect(sizing.graph_area[:y]).to eq(-15)
         end
       end
     end
