@@ -14,19 +14,11 @@ module Prawn
 
         def initialize(bounds, attributes = nil, theme = Prawn::Graph::Theme::Default)
           @bounds = bounds
-          set_from_attributes(attributes) if attributes
-
           @graph_area       = Dimensions.new({ width: 0, height: 0, x: 0, y: 0 })
           @title_area       = Dimensions.new({ width: 0, height: 0, x: 0, y: 0 })
           @series_key_area  = Dimensions.new({ width: 0, height: 0, x: 0, y: 0 })
           @theme            = theme
-        end
-
-        def set_from_attributes(attributes)
-          @canvas_width = BigDecimal(attributes[:width], 10) rescue 0
-          @canvas_height = BigDecimal(attributes[:height], 10) rescue 0
-          @num_series = attributes[:series_count] || 1
-          @title = attributes[:title]
+          set_from_attributes(attributes) if attributes
         end
 
         def calculate
@@ -35,6 +27,19 @@ module Prawn
           calculate_title_area
           calculate_graph_area
           self
+        end
+
+        def invalid?
+          canvas_width > bounds[0] || canvas_height > bounds[1]
+        end
+
+        private
+
+        def set_from_attributes(attributes)
+          @canvas_width = BigDecimal(attributes[:width], 10) rescue 0
+          @canvas_height = BigDecimal(attributes[:height], 10) rescue 0
+          @num_series = attributes[:series_count] || 1
+          @title = attributes[:title]
         end
 
         def calculate_width_and_height_of_canvas
@@ -91,14 +96,6 @@ module Prawn
           ((BigDecimal(canvas_height) / 100) * 5).round
         end
 
-        def invalid?
-          @viewport_width <= 0 ||
-            @viewport_height <= 0 ||
-            @canvas_width <= 0 ||
-            @canvas_height <= 0 ||
-            (@requested_width && @requested_width <= 0) ||
-            (@requested_height && @requested_height <= 0)
-        end
       end
 
     end
