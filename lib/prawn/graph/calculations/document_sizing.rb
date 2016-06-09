@@ -60,6 +60,8 @@ module Prawn
           calculate_graph_area
 
           old_calculate
+
+          self
         end
 
         def calculate_title_area
