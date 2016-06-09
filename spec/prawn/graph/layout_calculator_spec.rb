@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe Prawn::Graph::Calculations::DocumentSizing do
+describe Prawn::Graph::Calculations::LayoutCalculator do
   let(:attributes) do
     {"width" => "150", "height" => "200", "viewBox" => "0 -30 300 800", "preserveAspectRatio" => "xMaxYMid meet"}
   end
 
   let(:bounds) { [1200, 800] }
 
-  let(:sizing) { Prawn::Graph::Calculations::DocumentSizing.new(bounds, attributes) }
+  let(:sizing) { Prawn::Graph::Calculations::LayoutCalculator.new(bounds, attributes) }
 
 
   describe "calculuting the sizes of various graph components" do
@@ -15,7 +15,7 @@ describe Prawn::Graph::Calculations::DocumentSizing do
     describe "when no width and height is specified for the canvas" do
       describe "with one series and no title" do
         let(:attributes){ { series_count: 1 } }
-        let(:sizing) { Prawn::Graph::Calculations::DocumentSizing.new(bounds, attributes).calculate }
+        let(:sizing) { Prawn::Graph::Calculations::LayoutCalculator.new(bounds, attributes).calculate }
 
         it "sizes the canvas to fill the document bounds" do
           expect(sizing.canvas_width).to  eq(1200)
@@ -42,7 +42,7 @@ describe Prawn::Graph::Calculations::DocumentSizing do
 
       describe "with one series and a title" do
         let(:attributes){ { series_count: 1, title: 'Bob' } }
-        let(:sizing) { Prawn::Graph::Calculations::DocumentSizing.new(bounds, attributes).calculate }
+        let(:sizing) { Prawn::Graph::Calculations::LayoutCalculator.new(bounds, attributes).calculate }
 
         it "sizes the canvas to fill the document bounds" do
           expect(sizing.canvas_width).to  eq(1200)
@@ -74,7 +74,7 @@ describe Prawn::Graph::Calculations::DocumentSizing do
 
       describe "with many series and no title" do
         let(:attributes){ { series_count: 3 } }
-        let(:sizing) { Prawn::Graph::Calculations::DocumentSizing.new(bounds, attributes).calculate }
+        let(:sizing) { Prawn::Graph::Calculations::LayoutCalculator.new(bounds, attributes).calculate }
 
         it "sizes the canvas to fill the document bounds" do
           expect(sizing.canvas_width).to  eq(1200)
@@ -106,7 +106,7 @@ describe Prawn::Graph::Calculations::DocumentSizing do
 
       describe "with many series and a title" do
         let(:attributes){ { series_count: 3, title: 'Bob' } }
-        let(:sizing) { Prawn::Graph::Calculations::DocumentSizing.new(bounds, attributes).calculate }
+        let(:sizing) { Prawn::Graph::Calculations::LayoutCalculator.new(bounds, attributes).calculate }
 
         it "sizes the canvas to fill the document bounds" do
           expect(sizing.canvas_width).to  eq(1200)
@@ -144,7 +144,7 @@ describe Prawn::Graph::Calculations::DocumentSizing do
  
     describe "width a fixed width and height and a single series and no title" do
       let(:attributes){ { width: 600, height: 200, series_count: 1 } }
-      let(:sizing) { Prawn::Graph::Calculations::DocumentSizing.new(bounds, attributes).calculate }
+      let(:sizing) { Prawn::Graph::Calculations::LayoutCalculator.new(bounds, attributes).calculate }
 
       it "sets the canvas width and height to the values provided" do
         expect(sizing.canvas_width).to  eq(600)
@@ -172,7 +172,7 @@ describe Prawn::Graph::Calculations::DocumentSizing do
 
     describe "width a fixed width and height and 2 series and no title" do
       let(:attributes){ { width: 600, height: 200, series_count: 2 } }
-      let(:sizing) { Prawn::Graph::Calculations::DocumentSizing.new(bounds, attributes).calculate }
+      let(:sizing) { Prawn::Graph::Calculations::LayoutCalculator.new(bounds, attributes).calculate }
 
       it "sets the canvas width and height to the values provided" do
         expect(sizing.canvas_width).to  eq(600)
@@ -204,7 +204,7 @@ describe Prawn::Graph::Calculations::DocumentSizing do
 
     describe "width a fixed width and height and a single series and a title" do
       let(:attributes){ { width: 600, height: 200, series_count: 1, title: "Bob" } }
-      let(:sizing) { Prawn::Graph::Calculations::DocumentSizing.new(bounds, attributes).calculate }
+      let(:sizing) { Prawn::Graph::Calculations::LayoutCalculator.new(bounds, attributes).calculate }
 
       it "sets the canvas width and height to the values provided" do
         expect(sizing.canvas_width).to  eq(600)
@@ -237,7 +237,7 @@ describe Prawn::Graph::Calculations::DocumentSizing do
 
     describe "width a fixed width and height and 2 series and a title" do
       let(:attributes){ { width: 600, height: 200, series_count: 2, title: "Bob" } }
-      let(:sizing) { Prawn::Graph::Calculations::DocumentSizing.new(bounds, attributes).calculate }
+      let(:sizing) { Prawn::Graph::Calculations::LayoutCalculator.new(bounds, attributes).calculate }
 
       it "sets the canvas width and height to the values provided" do
         expect(sizing.canvas_width).to  eq(600)

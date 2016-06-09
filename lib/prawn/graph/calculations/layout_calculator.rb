@@ -2,12 +2,7 @@ module Prawn
   module Graph
     module Calculations
 
-      # This DocumentSizing class (and most of the other calculations stuff) has been taken from the prawn-svg
-      # project (https://github.com/mogest/prawn-svg) which is by Roger Nesbitt and made available under the
-      # MIT Licence. 
-      #
-      class DocumentSizing
-        DEFAULT_ASPECT_RATIO = "xMidYMid meet"
+      class LayoutCalculator
         attr_reader :bounds
         attr_reader :series_key_area, :title_area, :graph_area, :canvas_width, :canvas_height
 
