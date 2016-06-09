@@ -61,7 +61,6 @@ Alternatively, you can use Rubygems directly: `gem install prawn-graph`.
 
 With thanks to [株式会社アルム][3] ([Allm Inc][4]) for allowing Ryan Stenhouse the time to rebuild this version of
 prawn-graph. This updated version of prawn-graph was inspired and guided by [prawn-svg][1] by [Roger Nesbitt][6]. 
-It also uses some of [prawn-svg][1]'s document size calculation code.
 
 Prawn Graph was originally sponsored by and built for use at [Purchasing Card Consultancy Ltd][7] while
 Ryan Stenhouse was employed there.
