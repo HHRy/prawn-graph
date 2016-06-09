@@ -19,6 +19,12 @@ module Prawn
         average:              '34495E',
         max:                  '17202A',
         min:                  '17202A',
+        font_sizes:           OpenStruct.new({
+          default:      10,
+          main_title:   15,
+          axis_labels:  6,
+          series_key:   10,
+        }),
       })
     end
   end
