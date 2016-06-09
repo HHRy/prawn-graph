@@ -41,7 +41,15 @@ module Prawn
           if @canvas_width.zero? && @canvas_height.zero?
             @canvas_width   = BigDecimal(bounds[0]) 
             @canvas_height  = BigDecimal(bounds[1]) 
+          elsif !@canvas_width.zero? && @canvas_height.zero?
+            @canvas_height  = (@canvas_width / bounds_aspect_ratio).round
+          elsif !@canvas_height.zero? && @canvas_width.zero?
+            @canvas_width  = (@canvas_height * bounds_aspect_ratio).round
           end
+        end
+
+        def bounds_aspect_ratio
+          BigDecimal(bounds[0]) / BigDecimal(bounds[1])
         end
 
         def calculate_title_area
@@ -75,13 +83,12 @@ module Prawn
           end
         end
 
-
         def hpadding
-          (BigDecimal(canvas_width) / 100) * 5
+          ((BigDecimal(canvas_width) / 100) * 5).round
         end
 
         def vpadding
-          (BigDecimal(canvas_height) / 100) * 5
+          ((BigDecimal(canvas_height) / 100) * 5).round
         end
 
         def invalid?
@@ -93,8 +100,6 @@ module Prawn
             (@requested_height && @requested_height <= 0)
         end
       end
-
-
 
     end
   end
