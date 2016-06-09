@@ -15,12 +15,10 @@ module Prawn
         def initialize(series, prawn, options = {}, &block)
           @series   = series
           verify_series_are_ok!
-
-          @options  = options
+          @options  = options.merge({ series_count: series.size })
           @prawn    = prawn
           @theme    = Prawn::Graph::Theme::Default
-
-          @sizing   = Prawn::Graph::Calculations::LayoutCalculator.new([prawn.bounds.width, prawn.bounds.height], options, @theme).calculate
+          @sizing   = Prawn::Graph::Calculations::LayoutCalculator.new([prawn.bounds.width, prawn.bounds.height], @options, @theme).calculate
 
           yield self if block_given?
         end
@@ -32,9 +30,8 @@ module Prawn
           prawn.bounding_box(position, :width => @sizing.canvas_width, :height => @sizing.canvas_height) do
             prawn.save_graphics_state do
               clip_rectangle 0, 0, @sizing.canvas_width, @sizing.canvas_height
-              @series.each do |series|
-                SeriesRenderer.new(series, self).draw
-              end
+              prawn.stroke_color '00000'
+              prawn.stroke_bounds
             end
           end
         end

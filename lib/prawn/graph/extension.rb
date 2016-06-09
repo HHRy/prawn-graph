@@ -31,7 +31,7 @@ module Prawn
       
       
       def graph(data, options = {}, &block)
-        canvas = Prawn::Graph::Canvas.new(data, self, options, &block)
+        canvas = Prawn::Graph::ChartComponents::Canvas.new(data, self, options, &block)
         canvas.draw
         {warnings: [], width: self.bounds.width, height: self.bounds.height}
       end
