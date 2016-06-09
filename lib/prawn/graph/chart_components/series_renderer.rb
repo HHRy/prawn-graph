@@ -21,9 +21,17 @@ module Prawn
         # Draws the series on the provided canvas.
         #
         def draw
+
         end
 
         private
+
+        # Calculates the relative height of a given point based on the maximum value present in
+        # the series.
+        #
+        def point_height_percentage(value)
+          ((BigDecimal(value, 10)/BigDecimal(@series.max, 10)) * BigDecimal(100)).round(2)
+        end
 
       end
     end
