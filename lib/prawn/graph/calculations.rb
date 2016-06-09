@@ -1,2 +1,1 @@
-require_relative "calculations/aspect_ratio"
 require_relative "calculations/layout_calculator"
