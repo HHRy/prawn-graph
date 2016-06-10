@@ -10,6 +10,10 @@ module Prawn
           def renderable?
             width > 0 && height > 0
           end
+
+          def point
+            [x, y]
+          end
         end
 
         def initialize(bounds, attributes = nil, theme = Prawn::Graph::Theme::Default)
@@ -26,6 +30,7 @@ module Prawn
           calculate_key_area
           calculate_title_area
           calculate_graph_area
+          
           self
         end
 
@@ -61,16 +66,16 @@ module Prawn
           unless @title.nil?
             @title_area[:width] = (canvas_width - @series_key_area[:width] - (2*hpadding))
             @title_area[:x] = hpadding
-            @title_area[:y] = vpadding
-            @title_area[:height] = vpadding + @theme.font_sizes.main_title
+            @title_area[:height] = @theme.font_sizes.main_title + vpadding
+            @title_area[:y] = canvas_height + vpadding 
           end
         end
 
         def calculate_key_area
           if @num_series > 1
-            @series_key_area[:width] = ( (canvas_width / 100) * 20 ).round
+            @series_key_area[:width] = ( (canvas_width / 100) * 25 ).round
             @series_key_area[:x] = (canvas_width - @series_key_area[:width] - hpadding)
-            @series_key_area[:y] = vpadding
+            @series_key_area[:y] = canvas_height + vpadding
             @series_key_area[:height] = (canvas_height - vpadding)
           end 
         end
@@ -80,20 +85,20 @@ module Prawn
           @graph_area[:x] = hpadding
 
           if !@title_area.renderable?
-            @graph_area[:y] = vpadding
+            @graph_area[:y] = canvas_height + vpadding
             @graph_area[:height] = (canvas_height - vpadding)
           else
-            @graph_area[:y] = @title_area[:y] - @title_area[:height]
+            @graph_area[:y] =  (@title_area[:y] - @title_area[:height])
             @graph_area[:height] = (canvas_height - vpadding - @title_area[:height])
           end
         end
 
         def hpadding
-          ((BigDecimal(canvas_width) / 100) * 5).round
+          ((BigDecimal(canvas_width) / 100) * 2).round
         end
 
         def vpadding
-          ((BigDecimal(canvas_height) / 100) * 5).round
+          ((BigDecimal(canvas_height) / 100) * 2).round
         end
 
       end

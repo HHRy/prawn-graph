@@ -2,7 +2,14 @@ require 'spec_helper'
 
 describe Prawn::Graph::Calculations::LayoutCalculator do
   let(:bounds) { [1200, 800] }
+  let(:attributes){ { series_count: 1, title: 'Bob' } }
   let(:sizing) { Prawn::Graph::Calculations::LayoutCalculator.new(bounds, attributes) }
+
+  describe "instances of a Dimensions class" do
+    it "has a point method with represents the x and y coords calculated" do
+      expect(sizing.graph_area.point).to eq([sizing.graph_area.x, sizing.graph_area.y])
+    end
+  end
 
   describe "calculating the sizes of various graph components" do
     describe "when no width and no height is specified for the canvas" do
@@ -26,10 +33,10 @@ describe Prawn::Graph::Calculations::LayoutCalculator do
         it "calculates the size of the graph area within the canvas" do
           expect(sizing.graph_area).to be_renderable
 
-          expect(sizing.graph_area[:width]).to eq(1080)
-          expect(sizing.graph_area[:height]).to eq(760)
-          expect(sizing.graph_area[:x]).to eq(60)
-          expect(sizing.graph_area[:y]).to eq(40)
+          expect(sizing.graph_area[:width]).to eq(1152)
+          expect(sizing.graph_area[:height]).to eq(784)
+          expect(sizing.graph_area[:x]).to eq(24)
+          expect(sizing.graph_area[:y]).to eq(816)
         end
       end
 
@@ -49,19 +56,19 @@ describe Prawn::Graph::Calculations::LayoutCalculator do
         it "calculates space for the graph title" do
           expect(sizing.title_area).to be_renderable
 
-          expect(sizing.title_area[:width]).to eq(1080)
-          expect(sizing.title_area[:height]).to eq(55)
-          expect(sizing.title_area[:x]).to eq(60)
-          expect(sizing.title_area[:y]).to eq(40)
+          expect(sizing.title_area[:width]).to eq(1152)
+          expect(sizing.title_area[:height]).to eq(26)
+          expect(sizing.title_area[:x]).to eq(24)
+          expect(sizing.title_area[:y]).to eq(816)
         end
 
         it "calculates the size of the graph area within the canvas" do
           expect(sizing.graph_area).to be_renderable
 
-          expect(sizing.graph_area[:width]).to eq(1080)
-          expect(sizing.graph_area[:height]).to eq(705)
-          expect(sizing.graph_area[:x]).to eq(60)
-          expect(sizing.graph_area[:y]).to eq(-15)
+          expect(sizing.graph_area[:width]).to eq(1152)
+          expect(sizing.graph_area[:height]).to eq(758)
+          expect(sizing.graph_area[:x]).to eq(24)
+          expect(sizing.graph_area[:y]).to eq(790)
         end
       end
 
@@ -77,10 +84,10 @@ describe Prawn::Graph::Calculations::LayoutCalculator do
         it "calculates space for the graph key" do
           expect(sizing.series_key_area).to be_renderable
 
-          expect(sizing.series_key_area[:width]).to eq(240)
-          expect(sizing.series_key_area[:height]).to eq(760)
-          expect(sizing.series_key_area[:x]).to eq(900)
-          expect(sizing.series_key_area[:y]).to eq(40)
+          expect(sizing.series_key_area[:width]).to eq(300)
+          expect(sizing.series_key_area[:height]).to eq(784)
+          expect(sizing.series_key_area[:x]).to eq(876)
+          expect(sizing.series_key_area[:y]).to eq(816)
         end
 
         it "does not calculate space for the graph title" do
@@ -90,10 +97,10 @@ describe Prawn::Graph::Calculations::LayoutCalculator do
         it "calculates the size of the graph area within the canvas" do
           expect(sizing.graph_area).to be_renderable
 
-          expect(sizing.graph_area[:width]).to eq(840)
-          expect(sizing.graph_area[:height]).to eq(760)
-          expect(sizing.graph_area[:x]).to eq(60)
-          expect(sizing.graph_area[:y]).to eq(40)
+          expect(sizing.graph_area[:width]).to eq(852)
+          expect(sizing.graph_area[:height]).to eq(784)
+          expect(sizing.graph_area[:x]).to eq(24)
+          expect(sizing.graph_area[:y]).to eq(816)
         end
       end
 
@@ -109,28 +116,28 @@ describe Prawn::Graph::Calculations::LayoutCalculator do
         it "calculates space for the graph key" do
           expect(sizing.series_key_area).to be_renderable
 
-          expect(sizing.series_key_area[:width]).to eq(240)
-          expect(sizing.series_key_area[:height]).to eq(760)
-          expect(sizing.series_key_area[:x]).to eq(900)
-          expect(sizing.series_key_area[:y]).to eq(40)
+          expect(sizing.series_key_area[:width]).to eq(300)
+          expect(sizing.series_key_area[:height]).to eq(784)
+          expect(sizing.series_key_area[:x]).to eq(876)
+          expect(sizing.series_key_area[:y]).to eq(816)
         end
 
         it "calculates space for the graph title" do
           expect(sizing.title_area).to be_renderable
 
-          expect(sizing.title_area[:width]).to eq(840)
-          expect(sizing.title_area[:height]).to eq(55)
-          expect(sizing.title_area[:x]).to eq(60)
-          expect(sizing.title_area[:y]).to eq(40)
+          expect(sizing.title_area[:width]).to eq(852)
+          expect(sizing.title_area[:height]).to eq(26)
+          expect(sizing.title_area[:x]).to eq(24)
+          expect(sizing.title_area[:y]).to eq(816)
         end
 
         it "calculates the size of the graph area within the canvas" do
           expect(sizing.graph_area).to be_renderable
 
-          expect(sizing.graph_area[:width]).to eq(840)
-          expect(sizing.graph_area[:height]).to eq(705)
-          expect(sizing.graph_area[:x]).to eq(60)
-          expect(sizing.graph_area[:y]).to eq(-15)
+          expect(sizing.graph_area[:width]).to eq(852)
+          expect(sizing.graph_area[:height]).to eq(758)
+          expect(sizing.graph_area[:x]).to eq(24)
+          expect(sizing.graph_area[:y]).to eq(790)
         end
       end
     end
@@ -156,10 +163,10 @@ describe Prawn::Graph::Calculations::LayoutCalculator do
         it "calculates the size of the graph area within the canvas" do
           expect(sizing.graph_area).to be_renderable
 
-          expect(sizing.graph_area[:width]).to eq(540)
-          expect(sizing.graph_area[:height]).to eq(190)
-          expect(sizing.graph_area[:x]).to eq(30)
-          expect(sizing.graph_area[:y]).to eq(10)
+          expect(sizing.graph_area[:width]).to eq(576)
+          expect(sizing.graph_area[:height]).to eq(196)
+          expect(sizing.graph_area[:x]).to eq(12)
+          expect(sizing.graph_area[:y]).to eq(204)
 
         end
       end
@@ -176,10 +183,10 @@ describe Prawn::Graph::Calculations::LayoutCalculator do
         it "calculates space for the graph key" do
           expect(sizing.series_key_area).to be_renderable
 
-          expect(sizing.series_key_area[:width]).to eq(120)
-          expect(sizing.series_key_area[:height]).to eq(190)
-          expect(sizing.series_key_area[:x]).to eq(450)
-          expect(sizing.series_key_area[:y]).to eq(10)
+          expect(sizing.series_key_area[:width]).to eq(150)
+          expect(sizing.series_key_area[:height]).to eq(196)
+          expect(sizing.series_key_area[:x]).to eq(438)
+          expect(sizing.series_key_area[:y]).to eq(204)
         end
 
         it "does not calculate space for the graph title" do
@@ -189,10 +196,10 @@ describe Prawn::Graph::Calculations::LayoutCalculator do
         it "calculates the size of the graph area within the canvas" do
           expect(sizing.graph_area).to be_renderable
 
-          expect(sizing.graph_area[:width]).to eq(420)
-          expect(sizing.graph_area[:height]).to eq(190)
-          expect(sizing.graph_area[:x]).to eq(30)
-          expect(sizing.graph_area[:y]).to eq(10)
+          expect(sizing.graph_area[:width]).to eq(426)
+          expect(sizing.graph_area[:height]).to eq(196)
+          expect(sizing.graph_area[:x]).to eq(12)
+          expect(sizing.graph_area[:y]).to eq(204)
         end
       end
 
@@ -212,19 +219,19 @@ describe Prawn::Graph::Calculations::LayoutCalculator do
         it "calculates space for the graph title" do
           expect(sizing.title_area).to be_renderable
 
-          expect(sizing.title_area[:width]).to eq(540)
-          expect(sizing.title_area[:height]).to eq(25)
-          expect(sizing.title_area[:x]).to eq(30)
-          expect(sizing.title_area[:y]).to eq(10)
+          expect(sizing.title_area[:width]).to eq(576)
+          expect(sizing.title_area[:height]).to eq(14)
+          expect(sizing.title_area[:x]).to eq(12)
+          expect(sizing.title_area[:y]).to eq(204)
         end
 
         it "calculates the size of the graph area within the canvas" do
           expect(sizing.graph_area).to be_renderable
 
-          expect(sizing.graph_area[:width]).to eq(540)
-          expect(sizing.graph_area[:height]).to eq(165)
-          expect(sizing.graph_area[:x]).to eq(30)
-          expect(sizing.graph_area[:y]).to eq(-15 )
+          expect(sizing.graph_area[:width]).to eq(576)
+          expect(sizing.graph_area[:height]).to eq(182)
+          expect(sizing.graph_area[:x]).to eq(12)
+          expect(sizing.graph_area[:y]).to eq(190)
 
         end
       end
@@ -241,28 +248,28 @@ describe Prawn::Graph::Calculations::LayoutCalculator do
         it "calculates space for the graph key" do
           expect(sizing.series_key_area).to be_renderable
 
-          expect(sizing.series_key_area[:width]).to eq(120)
-          expect(sizing.series_key_area[:height]).to eq(190)
-          expect(sizing.series_key_area[:x]).to eq(450)
-          expect(sizing.series_key_area[:y]).to eq(10)
+          expect(sizing.series_key_area[:width]).to eq(150)
+          expect(sizing.series_key_area[:height]).to eq(196)
+          expect(sizing.series_key_area[:x]).to eq(438)
+          expect(sizing.series_key_area[:y]).to eq(204)
         end
 
         it "calculates space for the graph title" do
           expect(sizing.title_area).to be_renderable
 
-          expect(sizing.title_area[:width]).to eq(420)
-          expect(sizing.title_area[:height]).to eq(25)
-          expect(sizing.title_area[:x]).to eq(30)
-          expect(sizing.title_area[:y]).to eq(10)
+          expect(sizing.title_area[:width]).to eq(426)
+          expect(sizing.title_area[:height]).to eq(14)
+          expect(sizing.title_area[:x]).to eq(12)
+          expect(sizing.title_area[:y]).to eq(204)
         end
 
         it "calculates the size of the graph area within the canvas" do
           expect(sizing.graph_area).to be_renderable
 
-          expect(sizing.graph_area[:width]).to eq(420)
-          expect(sizing.graph_area[:height]).to eq(165)
-          expect(sizing.graph_area[:x]).to eq(30)
-          expect(sizing.graph_area[:y]).to eq(-15)
+          expect(sizing.graph_area[:width]).to eq(426)
+          expect(sizing.graph_area[:height]).to eq(182)
+          expect(sizing.graph_area[:x]).to eq(12)
+          expect(sizing.graph_area[:y]).to eq(190)
 
         end
       end
@@ -289,10 +296,10 @@ describe Prawn::Graph::Calculations::LayoutCalculator do
         it "calculates the size of the graph area within the canvas" do
           expect(sizing.graph_area).to be_renderable
 
-          expect(sizing.graph_area[:width]).to eq(630)
-          expect(sizing.graph_area[:height]).to eq(444)
-          expect(sizing.graph_area[:x]).to eq(35)
-          expect(sizing.graph_area[:y]).to eq(23)
+          expect(sizing.graph_area[:width]).to eq(672)
+          expect(sizing.graph_area[:height]).to eq(458)
+          expect(sizing.graph_area[:x]).to eq(14)
+          expect(sizing.graph_area[:y]).to eq(476)
         end
       end
 
@@ -312,19 +319,19 @@ describe Prawn::Graph::Calculations::LayoutCalculator do
         it "calculates space for the graph title" do
           expect(sizing.title_area).to be_renderable
 
-          expect(sizing.title_area[:width]).to eq(630)
-          expect(sizing.title_area[:height]).to eq(38)
-          expect(sizing.title_area[:x]).to eq(35)
-          expect(sizing.title_area[:y]).to eq(23)
+          expect(sizing.title_area[:width]).to eq(672)
+          expect(sizing.title_area[:height]).to eq(19)
+          expect(sizing.title_area[:x]).to eq(14)
+          expect(sizing.title_area[:y]).to eq(476)
         end
 
         it "calculates the size of the graph area within the canvas" do
           expect(sizing.graph_area).to be_renderable
 
-          expect(sizing.graph_area[:width]).to eq(630)
-          expect(sizing.graph_area[:height]).to eq(406)
-          expect(sizing.graph_area[:x]).to eq(35)
-          expect(sizing.graph_area[:y]).to eq(-15)
+          expect(sizing.graph_area[:width]).to eq(672)
+          expect(sizing.graph_area[:height]).to eq(439)
+          expect(sizing.graph_area[:x]).to eq(14)
+          expect(sizing.graph_area[:y]).to eq(457)
         end
       end
 
@@ -340,10 +347,10 @@ describe Prawn::Graph::Calculations::LayoutCalculator do
         it "calculates space for the graph key" do
           expect(sizing.series_key_area).to be_renderable
 
-          expect(sizing.series_key_area[:width]).to eq(140)
-          expect(sizing.series_key_area[:height]).to eq(444)
-          expect(sizing.series_key_area[:x]).to eq(525)
-          expect(sizing.series_key_area[:y]).to eq(23)
+          expect(sizing.series_key_area[:width]).to eq(175)
+          expect(sizing.series_key_area[:height]).to eq(458)
+          expect(sizing.series_key_area[:x]).to eq(511)
+          expect(sizing.series_key_area[:y]).to eq(476)
         end
 
         it "does not calculate space for the graph title" do
@@ -353,10 +360,10 @@ describe Prawn::Graph::Calculations::LayoutCalculator do
         it "calculates the size of the graph area within the canvas" do
           expect(sizing.graph_area).to be_renderable
 
-          expect(sizing.graph_area[:width]).to eq(490)
-          expect(sizing.graph_area[:height]).to eq(444)
-          expect(sizing.graph_area[:x]).to eq(35)
-          expect(sizing.graph_area[:y]).to eq(23)
+          expect(sizing.graph_area[:width]).to eq(497)
+          expect(sizing.graph_area[:height]).to eq(458)
+          expect(sizing.graph_area[:x]).to eq(14)
+          expect(sizing.graph_area[:y]).to eq(476)
         end
       end
 
@@ -372,28 +379,28 @@ describe Prawn::Graph::Calculations::LayoutCalculator do
         it "calculates space for the graph key" do
           expect(sizing.series_key_area).to be_renderable
 
-          expect(sizing.series_key_area[:width]).to eq(140)
-          expect(sizing.series_key_area[:height]).to eq(444)
-          expect(sizing.series_key_area[:x]).to eq(525)
-          expect(sizing.series_key_area[:y]).to eq(23)
+          expect(sizing.series_key_area[:width]).to eq(175)
+          expect(sizing.series_key_area[:height]).to eq(458)
+          expect(sizing.series_key_area[:x]).to eq(511)
+          expect(sizing.series_key_area[:y]).to eq(476)
         end
 
         it "calculates space for the graph title" do
           expect(sizing.title_area).to be_renderable
 
-          expect(sizing.title_area[:width]).to eq(490)
-          expect(sizing.title_area[:height]).to eq(38)
-          expect(sizing.title_area[:x]).to eq(35)
-          expect(sizing.title_area[:y]).to eq(23)
+          expect(sizing.title_area[:width]).to eq(497)
+          expect(sizing.title_area[:height]).to eq(19)
+          expect(sizing.title_area[:x]).to eq(14)
+          expect(sizing.title_area[:y]).to eq(476)
         end
 
         it "calculates the size of the graph area within the canvas" do
           expect(sizing.graph_area).to be_renderable
 
-          expect(sizing.graph_area[:width]).to eq(490)
-          expect(sizing.graph_area[:height]).to eq(406)
-          expect(sizing.graph_area[:x]).to eq(35)
-          expect(sizing.graph_area[:y]).to eq(-15)
+          expect(sizing.graph_area[:width]).to eq(497)
+          expect(sizing.graph_area[:height]).to eq(439)
+          expect(sizing.graph_area[:x]).to eq(14)
+          expect(sizing.graph_area[:y]).to eq(457)
         end
       end
     end
@@ -419,10 +426,10 @@ describe Prawn::Graph::Calculations::LayoutCalculator do
         it "calculates the size of the graph area within the canvas" do
           expect(sizing.graph_area).to be_renderable
 
-          expect(sizing.graph_area[:width]).to eq(743)
-          expect(sizing.graph_area[:height]).to eq(522)
-          expect(sizing.graph_area[:x]).to eq(41)
-          expect(sizing.graph_area[:y]).to eq(28)
+          expect(sizing.graph_area[:width]).to eq(791)
+          expect(sizing.graph_area[:height]).to eq(539)
+          expect(sizing.graph_area[:x]).to eq(17)
+          expect(sizing.graph_area[:y]).to eq(561)
         end
       end
 
@@ -442,19 +449,19 @@ describe Prawn::Graph::Calculations::LayoutCalculator do
         it "calculates space for the graph title" do
           expect(sizing.title_area).to be_renderable
 
-          expect(sizing.title_area[:width]).to eq(743)
-          expect(sizing.title_area[:height]).to eq(43)
-          expect(sizing.title_area[:x]).to eq(41)
-          expect(sizing.title_area[:y]).to eq(28)
+          expect(sizing.title_area[:width]).to eq(791)
+          expect(sizing.title_area[:height]).to eq(21)
+          expect(sizing.title_area[:x]).to eq(17)
+          expect(sizing.title_area[:y]).to eq(561)
         end
 
         it "calculates the size of the graph area within the canvas" do
           expect(sizing.graph_area).to be_renderable
 
-          expect(sizing.graph_area[:width]).to eq(743)
-          expect(sizing.graph_area[:height]).to eq(479)
-          expect(sizing.graph_area[:x]).to eq(41)
-          expect(sizing.graph_area[:y]).to eq(-15)
+          expect(sizing.graph_area[:width]).to eq(791)
+          expect(sizing.graph_area[:height]).to eq(518)
+          expect(sizing.graph_area[:x]).to eq(17)
+          expect(sizing.graph_area[:y]).to eq(540)
         end
       end
 
@@ -470,10 +477,10 @@ describe Prawn::Graph::Calculations::LayoutCalculator do
         it "calculates space for the graph key" do
           expect(sizing.series_key_area).to be_renderable
 
-          expect(sizing.series_key_area[:width]).to eq(160)
-          expect(sizing.series_key_area[:height]).to eq(522)
-          expect(sizing.series_key_area[:x]).to eq(624)
-          expect(sizing.series_key_area[:y]).to eq(28)
+          expect(sizing.series_key_area[:width]).to eq(200)
+          expect(sizing.series_key_area[:height]).to eq(539)
+          expect(sizing.series_key_area[:x]).to eq(608)
+          expect(sizing.series_key_area[:y]).to eq(561)
         end
 
         it "does not calculate space for the graph title" do
@@ -483,10 +490,10 @@ describe Prawn::Graph::Calculations::LayoutCalculator do
         it "calculates the size of the graph area within the canvas" do
           expect(sizing.graph_area).to be_renderable
 
-          expect(sizing.graph_area[:width]).to eq(583)
-          expect(sizing.graph_area[:height]).to eq(522)
-          expect(sizing.graph_area[:x]).to eq(41)
-          expect(sizing.graph_area[:y]).to eq(28)
+          expect(sizing.graph_area[:width]).to eq(591)
+          expect(sizing.graph_area[:height]).to eq(539)
+          expect(sizing.graph_area[:x]).to eq(17)
+          expect(sizing.graph_area[:y]).to eq(561)
         end
       end
 
@@ -502,28 +509,28 @@ describe Prawn::Graph::Calculations::LayoutCalculator do
         it "calculates space for the graph key" do
           expect(sizing.series_key_area).to be_renderable
 
-          expect(sizing.series_key_area[:width]).to eq(160)
-          expect(sizing.series_key_area[:height]).to eq(522)
-          expect(sizing.series_key_area[:x]).to eq(624)
-          expect(sizing.series_key_area[:y]).to eq(28)
+          expect(sizing.series_key_area[:width]).to eq(200)
+          expect(sizing.series_key_area[:height]).to eq(539)
+          expect(sizing.series_key_area[:x]).to eq(608)
+          expect(sizing.series_key_area[:y]).to eq(561)
         end
 
         it "calculates space for the graph title" do
           expect(sizing.title_area).to be_renderable
 
-          expect(sizing.title_area[:width]).to eq(583)
-          expect(sizing.title_area[:height]).to eq(43)
-          expect(sizing.title_area[:x]).to eq(41)
-          expect(sizing.title_area[:y]).to eq(28)
+          expect(sizing.title_area[:width]).to eq(591)
+          expect(sizing.title_area[:height]).to eq(21)
+          expect(sizing.title_area[:x]).to eq(17)
+          expect(sizing.title_area[:y]).to eq(561)
         end
 
         it "calculates the size of the graph area within the canvas" do
           expect(sizing.graph_area).to be_renderable
 
-          expect(sizing.graph_area[:width]).to eq(583)
-          expect(sizing.graph_area[:height]).to eq(479)
-          expect(sizing.graph_area[:x]).to eq(41)
-          expect(sizing.graph_area[:y]).to eq(-15)
+          expect(sizing.graph_area[:width]).to eq(591)
+          expect(sizing.graph_area[:height]).to eq(518)
+          expect(sizing.graph_area[:x]).to eq(17)
+          expect(sizing.graph_area[:y]).to eq(540)
         end
       end
     end
