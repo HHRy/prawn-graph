@@ -34,6 +34,14 @@ module Prawn
           self
         end
 
+        def hpadding
+          ((BigDecimal(canvas_width) / 100) * 2).round
+        end
+
+        def vpadding
+          ((BigDecimal(canvas_height) / 100) * 2).round
+        end
+
         def invalid?
           canvas_width > bounds[0] || canvas_height > bounds[1]
         end
@@ -91,14 +99,6 @@ module Prawn
             @graph_area[:y] =  (@title_area[:y] - @title_area[:height])
             @graph_area[:height] = (canvas_height - vpadding - @title_area[:height])
           end
-        end
-
-        def hpadding
-          ((BigDecimal(canvas_width) / 100) * 2).round
-        end
-
-        def vpadding
-          ((BigDecimal(canvas_height) / 100) * 2).round
         end
 
       end

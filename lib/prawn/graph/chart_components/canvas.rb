@@ -39,13 +39,9 @@ module Prawn
               end
 
               render_title_area!
+              render_series_keys!
 
-              if layout.series_key_area.renderable?
-                prawn.bounding_box layout.series_key_area.point, width: layout.series_key_area.width, height: layout.series_key_area.height do
-                  prawn.stroke_bounds
-                  prawn.text "Series keys go here"
-                end
-              end
+              
 
             end
           end
@@ -70,6 +66,14 @@ module Prawn
           if layout.title_area.renderable?
             prawn.text_box "<color rgb=\"#{@theme.title}\">#{@options[:title]}</color>", at: layout.title_area.point, inline_format: true, 
             valign: :center, align: :center, size: @theme.font_sizes.main_title, width: layout.title_area.width, height: layout.title_area.height
+          end
+        end
+
+        def render_series_keys!
+          if layout.series_key_area.renderable?
+            prawn.bounding_box layout.series_key_area.point, width: layout.series_key_area.width, height: layout.series_key_area.height do
+              prawn.text  "<b>Graph Series</b>", inline_format: true, align: :center, valign: :center
+            end
           end
         end
 
