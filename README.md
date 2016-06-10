@@ -108,7 +108,7 @@ Option      | Data type | Description
   series << Prawn::Graph::Series.new([5,4,3,2,1], title: "Some more numbers", type: :bar)
 
   Prawn::Document.generate('test.pdf') do
-    graph series, at: [11, 11], height: 200
+    graph series, width: 500, height: 200, title: "A very long title will porbably be clipped", at: [10,700]
   end
 ```
 
