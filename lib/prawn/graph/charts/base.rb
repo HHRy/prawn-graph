@@ -21,7 +21,7 @@ module Prawn
               @series << s
             else
               title = s.shift
-              @series << Prawn::Graph::Series.new(s, title, series_type)
+              @series << Prawn::Graph::Series.new(s, title: title, type: series_type)
             end
           end
           

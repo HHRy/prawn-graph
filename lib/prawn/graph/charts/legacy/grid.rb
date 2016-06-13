@@ -23,7 +23,7 @@ module Prawn
           #
           def draw
             @document.stroke_color @theme.markers
-            if @theme.stroke_grid_markers
+            if @theme.stroke_grid_lines
               (@height / @spacing).times do |x|
                 offset = @spacing * (x + 1)
                 @document.move_to [@point.first, (@point.last + offset)]

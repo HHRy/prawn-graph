@@ -22,6 +22,8 @@ describe Prawn::Graph::Series do
     it "defaults to a bar chart" do
       expect(Prawn::Graph::Series.new([1,2,5,4,3]).type).to eq(:bar)
     end
+
+    
   end
 
   describe "when left to its default values" do
@@ -48,7 +50,7 @@ describe Prawn::Graph::Series do
 
   describe "When it is turning itself into an array" do
     it "correctly marshalls titles and values when both are set" do
-      series = Prawn::Graph::Series.new([1,2], 'A')
+      series = Prawn::Graph::Series.new([1,2], title: "A")
       expect(series.to_a).to eql(["A", 1, 2])
     end
 
