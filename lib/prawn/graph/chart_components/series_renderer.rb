@@ -44,8 +44,13 @@ module Prawn
                   h = (point_height_percentage(v) * @plot_area_height) - 5
                   prawn.fill_color    = @color
                   prawn.stroke_color  = @color
-                  spacing = 35
-                  prawn.line_width  = 30
+
+                  width_per_point = @plot_area_width / @series.size
+                  width = (width_per_point * BigDecimal('0.8')).to_i
+                  spacing = width_per_point
+                  spacing = (spacing * BigDecimal("0.85")).to_i
+        
+                  prawn.line_width  = width #width_per_point * 0.9
                   prawn.fill_color    = @color
                   prawn.stroke_color  = @color
                   prawn.fill_and_stroke_line([ (spacing * i) ,0], [  (spacing * i) ,h])
@@ -63,7 +68,11 @@ module Prawn
                 @series.values.each_with_index do |v, i|
                   next if i == 0
 
-                  spacing = 35
+                  width_per_point = @plot_area_width / @series.size
+                  width = (width_per_point * BigDecimal('0.8')).to_i
+                  spacing = width_per_point
+                  spacing = (spacing * BigDecimal("0.85")).to_i
+
                   prawn.line_width = 3
                   prawn.fill_color    = @color
                   prawn.stroke_color  = @color
@@ -81,6 +90,7 @@ module Prawn
 
                   prawn.stroke_line([previous_x_offset, previous_y], [ this_x_offset, this_y ])
                   
+                  prawn.fill_color = '1B2631'
                   prawn.fill_ellipse([ ( previous_x_offset), previous_y ], 2)
                   prawn.fill_ellipse([ ( this_x_offset), this_y ], 2)
                   j += 1
