@@ -135,7 +135,7 @@ module Prawn
 
                     starting = (prawn.bounds.left + (point * width_per_point))
 
-                    x_position = (starting + (series_offset * width) ).to_f
+                    x_position = ( (starting + (series_offset * width) ).to_f - (width / 2.0))
                     y_position = ((point_height_percentage(@series[series_index].values[point]) * @plot_area_height) - 5).to_f
 
                     prawn.fill_and_stroke_line([ x_position ,0], [x_position ,y_position])
