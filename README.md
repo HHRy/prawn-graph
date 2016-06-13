@@ -114,6 +114,9 @@ Option      | Data type | Description
   end
 ``` 
 
+### Output
+<img src="http://prawn-graph.ryanstenhouse.jp/img/prawn-graph-output.png" alt="Prawn Graph Example Output" width="933" height="420">
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can
