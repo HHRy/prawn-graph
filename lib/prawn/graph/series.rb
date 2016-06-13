@@ -26,6 +26,12 @@ module Prawn
         options.title
       end
 
+      # @return [Symbol] The value of +options.type+.
+      #
+      def type
+        options.type
+      end
+
       # @param value [Object] a value to be added to the series. Must be of the same kind as other +values+.
       # @return [Array] The modified +values+ object.
       #

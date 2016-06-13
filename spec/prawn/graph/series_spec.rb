@@ -20,8 +20,10 @@ describe Prawn::Graph::Series do
     end
 
     it "defaults to a bar chart" do
-      expect(Prawn::Graph::Series.new([1,2,5,4,3]).options.type).to eq(:bar)
+      expect(Prawn::Graph::Series.new([1,2,5,4,3]).type).to eq(:bar)
     end
+
+    
   end
 
   describe "when left to its default values" do
@@ -42,7 +44,7 @@ describe Prawn::Graph::Series do
     end
 
     it "defaults to a bar chart" do
-      expect(Prawn::Graph::Series.new().options.type).to eq(:bar)
+      expect(Prawn::Graph::Series.new().type).to eq(:bar)
     end
   end
 
