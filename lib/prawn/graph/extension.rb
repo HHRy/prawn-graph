@@ -33,11 +33,11 @@ module Prawn
       # Prawn::Graph::Series objects and some options for positioning the sizing the
       # rendered graph
       #
-      # @param data [Array] of Prawn::Graph::Series objects
+      # @param series [Array] of Prawn::Graph::Series objects
       # @param options [Hash] of options, which can be: `:width`, `:height` , `:at` , or `:title`
       #
-      def graph(data, options = {}, &block)
-        canvas = Prawn::Graph::ChartComponents::Canvas.new(data, self, options, &block)
+      def graph(series, options = {}, &block)
+        canvas = Prawn::Graph::ChartComponents::Canvas.new(series, self, options, &block)
         canvas.draw
         {warnings: [], width: self.bounds.width, height: self.bounds.height}
       end

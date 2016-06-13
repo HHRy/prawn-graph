@@ -53,9 +53,13 @@ module Prawn
         end
 
         def plot_series!
+          bar_charts    = series.collect{ |s| s if s.type == :bar }.compact
+          others        = series - bar_charts
 
-          i = 0
-          series.each do |series|
+          BarChartRenderer.render(bar_charts, self, theme.series[0..(bar_charts.size - 1)])
+
+          i = bar_charts.size
+          others.each do |series|
             SeriesRenderer.render(series, self, theme.series[i])
             i+=1
           end
