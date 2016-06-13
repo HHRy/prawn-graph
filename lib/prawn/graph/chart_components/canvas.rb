@@ -56,7 +56,7 @@ module Prawn
           bar_charts    = series.collect{ |s| s if s.type == :bar }.compact
           others        = series - bar_charts
 
-          BarChartRenderer.render(bar_charts, self, theme.series[0..(bar_charts.size - 1)])
+          BarChartRenderer.render(bar_charts, self, theme.series[0..(bar_charts.size - 1)]) unless bar_charts.empty?
 
           i = bar_charts.size
           others.each do |series|
@@ -83,7 +83,26 @@ module Prawn
         def render_series_keys!
           if layout.series_key_area.renderable?
             prawn.bounding_box layout.series_key_area.point, width: layout.series_key_area.width, height: layout.series_key_area.height do
-              prawn.text  "<b>Graph Series</b>", inline_format: true, align: :center, valign: :center
+              series.each_with_index do |series, i|
+                series_offset = i + 1
+
+                prawn.save_graphics_state do
+                  prawn.stroke_color = theme.axes
+                  prawn.line_width = 0.5
+                  prawn.fill_color = theme.series[i]
+
+                  series_offset = series_offset * theme.font_sizes.series_key
+
+                  title = series.title || "Series #{series_offset}"
+                  top_position = (prawn.bounds.top - (series_offset * 3))
+
+
+                  prawn.fill_and_stroke_rectangle([ theme.font_sizes.series_key, top_position ], theme.font_sizes.series_key, theme.font_sizes.series_key)
+                  
+                  prawn.fill_color = theme.axes
+                  prawn.text_box title, at: [ (theme.font_sizes.series_key * 3), top_position ], size: theme.font_sizes.series_key, height: (series_offset * 2)
+                end
+              end
             end
           end
         end
