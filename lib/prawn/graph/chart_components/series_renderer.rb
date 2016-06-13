@@ -36,10 +36,8 @@ module Prawn
                 @series.values.each_with_index do |v, i|
                   next if i == 0
 
-                  width_per_point = @plot_area_width / @series.size
-                  width = (width_per_point * BigDecimal('0.8')).to_i
+                  width_per_point = (@plot_area_width / @series.size).round(2).to_f
                   spacing = width_per_point
-                  spacing = (spacing * BigDecimal("0.85")).to_i
 
                   prawn.line_width = 2
                   prawn.fill_color    = @color
@@ -52,8 +50,8 @@ module Prawn
                   previous_y  = (point_height_percentage(previous_value) * @plot_area_height) - 5
                   this_y      = (point_height_percentage(this_value) * @plot_area_height) - 5
 
-                  previous_x_offset = (spacing * (j - 1))
-                  this_x_offset    = (spacing * j)
+                  previous_x_offset = ((spacing * (j - 1)) - spacing) + (spacing / 2.0)
+                  this_x_offset    = ((spacing * j) - spacing) + (spacing / 2.0)
 
 
                   prawn.stroke_line([previous_x_offset, previous_y], [ this_x_offset, this_y ])
