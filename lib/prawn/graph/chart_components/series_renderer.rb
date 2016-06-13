@@ -73,7 +73,7 @@ module Prawn
                   spacing = width_per_point
                   spacing = (spacing * BigDecimal("0.85")).to_i
 
-                  prawn.line_width = 3
+                  prawn.line_width = 2
                   prawn.fill_color    = @color
                   prawn.stroke_color  = @color
 
@@ -90,9 +90,9 @@ module Prawn
 
                   prawn.stroke_line([previous_x_offset, previous_y], [ this_x_offset, this_y ])
                   
-                  prawn.fill_color = '1B2631'
-                  prawn.fill_ellipse([ ( previous_x_offset), previous_y ], 2)
-                  prawn.fill_ellipse([ ( this_x_offset), this_y ], 2)
+                  prawn.fill_color = @canvas.theme.markers
+                  prawn.fill_ellipse([ ( previous_x_offset), previous_y ], 1)
+                  prawn.fill_ellipse([ ( this_x_offset), this_y ], 1)
                   j += 1
                 end
                 
