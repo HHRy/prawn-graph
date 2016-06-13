@@ -14,7 +14,6 @@
       <h1 class="project-name">prawn-graph</h1>
       <h2 class="project-tagline">Prawn::Graph adds straightforward native graph drawing to Prawn without the need to depend on anything else. All generated graphs are pure PDF Vector Images. It results in smaller document sizes and less complication.</h2>
       <a href="https://github.com/HHRy/prawn-graph" class="btn">View on GitHub</a>
-      <a href="http://prawn-graph.ryanstenhouse.jp/doc/" class="btn">Read the Docs</a>
       <a href="https://github.com/HHRy/prawn-graph/zipball/master" class="btn">Download .zip</a>
       <a href="https://github.com/HHRy/prawn-graph/tarball/master" class="btn">Download .tar.gz</a>
     </section>
@@ -28,13 +27,11 @@
 <a href="https://codeclimate.com/github/HHRy/prawn-graph"><img src="https://codeclimate.com/github/HHRy/prawn-graph/badges/gpa.svg" alt="Code Climate"></a>
 <a href="https://codeclimate.com/github/HHRy/prawn-graph/coverage"><img src="https://codeclimate.com/github/HHRy/prawn-graph/badges/coverage.svg" alt="Test Coverage"></a>
 <a href="https://travis-ci.org/HHRy/prawn-graph"><img src="https://travis-ci.org/HHRy/prawn-graph.svg?branch=master" alt="Build Status"></a>
-<a href="https://hakiri.io/github/HHRy/prawn-graph/master"><img src="https://hakiri.io/github/HHRy/prawn-graph/master.svg" alt="security"></a></p>
+<a href="https://hakiri.io/github/HHRy/prawn-graph/master"><img src="https://hakiri.io/github/HHRy/prawn-graph/master.svg" alt="security"></a>
+<img src="https://img.shields.io/badge/maintained-yes-brightgreen.png" alt="Maintained: yes"></p>
 
 <p>An extension for the <a href="http://github.com/prawnpdf/prawn/">prawn pdf library</a> which adds the ability to draw graphs (or charts if
 you perfer) in PDF documents.</p>
-
-<p><span style="display: block; padding: 0.5em; color: #F9EBEA; font-weight: bold; text-align: center; border:1px solid #A93226; background-color:#CD6155;">If you're looking for the current stable released version of prawn-graph (0.0.4) - check out the stable branch. Just
-remmeber that this is not supported by the latest version of prawn and probably shouldn't be used.</span></p>
 
 <p>Because Prawn::Graph only uses the native PDF drawing functions exposed by Prawn, it removes the need to 
 depend on projects like Gruff to generate heavy PNG / JPG images of such graphs and charts and then include
@@ -51,40 +48,43 @@ are dramatic.</p>
 <h2>
 <a id="compatibility" class="anchor" href="#compatibility" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compatibility</h2>
 
-<p>The gem is  only tested against Ruby version 2.0 and greater. Older Ruby versions may work but are not 
+<p>This gem is built assuming a Ruby version of 2.0 or higher. Older Ruby versions may work but are not 
 officially supported. We aim for compatibilty with 1.x and 2.x series of prawn. Any incomaptibilities
-should be treated as bugs and added to the <a href="https://github.com/hhry/prawn-graph/issues/">issue tracker</a>. </p>
+with prawn versions should be treated as bugs and added to the <a href="https://github.com/hhry/prawn-graph/issues/">issue tracker</a>. </p>
 
-<p>Unlike previous version of prawn-graph, this version does not at this time include a theme api or the 
+<p>We build automatically using Travis CI. Our <a href="https://github.com/HHRy/prawn-graph/blob/master/.travis.yml">.travis.yml</a> file targets the same Ruby versions as
+<a href="http://github.com/prawnpdf/prawn/">prawn itself</a> does.</p>
+
+<h3>
+<a id="legacy-support-and-deprecation-notices" class="anchor" href="#legacy-support-and-deprecation-notices" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Legacy support and deprecation notices.</h3>
+
+<p>To provide backwards-compatibility (of sorts), <code>prawn-graph</code> provides <code>bar_graph</code> (aliased as <code>bar_chart</code>)
+and <code>line_graph</code> (aliased as <code>line_chart</code>) methods as part of its interface which function the same as their
+equivalents in version <code>0.0.4</code>. These methods are, however, deprecated and <strong>will</strong> be removed when version
+<code>1.0.0</code> is released. Using these methods will result in a <code>warn</code> level message from Ruby.</p>
+
+<p>These legacy methods will still be buggy as they are using the same rendering methods as before. Where possible
+you should use the new <code>graph</code> (aliased as <code>chart</code>) interface. Unless serious problems are uncovered, bugs
+reported with legacy rendering <strong>will not be considered</strong>.</p>
+
+<p>Unlike previous versions of <code>prawn-graph</code>, this version does not at this time include a theme api or the 
 ability to change the colors used to render the graph. </p>
 
 <h2>
-<a id="important---read-this-before-using" class="anchor" href="#important---read-this-before-using" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>IMPORTANT - READ THIS BEFORE USING</h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
 
-<p>prawn-graph is currently being rewritten to have its internal components replaced with new, properly
-test-driven bits of code to draw the various cool graphs and charts that people would like to use in
-their PDFs.</p>
+<p>To use prawn-graph, you can add the following to your <code>Gemfile</code>:</p>
 
-<p>Right now, the "legacy" drawing code is what is ultimately being used to render any graphs being 
-generated. The newness instead is that project is compatible with all modern versions of prawn and
-therefore are useful again.</p>
-
-<p>This means that for now any existing rendering bugs still remain. If you find any, please be
-<a href="https://github.com/hhry/prawn-graph/issues/">a good citizen</a> and <a href="https://github.com/hhry/prawn-graph/issues/">report them</a>.</p>
-
-<p>To use prawn-graph with these caveats, you can add the following to your <code>Gemfile</code>:</p>
-
-<pre lang="Gemfile"><code> gem 'prawn-graph', '1.0.0.pre1'
+<pre lang="Gemfile"><code> gem 'prawn-graph', ' ~&gt; 0.9'
 </code></pre>
 
-<p>Alternatively, you can use Rubygems directly: <code>gem install prawn-graph --pre</code>.</p>
+<p>Alternatively, you can use Rubygems directly: <code>gem install prawn-graph</code>.</p>
 
 <h2>
 <a id="acknowledgements" class="anchor" href="#acknowledgements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Acknowledgements</h2>
 
 <p>With thanks to <a href="http://www.allm.net/">株式会社アルム</a> (<a href="http://www.allm.net/en/">Allm Inc</a>) for allowing Ryan Stenhouse the time to rebuild this version of
-prawn-graph. This updated version of prawn-graph was inspired and guided by <a href="https://github.com/mogest/prawn-svg/">prawn-svg</a> by <a href="https://github.com/mogest/">Roger Nesbitt</a>. 
-It also uses some of <a href="https://github.com/mogest/prawn-svg/">prawn-svg</a>'s document size calculation code.</p>
+prawn-graph. This updated version of prawn-graph was inspired and guided by <a href="https://github.com/mogest/prawn-svg/">prawn-svg</a> by <a href="https://github.com/mogest/">Roger Nesbitt</a>. </p>
 
 <p>Prawn Graph was originally sponsored by and built for use at <a href="http://www.pccl.co.uk/">Purchasing Card Consultancy Ltd</a> while
 Ryan Stenhouse was employed there.</p>
@@ -107,11 +107,11 @@ adventurous - please add it!</p>
 
 <div class="highlight highlight-source-ruby"><pre>  <span class="pl-k">require</span> <span class="pl-s"><span class="pl-pds">'</span>prawn-graph<span class="pl-pds">'</span></span>
 
-  data <span class="pl-k">=</span> [ [<span class="pl-s"><span class="pl-pds">'</span>A<span class="pl-pds">'</span></span>, <span class="pl-c1">10</span>], [<span class="pl-s"><span class="pl-pds">'</span>B<span class="pl-pds">'</span></span>, <span class="pl-c1">11</span>], [<span class="pl-s"><span class="pl-pds">'</span>C<span class="pl-pds">'</span></span>, <span class="pl-c1">12</span>] ]
+  series <span class="pl-k">=</span> []
+  series <span class="pl-k">&lt;&lt;</span> <span class="pl-c1">Prawn</span>::<span class="pl-c1">Graph</span>::<span class="pl-c1">Series</span>.<span class="pl-k">new</span>([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>], <span class="pl-c1">title:</span> <span class="pl-s"><span class="pl-pds">"</span>Some numbers<span class="pl-pds">"</span></span>, <span class="pl-c1">type:</span> <span class="pl-c1">:bar</span>)
 
   <span class="pl-c1">Prawn</span>::<span class="pl-c1">Document</span>.generate(<span class="pl-s"><span class="pl-pds">'</span>test.pdf<span class="pl-pds">'</span></span>) <span class="pl-k">do</span>
-    text <span class="pl-s"><span class="pl-pds">'</span>Graph Example<span class="pl-pds">'</span></span>
-    bar_graph data
+    graph series
   <span class="pl-k">end</span></pre></div>
 
 <p>When called with just a set of data, prawn-graph will do its best to make the graph fit in the 
@@ -146,16 +146,24 @@ you can pass the following options:</p>
 </table>
 
 <h3>
-<a id="example" class="anchor" href="#example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example</h3>
+<a id="advanced-example" class="anchor" href="#advanced-example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Advanced example</h3>
 
 <div class="highlight highlight-source-ruby"><pre>  <span class="pl-k">require</span> <span class="pl-s"><span class="pl-pds">'</span>prawn-graph<span class="pl-pds">'</span></span>
 
-  data <span class="pl-k">=</span> [ [<span class="pl-s"><span class="pl-pds">'</span>A<span class="pl-pds">'</span></span>, <span class="pl-c1">10</span>], [<span class="pl-s"><span class="pl-pds">'</span>B<span class="pl-pds">'</span></span>, <span class="pl-c1">11</span>], [<span class="pl-s"><span class="pl-pds">'</span>C<span class="pl-pds">'</span></span>, <span class="pl-c1">12</span>] ]
+  series <span class="pl-k">=</span> []
+  series <span class="pl-k">&lt;&lt;</span> <span class="pl-c1">Prawn</span>::<span class="pl-c1">Graph</span>::<span class="pl-c1">Series</span>.<span class="pl-k">new</span>([<span class="pl-c1">5</span>,<span class="pl-c1">4</span>,<span class="pl-c1">3</span>,<span class="pl-c1">2</span>,<span class="pl-c1">1</span>,<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">8</span>,<span class="pl-c1">7</span>,<span class="pl-c1">5</span>,<span class="pl-c1">4</span>,<span class="pl-c1">9</span>,<span class="pl-c1">2</span>], <span class="pl-c1">title:</span> <span class="pl-s"><span class="pl-pds">"</span>A label for a series<span class="pl-pds">"</span></span>, <span class="pl-c1">type:</span> <span class="pl-c1">:bar</span>)
+  series <span class="pl-k">&lt;&lt;</span> <span class="pl-c1">Prawn</span>::<span class="pl-c1">Graph</span>::<span class="pl-c1">Series</span>.<span class="pl-k">new</span>([<span class="pl-c1">5</span>,<span class="pl-c1">4</span>,<span class="pl-c1">3</span>,<span class="pl-c1">2</span>,<span class="pl-c1">1</span>,<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">8</span>,<span class="pl-c1">7</span>,<span class="pl-c1">5</span>,<span class="pl-c1">4</span>,<span class="pl-c1">9</span>,<span class="pl-c1">2</span>].reverse, <span class="pl-c1">title:</span> <span class="pl-s"><span class="pl-pds">"</span>Another label<span class="pl-pds">"</span></span>, <span class="pl-c1">type:</span> <span class="pl-c1">:bar</span>)
+  series <span class="pl-k">&lt;&lt;</span> <span class="pl-c1">Prawn</span>::<span class="pl-c1">Graph</span>::<span class="pl-c1">Series</span>.<span class="pl-k">new</span>([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>,<span class="pl-c1">9</span>,<span class="pl-c1">6</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>,<span class="pl-c1">6</span>,<span class="pl-c1">3</span>,<span class="pl-c1">2</span>,<span class="pl-c1">9</span>], <span class="pl-c1">title:</span> <span class="pl-s"><span class="pl-pds">"</span>Yet another label<span class="pl-pds">"</span></span>, <span class="pl-c1">type:</span> <span class="pl-c1">:bar</span>)
+  series <span class="pl-k">&lt;&lt;</span> <span class="pl-c1">Prawn</span>::<span class="pl-c1">Graph</span>::<span class="pl-c1">Series</span>.<span class="pl-k">new</span>([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>,<span class="pl-c1">9</span>,<span class="pl-c1">6</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>,<span class="pl-c1">6</span>,<span class="pl-c1">3</span>,<span class="pl-c1">2</span>,<span class="pl-c1">9</span>].shuffle, <span class="pl-c1">title:</span> <span class="pl-s"><span class="pl-pds">"</span>One final label<span class="pl-pds">"</span></span>, <span class="pl-c1">type:</span> <span class="pl-c1">:line</span>)  
 
   <span class="pl-c1">Prawn</span>::<span class="pl-c1">Document</span>.generate(<span class="pl-s"><span class="pl-pds">'</span>test.pdf<span class="pl-pds">'</span></span>) <span class="pl-k">do</span>
-    text <span class="pl-s"><span class="pl-pds">'</span>Graph Example<span class="pl-pds">'</span></span>
-    bar_graph data, <span class="pl-c1">at:</span> [<span class="pl-c1">10</span>,<span class="pl-c1">20</span>], <span class="pl-c1">width:</span> <span class="pl-c1">200</span>
+    graph series, <span class="pl-c1">width:</span> <span class="pl-c1">500</span>, <span class="pl-c1">height:</span> <span class="pl-c1">200</span>, <span class="pl-c1">title:</span> <span class="pl-s"><span class="pl-pds">"</span>A Title for the chart<span class="pl-pds">"</span></span>, <span class="pl-c1">at:</span> [<span class="pl-c1">10</span>,<span class="pl-c1">700</span>]
   <span class="pl-k">end</span></pre></div>
+
+<h3>
+<a id="output" class="anchor" href="#output" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Output</h3>
+
+<p><img src="http://prawn-graph.ryanstenhouse.jp/img/prawn-graph-output.png" alt="Prawn Graph Example Output" width="933" height="420"></p>
 
 <h2>
 <a id="development" class="anchor" href="#development" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Development</h2>
