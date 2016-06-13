@@ -104,13 +104,13 @@ Option      | Data type | Description
   require 'prawn-graph'
 
   series = []
-  series << Prawn::Graph::Series.new([1,2,3,4,5], title: "Some numbers", type: :line)
   series << Prawn::Graph::Series.new([5,4,3,2,1], title: "Some more numbers", type: :bar)
+  series << Prawn::Graph::Series.new([1,2,3,4,5], title: "Some numbers", type: :line)
 
   Prawn::Document.generate('test.pdf') do
     graph series, width: 500, height: 200, title: "A very long title will porbably be clipped", at: [10,700]
   end
-```
+``` 
 
 ## Development
 
