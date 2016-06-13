@@ -5,7 +5,7 @@ module Prawn
       # as the container in which your chart / graph will be sized to fit within. 
       #
       class Canvas
-        attr_reader :layout, :series, :prawn
+        attr_reader :layout, :series, :prawn, :theme
 
         # @param series [Array[Prawn::Graph::Series]]
         # @param prawn [Prawn::Document]
@@ -30,19 +30,9 @@ module Prawn
           prawn.bounding_box(position, :width => layout.canvas_width, :height => layout.canvas_height, padding: 0) do
             prawn.save_graphics_state do         
               apply_theme! 
-
-              if layout.graph_area.renderable?
-                prawn.bounding_box layout.graph_area.point, width: layout.graph_area.width, height: layout.graph_area.height do
-                  prawn.stroke_bounds
-                  prawn.text "The Graph gets rendered here. This will be fun."
-                end
-              end
-
               render_title_area!
               render_series_keys!
-
-              
-
+              render_graph_area!
             end
           end
         end
@@ -60,6 +50,23 @@ module Prawn
           prawn.fill_color    @theme.default
           prawn.stroke_color  @theme.default
           prawn.font_size     @theme.font_sizes.default
+        end
+
+        def plot_series!
+
+          i = 0
+          series.each do |series|
+            SeriesRenderer.render(series, self, theme.series[i])
+            i+=1
+          end
+        end
+
+        def render_graph_area!
+          if layout.graph_area.renderable?
+            prawn.bounding_box layout.graph_area.point, width: layout.graph_area.width, height: layout.graph_area.height do
+              plot_series!
+            end
+          end
         end
 
         def render_title_area!
