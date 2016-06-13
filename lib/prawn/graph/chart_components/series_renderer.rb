@@ -123,7 +123,6 @@ module Prawn
                 num_points        = @series[0].size
                 width_per_point   = (@plot_area_width / num_points).round(2).to_f
                 width             = ((width_per_point * BigDecimal('0.9')) / @series.size).round(2).to_f
-                spacing           = (width_per_point - (width * @series.size).to_f / 2.0)
 
                 num_points.times do |point|
 
@@ -160,7 +159,7 @@ module Prawn
           # the series.
           #
           def point_height_percentage(value)
-            ((BigDecimal(value, 10)/BigDecimal(@series[0].max, 10)) * BigDecimal(1)).round(2)
+            ((BigDecimal(value, 10)/BigDecimal(@series.collect(&:max).max, 10)) * BigDecimal(1)).round(2)
           end
 
           def prawn
