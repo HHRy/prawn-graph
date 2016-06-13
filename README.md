@@ -52,7 +52,7 @@ ability to change the colors used to render the graph.
 To use prawn-graph, you can add the following to your `Gemfile`:
 
 ```Gemfile
- gem 'prawn-graph', '0.9.0'
+ gem 'prawn-graph', ' ~> 0.9'
 ```
 
 Alternatively, you can use Rubygems directly: `gem install prawn-graph`.
@@ -104,13 +104,13 @@ Option      | Data type | Description
   require 'prawn-graph'
 
   series = []
-  series << Prawn::Graph::Series.new([5,4,3,2,1,1,2,8,7,5,4,9,2], title: "Some more numbers", type: :bar)
-  series << Prawn::Graph::Series.new([5,4,3,2,1,1,2,8,7,5,4,9,2].reverse, title: "Some more numbers", type: :bar)
-  series << Prawn::Graph::Series.new([1,2,3,4,5,9,6,4,5,6,3,2,9], title: "Some numbers", type: :bar)
-  series << Prawn::Graph::Series.new([1,2,3,4,5,9,6,4,5,6,3,2,9].shuffle, title: "Some numbers", type: :line)
+  series << Prawn::Graph::Series.new([5,4,3,2,1,1,2,8,7,5,4,9,2], title: "A label for a series", type: :bar)
+  series << Prawn::Graph::Series.new([5,4,3,2,1,1,2,8,7,5,4,9,2].reverse, title: "Another label", type: :bar)
+  series << Prawn::Graph::Series.new([1,2,3,4,5,9,6,4,5,6,3,2,9], title: "Yet another label", type: :bar)
+  series << Prawn::Graph::Series.new([1,2,3,4,5,9,6,4,5,6,3,2,9].shuffle, title: "One final label", type: :line)
 
   Prawn::Document.generate('test.pdf') do
-    graph series, width: 500, height: 200, title: "A very long title will porbably be clipped", at: [10,700]
+    graph series, width: 500, height: 200, title: "A Title for the chart", at: [10,700]
   end
 ``` 
 
