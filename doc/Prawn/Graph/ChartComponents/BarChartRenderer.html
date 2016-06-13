@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: Prawn::Graph::ChartComponents::BarChartRenderer
+  
+    &mdash; Documentation by YARD 0.8.7.6
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../../';
+  framesUrl = "../../../frames.html#!Prawn/Graph/ChartComponents/BarChartRenderer.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../_index.html">Index (B)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../Prawn.html" title="Prawn (module)">Prawn</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Graph.html" title="Prawn::Graph (module)">Graph</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../ChartComponents.html" title="Prawn::Graph::ChartComponents (module)">ChartComponents</a></span></span>
+     &raquo; 
+    <span class="title">BarChartRenderer</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: Prawn::Graph::ChartComponents::BarChartRenderer
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/prawn/graph/chart_components/series_renderer.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>The Prawn::Graph::ChartComponents::BarChartRenderer is used to plot one or
+more bar charts  in a sensible way on a a
+Prawn::Graph::ChartComponents::Canvas and its associated  Prawn::Document.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#render-class_method" title="render (class method)">+ (Object) <strong>render</strong>(series, canvas, colors) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="render-class_method">
+  
+    + (<tt>Object</tt>) <strong>render</strong>(series, canvas, colors) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>series</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Series.html" title="Prawn::Graph::Series (class)">Prawn::Graph::Series</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>canvas</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Canvas.html" title="Prawn::Graph::ChartComponents::Canvas (class)">Prawn::Graph::ChartComponents::Canvas</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/prawn/graph/chart_components/series_renderer.rb', line 102</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_render'>render</span><span class='lparen'>(</span><span class='id identifier rubyid_series'>series</span><span class='comma'>,</span> <span class='id identifier rubyid_canvas'>canvas</span><span class='comma'>,</span> <span class='id identifier rubyid_colors'>colors</span><span class='rparen'>)</span>
+  <span class='ivar'>@series</span> <span class='op'>=</span> <span class='id identifier rubyid_series'>series</span>
+  <span class='ivar'>@canvas</span> <span class='op'>=</span> <span class='id identifier rubyid_canvas'>canvas</span>
+  <span class='ivar'>@prawn</span> <span class='op'>=</span> <span class='id identifier rubyid_canvas'>canvas</span><span class='period'>.</span><span class='id identifier rubyid_prawn'>prawn</span>
+  <span class='ivar'>@colors</span> <span class='op'>=</span> <span class='id identifier rubyid_colors'>colors</span>
+
+
+  <span class='ivar'>@graph_area</span> <span class='op'>=</span> <span class='ivar'>@canvas</span><span class='period'>.</span><span class='id identifier rubyid_layout'>layout</span><span class='period'>.</span><span class='id identifier rubyid_graph_area'>graph_area</span>
+
+  <span class='ivar'>@plot_area_width</span>  <span class='op'>=</span> <span class='ivar'>@graph_area</span><span class='period'>.</span><span class='id identifier rubyid_width'>width</span> <span class='op'>-</span> <span class='int'>25</span>
+  <span class='ivar'>@plot_area_height</span> <span class='op'>=</span> <span class='ivar'>@graph_area</span><span class='period'>.</span><span class='id identifier rubyid_height'>height</span> <span class='op'>-</span> <span class='int'>20</span>
+
+  <span class='id identifier rubyid_render_bar_charts'>render_bar_charts</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Tue Jun 14 07:42:39 2016 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.3.0).
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,910 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Prawn::Graph::Calculations::LayoutCalculator
+  
+    &mdash; Documentation by YARD 0.8.7.6
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../../';
+  framesUrl = "../../../frames.html#!Prawn/Graph/Calculations/LayoutCalculator.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../_index.html">Index (L)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../Prawn.html" title="Prawn (module)">Prawn</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Graph.html" title="Prawn::Graph (module)">Graph</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Calculations.html" title="Prawn::Graph::Calculations (module)">Calculations</a></span></span>
+     &raquo; 
+    <span class="title">LayoutCalculator</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Prawn::Graph::Calculations::LayoutCalculator
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Prawn::Graph::Calculations::LayoutCalculator</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/prawn/graph/calculations/layout_calculator.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="LayoutCalculator/Dimensions.html" title="Prawn::Graph::Calculations::LayoutCalculator::Dimensions (class)">Dimensions</a></span>
+    
+  
+</p>
+
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#bounds-instance_method" title="#bounds (instance method)">- (Object) <strong>bounds</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute bounds.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#canvas_height-instance_method" title="#canvas_height (instance method)">- (Object) <strong>canvas_height</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute canvas_height.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#canvas_width-instance_method" title="#canvas_width (instance method)">- (Object) <strong>canvas_width</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute canvas_width.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#graph_area-instance_method" title="#graph_area (instance method)">- (Object) <strong>graph_area</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute graph_area.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#series_key_area-instance_method" title="#series_key_area (instance method)">- (Object) <strong>series_key_area</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute series_key_area.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#title_area-instance_method" title="#title_area (instance method)">- (Object) <strong>title_area</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute title_area.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#calculate-instance_method" title="#calculate (instance method)">- (Object) <strong>calculate</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#hpadding-instance_method" title="#hpadding (instance method)">- (Object) <strong>hpadding</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (LayoutCalculator) <strong>initialize</strong>(bounds, attributes = nil, theme = Prawn::Graph::Theme::Default) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>A new instance of LayoutCalculator.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#invalid%3F-instance_method" title="#invalid? (instance method)">- (Boolean) <strong>invalid?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#vpadding-instance_method" title="#vpadding (instance method)">- (Object) <strong>vpadding</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Prawn::Graph::Calculations::LayoutCalculator (class)">LayoutCalculator</a></span></tt>) <strong>initialize</strong>(bounds, attributes = nil, theme = Prawn::Graph::Theme::Default) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns a new instance of LayoutCalculator</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+19
+20
+21
+22
+23
+24
+25
+26</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/prawn/graph/calculations/layout_calculator.rb', line 19</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_bounds'>bounds</span><span class='comma'>,</span> <span class='id identifier rubyid_attributes'>attributes</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_theme'>theme</span> <span class='op'>=</span> <span class='const'>Prawn</span><span class='op'>::</span><span class='const'>Graph</span><span class='op'>::</span><span class='const'>Theme</span><span class='op'>::</span><span class='const'>Default</span><span class='rparen'>)</span>
+  <span class='ivar'>@bounds</span> <span class='op'>=</span> <span class='id identifier rubyid_bounds'>bounds</span>
+  <span class='ivar'>@graph_area</span>       <span class='op'>=</span> <span class='const'>Dimensions</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='lbrace'>{</span> <span class='label'>width:</span> <span class='int'>0</span><span class='comma'>,</span> <span class='label'>height:</span> <span class='int'>0</span><span class='comma'>,</span> <span class='label'>x:</span> <span class='int'>0</span><span class='comma'>,</span> <span class='label'>y:</span> <span class='int'>0</span> <span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='ivar'>@title_area</span>       <span class='op'>=</span> <span class='const'>Dimensions</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='lbrace'>{</span> <span class='label'>width:</span> <span class='int'>0</span><span class='comma'>,</span> <span class='label'>height:</span> <span class='int'>0</span><span class='comma'>,</span> <span class='label'>x:</span> <span class='int'>0</span><span class='comma'>,</span> <span class='label'>y:</span> <span class='int'>0</span> <span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='ivar'>@series_key_area</span>  <span class='op'>=</span> <span class='const'>Dimensions</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='lbrace'>{</span> <span class='label'>width:</span> <span class='int'>0</span><span class='comma'>,</span> <span class='label'>height:</span> <span class='int'>0</span><span class='comma'>,</span> <span class='label'>x:</span> <span class='int'>0</span><span class='comma'>,</span> <span class='label'>y:</span> <span class='int'>0</span> <span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='ivar'>@theme</span>            <span class='op'>=</span> <span class='id identifier rubyid_theme'>theme</span>
+  <span class='id identifier rubyid_set_from_attributes'>set_from_attributes</span><span class='lparen'>(</span><span class='id identifier rubyid_attributes'>attributes</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_attributes'>attributes</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="bounds-instance_method">
+  
+    - (<tt>Object</tt>) <strong>bounds</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute bounds</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+6
+7
+8</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/prawn/graph/calculations/layout_calculator.rb', line 6</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_bounds'>bounds</span>
+  <span class='ivar'>@bounds</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="canvas_height-instance_method">
+  
+    - (<tt>Object</tt>) <strong>canvas_height</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute canvas_height</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+7
+8
+9</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/prawn/graph/calculations/layout_calculator.rb', line 7</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_canvas_height'>canvas_height</span>
+  <span class='ivar'>@canvas_height</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="canvas_width-instance_method">
+  
+    - (<tt>Object</tt>) <strong>canvas_width</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute canvas_width</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+7
+8
+9</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/prawn/graph/calculations/layout_calculator.rb', line 7</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_canvas_width'>canvas_width</span>
+  <span class='ivar'>@canvas_width</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="graph_area-instance_method">
+  
+    - (<tt>Object</tt>) <strong>graph_area</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute graph_area</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+7
+8
+9</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/prawn/graph/calculations/layout_calculator.rb', line 7</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_graph_area'>graph_area</span>
+  <span class='ivar'>@graph_area</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="series_key_area-instance_method">
+  
+    - (<tt>Object</tt>) <strong>series_key_area</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute series_key_area</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+7
+8
+9</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/prawn/graph/calculations/layout_calculator.rb', line 7</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_series_key_area'>series_key_area</span>
+  <span class='ivar'>@series_key_area</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="title_area-instance_method">
+  
+    - (<tt>Object</tt>) <strong>title_area</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute title_area</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+7
+8
+9</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/prawn/graph/calculations/layout_calculator.rb', line 7</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_title_area'>title_area</span>
+  <span class='ivar'>@title_area</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="calculate-instance_method">
+  
+    - (<tt>Object</tt>) <strong>calculate</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+28
+29
+30
+31
+32
+33
+34
+35</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/prawn/graph/calculations/layout_calculator.rb', line 28</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_calculate'>calculate</span>
+  <span class='id identifier rubyid_calculate_width_and_height_of_canvas'>calculate_width_and_height_of_canvas</span>
+  <span class='id identifier rubyid_calculate_key_area'>calculate_key_area</span>
+  <span class='id identifier rubyid_calculate_title_area'>calculate_title_area</span>
+  <span class='id identifier rubyid_calculate_graph_area'>calculate_graph_area</span>
+  
+  <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="hpadding-instance_method">
+  
+    - (<tt>Object</tt>) <strong>hpadding</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+37
+38
+39</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/prawn/graph/calculations/layout_calculator.rb', line 37</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_hpadding'>hpadding</span>
+  <span class='lparen'>(</span><span class='lparen'>(</span><span class='const'>BigDecimal</span><span class='lparen'>(</span><span class='id identifier rubyid_canvas_width'>canvas_width</span><span class='rparen'>)</span> <span class='op'>/</span> <span class='int'>100</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='int'>2</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_round'>round</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="invalid?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>invalid?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+45
+46
+47</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/prawn/graph/calculations/layout_calculator.rb', line 45</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_invalid?'>invalid?</span>
+  <span class='id identifier rubyid_canvas_width'>canvas_width</span> <span class='op'>&gt;</span> <span class='id identifier rubyid_bounds'>bounds</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_canvas_height'>canvas_height</span> <span class='op'>&gt;</span> <span class='id identifier rubyid_bounds'>bounds</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="vpadding-instance_method">
+  
+    - (<tt>Object</tt>) <strong>vpadding</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+41
+42
+43</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/prawn/graph/calculations/layout_calculator.rb', line 41</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_vpadding'>vpadding</span>
+  <span class='lparen'>(</span><span class='lparen'>(</span><span class='const'>BigDecimal</span><span class='lparen'>(</span><span class='id identifier rubyid_canvas_height'>canvas_height</span><span class='rparen'>)</span> <span class='op'>/</span> <span class='int'>100</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='int'>2</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_round'>round</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Tue Jun 14 07:42:39 2016 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.3.0).
+</div>
+
+  </body>
+</html>
