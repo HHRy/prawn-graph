@@ -105,7 +105,9 @@ Option      | Data type | Description
 
   series = []
   series << Prawn::Graph::Series.new([5,4,3,2,1,1,2,8,7,5,4,9,2], title: "Some more numbers", type: :bar)
-  series << Prawn::Graph::Series.new([1,2,3,4,5,9,6,4,5,6,3,2,9], title: "Some numbers", type: :line)
+  series << Prawn::Graph::Series.new([5,4,3,2,1,1,2,8,7,5,4,9,2].reverse, title: "Some more numbers", type: :bar)
+  series << Prawn::Graph::Series.new([1,2,3,4,5,9,6,4,5,6,3,2,9], title: "Some numbers", type: :bar)
+  series << Prawn::Graph::Series.new([1,2,3,4,5,9,6,4,5,6,3,2,9].shuffle, title: "Some numbers", type: :line)
 
   Prawn::Document.generate('test.pdf') do
     graph series, width: 500, height: 200, title: "A very long title will porbably be clipped", at: [10,700]

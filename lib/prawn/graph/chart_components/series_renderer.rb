@@ -19,47 +19,15 @@ module Prawn
             @prawn = canvas.prawn
             @color = color
 
-            methods = {
-              bar: :render_bar_chart,
-              line: :render_line_chart,
-            }
-
             @graph_area = @canvas.layout.graph_area
 
             @plot_area_width  = @graph_area.width - 25
             @plot_area_height = @graph_area.height - 20
 
-            self.send(methods[@series.options.type])
-
-            
+            render_line_chart
           end
 
           private
-
-          def render_bar_chart
-            prawn.bounding_box [@graph_area.point[0] + 5, @graph_area.point[1] - 20], width: @plot_area_width, height: @plot_area_height do
-              i = 1
-              prawn.save_graphics_state do  
-                @series.values.each do |v|
-                  h = (point_height_percentage(v) * @plot_area_height) - 5
-                  prawn.fill_color    = @color
-                  prawn.stroke_color  = @color
-
-                  width_per_point = @plot_area_width / @series.size
-                  width = (width_per_point * BigDecimal('0.8')).to_i
-                  spacing = width_per_point
-                  spacing = (spacing * BigDecimal("0.85")).to_i
-        
-                  prawn.line_width  = width #width_per_point * 0.9
-                  prawn.fill_color    = @color
-                  prawn.stroke_color  = @color
-                  prawn.fill_and_stroke_line([ (spacing * i) ,0], [  (spacing * i) ,h])
-                  i += 1
-                end
-              end
-              render_axes
-            end
-          end
 
           def render_line_chart
             prawn.bounding_box [@graph_area.point[0] + 5, @graph_area.point[1] - 20], width: @plot_area_width, height: @plot_area_height do
@@ -155,55 +123,28 @@ module Prawn
            
               prawn.save_graphics_state do  
                 num_points        = @series[0].size
-                width_per_point   = @plot_area_width / num_points
-                width             = (width_per_point * BigDecimal('0.8')).to_i / @series.size
-                spacing           = width_per_point
-                spacing           = (spacing * BigDecimal("0.85")).to_i
+                width_per_point   = (@plot_area_width / num_points).round(2).to_f
+                width             = ((width_per_point * BigDecimal('0.9')) / @series.size).round(2).to_f
+                spacing           = (width_per_point - (width * @series.size).to_f / 2.0)
 
+                num_points.times do |point|
 
-                num_points.times do |j|
-                  last_line_x = 0
-                  @series.each_with_index do |series, index|
-                    i = index + 1
+                  @series.size.times do |series_index|
+                    series_offset = series_index + 1
+                    prawn.fill_color    = @colors[series_index]
+                    prawn.stroke_color  = @colors[series_index]
+                    prawn.line_width  = width
 
-                    prawn.line_width  = width #width_per_point * 0.9
-                    prawn.fill_color    = @colors[index]
-                    prawn.stroke_color  = @colors[index]
+                    starting = (prawn.bounds.left + (point * width_per_point))
 
-                    h = (point_height_percentage(series.values[j]) * @plot_area_height) - 5
+                    x_position = (starting + (series_offset * width) ).to_f
+                    y_position = ((point_height_percentage(@series[series_index].values[point]) * @plot_area_height) - 5).to_f
 
-                    last_line_x = last_line_x + ( ( j * width ) * i)
-
-
-
-                    prawn.fill_and_stroke_line([ last_line_x ,0], [  last_line_x ,h])
+                    prawn.fill_and_stroke_line([ x_position ,0], [x_position ,y_position])
                   end
+
                 end
 
-              end
-            end
-          end
-
-          def render_bar_chart
-            prawn.bounding_box [@graph_area.point[0] + 5, @graph_area.point[1] - 20], width: @plot_area_width, height: @plot_area_height do
-              i = 1
-              prawn.save_graphics_state do  
-                @series.values.each do |v|
-                  h = (point_height_percentage(v) * @plot_area_height) - 5
-                  prawn.fill_color    = @color
-                  prawn.stroke_color  = @color
-
-                  width_per_point = @plot_area_width / @series.size
-                  width = (width_per_point * BigDecimal('0.8')).to_i
-                  spacing = width_per_point
-                  spacing = (spacing * BigDecimal("0.85")).to_i
-        
-                  prawn.line_width  = width #width_per_point * 0.9
-                  prawn.fill_color    = @color
-                  prawn.stroke_color  = @color
-                  prawn.fill_and_stroke_line([ (spacing * i) ,0], [  (spacing * i) ,h])
-                  i += 1
-                end
               end
               render_axes
             end
