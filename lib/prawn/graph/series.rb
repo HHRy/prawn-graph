@@ -67,6 +67,10 @@ module Prawn
         @values.size
       end
 
+      def mark_average?
+        options.mark_average == true
+      end
+
       # @deprecated Provided to allow for tempory backwards compatibilty with legacy graph drawing. Do not use.
       # @return [Array] Series represented as an array in the format [ title, val1, val2... ]
       #

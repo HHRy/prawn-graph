@@ -62,6 +62,14 @@ module Prawn
                   j += 1
                 end
                 
+                if @series.mark_average?
+                  average_y_coordinate = (point_height_percentage(@series.avg) * @plot_area_height) - 5
+                  prawn.line_width = 1
+                  prawn.stroke_color = @color
+                  prawn.dash(2)
+                  prawn.stroke_line([0, average_y_coordinate], [ @plot_area_width, average_y_coordinate ])
+                  prawn.undash
+                end
               end
               render_axes
             end
@@ -79,7 +87,7 @@ module Prawn
           # the series.
           #
           def point_height_percentage(value)
-            ((BigDecimal(value, 10)/BigDecimal(@series.max, 10)) * BigDecimal(1)).round(2)
+            ((BigDecimal(value, 10)/BigDecimal(@canvas.series.collect(&:max).max, 10)) * BigDecimal(1)).round(2)
           end
 
           def prawn
@@ -138,6 +146,15 @@ module Prawn
                     y_position = ((point_height_percentage(@series[series_index].values[point]) * @plot_area_height) - 5).to_f
 
                     prawn.fill_and_stroke_line([ x_position ,0], [x_position ,y_position])
+
+                    if @series[series_index].mark_average?
+                      average_y_coordinate = (point_height_percentage(@series[series_index].avg) * @plot_area_height) - 5
+                      prawn.line_width = 1
+                      prawn.stroke_color = @colors[series_index]
+                      prawn.dash(2)
+                      prawn.stroke_line([0, average_y_coordinate], [ @plot_area_width, average_y_coordinate ])
+                      prawn.undash
+                    end
                   end
 
                 end

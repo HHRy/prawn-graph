@@ -91,6 +91,7 @@ module Prawn
                   prawn.line_width = 0.5
                   prawn.fill_color = theme.series[i]
 
+                  
                   series_offset = series_offset * theme.font_sizes.series_key
 
                   title = series.title || "Series #{series_offset}"
