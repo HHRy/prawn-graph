@@ -53,6 +53,7 @@ module Prawn
           @canvas_height = BigDecimal(attributes[:height], 10) rescue 0
           @num_series = attributes[:series_count] || 1
           @title = attributes[:title]
+          @show_series_key = !attributes[:show_series_key].nil? ? attributes[:show_series_key]  : true
         end
 
         def calculate_width_and_height_of_canvas
@@ -80,7 +81,7 @@ module Prawn
         end
 
         def calculate_key_area
-          if @num_series > 1
+          if @num_series > 1 && @show_series_key
             @series_key_area[:width] = ( (canvas_width / 100) * 25 ).round
             @series_key_area[:x] = (canvas_width - @series_key_area[:width] - hpadding)
             @series_key_area[:y] = canvas_height + vpadding

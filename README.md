@@ -110,7 +110,7 @@ Option      | Data type | Description
   series << Prawn::Graph::Series.new([1,2,3,4,5,9,6,4,5,6,3,2,9].shuffle, title: "One final label", type: :line)
 
   Prawn::Document.generate('test.pdf') do
-    graph series, width: 500, height: 200, title: "A Title for the chart", at: [10,700]
+    graph series, width: 500, height: 200, title: "A Title for the chart", at: [10,700], show_series_key: false
   end
 ``` 
 
