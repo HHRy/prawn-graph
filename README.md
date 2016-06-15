@@ -122,9 +122,9 @@ Option        | Data type | Description
 
   series = []
   series << Prawn::Graph::Series.new([4,9,3,2,1,6,2,8,2,3,4,9,2], title: "A label for a series", type: :bar)
-  series << Prawn::Graph::Series.new([5,4,3,2,7,9,2,8,7,5,4,9,2].reverse, title: "Another label", type: :line, mark_average: true)
+  series << Prawn::Graph::Series.new([5,4,3,2,7,9,2,8,7,5,4,9,2].reverse, title: "Another label", type: :line, mark_average: true, mark_minimum: true)
   series << Prawn::Graph::Series.new([1,2,3,4,5,9,6,4,5,6,3,2,11], title: "Yet another label", type: :bar)
-  series << Prawn::Graph::Series.new([1,2,3,4,5,12,6,4,5,6,3,2,9].shuffle, title: "One final label", type: :line, mark_average: true)
+  series << Prawn::Graph::Series.new([1,2,3,4,5,12,6,4,5,6,3,2,9].shuffle, title: "One final label", type: :line, mark_average: true, mark_maximum: true)
 
   Prawn::Document.generate('test.pdf') do
     graph series, width: 500, height: 200, title: "A Title for the chart", at: [10,700]
