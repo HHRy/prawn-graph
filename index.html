@@ -14,7 +14,6 @@
       <h1 class="project-name">prawn-graph</h1>
       <h2 class="project-tagline">Prawn::Graph adds straightforward native graph drawing to Prawn without the need to depend on anything else. All generated graphs are pure PDF Vector Images. It results in smaller document sizes and less complication.</h2>
       <a href="https://github.com/HHRy/prawn-graph" class="btn">View on GitHub</a>
-      <a href="http://www.rubydoc.info/github/HHRy/prawn-graph/master" class="btn">Read the Docs</a>
       <a href="https://github.com/HHRy/prawn-graph/zipball/master" class="btn">Download .zip</a>
       <a href="https://github.com/HHRy/prawn-graph/tarball/master" class="btn">Download .tar.gz</a>
     </section>
@@ -106,18 +105,16 @@ adventurous - please add it!</p>
 <h2>
 <a id="using-prawn-graph" class="anchor" href="#using-prawn-graph" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Using prawn-graph</h2>
 
-<div class="highlight highlight-source-ruby"><pre>  <span class="pl-k">require</span> <span class="pl-s"><span class="pl-pds">'</span>prawn-graph<span class="pl-pds">'</span></span>
+<p>Graphs can be created by calling the <code>graph</code> or its alias, <code>chart</code> method with an array of
+<code>Prawn::Graph::Series</code> objects representing the data you would like to plot and how it should
+be displayed. It will also take a hash of options, and block which will have the graph yeilded
+to it.</p>
 
-  series <span class="pl-k">=</span> []
-  series <span class="pl-k">&lt;&lt;</span> <span class="pl-c1">Prawn</span>::<span class="pl-c1">Graph</span>::<span class="pl-c1">Series</span>.<span class="pl-k">new</span>([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>], <span class="pl-c1">title:</span> <span class="pl-s"><span class="pl-pds">"</span>Some numbers<span class="pl-pds">"</span></span>, <span class="pl-c1">type:</span> <span class="pl-c1">:bar</span>)
-
-  <span class="pl-c1">Prawn</span>::<span class="pl-c1">Document</span>.generate(<span class="pl-s"><span class="pl-pds">'</span>test.pdf<span class="pl-pds">'</span></span>) <span class="pl-k">do</span>
-    graph series
-  <span class="pl-k">end</span></pre></div>
+<div class="highlight highlight-source-ruby"><pre>  graph data, options <span class="pl-k">=</span> {}, <span class="pl-k">&amp;</span>block.</pre></div>
 
 <p>When called with just a set of data, prawn-graph will do its best to make the graph fit in the 
 available space. For a little more control over how the graphs are rendered in the document
-you can pass the following options:</p>
+you can pass the following options to <code>graph</code> or <code>chart</code>:</p>
 
 <table>
 <thead>
@@ -143,19 +140,73 @@ you can pass the following options:</p>
 <td>integer</td>
 <td>Desired height of the graph.  Defaults to vertical space available.</td>
 </tr>
+<tr>
+<td>:title</td>
+<td>string</td>
+<td>The overall title for your chart</td>
+</tr>
+<tr>
+<td>:series_key</td>
+<td>boolean</td>
+<td>Should we render the series key for multi series graphs? Defaults to true.</td>
+</tr>
+</tbody>
+</table>
+
+<p>The <code>data</code> passed to <code>graph</code> or <code>chart</code> should be an <code>Array</code> of <code>Prawn::Graph::Series</code> objects, which
+themselves are made up of an array of data points to plot, and a series of options.</p>
+
+<div class="highlight highlight-source-ruby"><pre>  <span class="pl-c1">Prawn</span>::<span class="pl-c1">Graph</span>::<span class="pl-c1">Series</span>.<span class="pl-k">new</span> [<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>], options <span class="pl-k">=</span> {}</pre></div>
+
+<p>Valid <code>options</code> are:</p>
+
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Data type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:mark_average</td>
+<td>boolean</td>
+<td>Should we mark a line showing the average value of the series? Defaults to false.</td>
+</tr>
+<tr>
+<td>:mark_minimum</td>
+<td>boolean</td>
+<td>Should we mark the minimum value of the series? Defaults to false.</td>
+</tr>
+<tr>
+<td>:mark_maximum</td>
+<td>boolean</td>
+<td>Should we mark the maximum value of the series? Defaults to false.</td>
+</tr>
+<tr>
+<td>:title</td>
+<td>string</td>
+<td>The title of this series, which will be shown in the series key.</td>
+</tr>
+<tr>
+<td>:type</td>
+<td>symbol</td>
+<td>How this series should be rendered. Defaults to <code>:bar</code>, valid options are <code>:bar</code>, <code>:line</code>.</td>
+</tr>
 </tbody>
 </table>
 
 <h3>
-<a id="advanced-example" class="anchor" href="#advanced-example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Advanced example</h3>
+<a id="show-me-some-code" class="anchor" href="#show-me-some-code" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Show me some code!</h3>
 
 <div class="highlight highlight-source-ruby"><pre>  <span class="pl-k">require</span> <span class="pl-s"><span class="pl-pds">'</span>prawn-graph<span class="pl-pds">'</span></span>
 
   series <span class="pl-k">=</span> []
-  series <span class="pl-k">&lt;&lt;</span> <span class="pl-c1">Prawn</span>::<span class="pl-c1">Graph</span>::<span class="pl-c1">Series</span>.<span class="pl-k">new</span>([<span class="pl-c1">5</span>,<span class="pl-c1">4</span>,<span class="pl-c1">3</span>,<span class="pl-c1">2</span>,<span class="pl-c1">1</span>,<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">8</span>,<span class="pl-c1">7</span>,<span class="pl-c1">5</span>,<span class="pl-c1">4</span>,<span class="pl-c1">9</span>,<span class="pl-c1">2</span>], <span class="pl-c1">title:</span> <span class="pl-s"><span class="pl-pds">"</span>A label for a series<span class="pl-pds">"</span></span>, <span class="pl-c1">type:</span> <span class="pl-c1">:bar</span>)
-  series <span class="pl-k">&lt;&lt;</span> <span class="pl-c1">Prawn</span>::<span class="pl-c1">Graph</span>::<span class="pl-c1">Series</span>.<span class="pl-k">new</span>([<span class="pl-c1">5</span>,<span class="pl-c1">4</span>,<span class="pl-c1">3</span>,<span class="pl-c1">2</span>,<span class="pl-c1">1</span>,<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">8</span>,<span class="pl-c1">7</span>,<span class="pl-c1">5</span>,<span class="pl-c1">4</span>,<span class="pl-c1">9</span>,<span class="pl-c1">2</span>].reverse, <span class="pl-c1">title:</span> <span class="pl-s"><span class="pl-pds">"</span>Another label<span class="pl-pds">"</span></span>, <span class="pl-c1">type:</span> <span class="pl-c1">:bar</span>)
-  series <span class="pl-k">&lt;&lt;</span> <span class="pl-c1">Prawn</span>::<span class="pl-c1">Graph</span>::<span class="pl-c1">Series</span>.<span class="pl-k">new</span>([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>,<span class="pl-c1">9</span>,<span class="pl-c1">6</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>,<span class="pl-c1">6</span>,<span class="pl-c1">3</span>,<span class="pl-c1">2</span>,<span class="pl-c1">9</span>], <span class="pl-c1">title:</span> <span class="pl-s"><span class="pl-pds">"</span>Yet another label<span class="pl-pds">"</span></span>, <span class="pl-c1">type:</span> <span class="pl-c1">:bar</span>)
-  series <span class="pl-k">&lt;&lt;</span> <span class="pl-c1">Prawn</span>::<span class="pl-c1">Graph</span>::<span class="pl-c1">Series</span>.<span class="pl-k">new</span>([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>,<span class="pl-c1">9</span>,<span class="pl-c1">6</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>,<span class="pl-c1">6</span>,<span class="pl-c1">3</span>,<span class="pl-c1">2</span>,<span class="pl-c1">9</span>].shuffle, <span class="pl-c1">title:</span> <span class="pl-s"><span class="pl-pds">"</span>One final label<span class="pl-pds">"</span></span>, <span class="pl-c1">type:</span> <span class="pl-c1">:line</span>)  
+  series <span class="pl-k">&lt;&lt;</span> <span class="pl-c1">Prawn</span>::<span class="pl-c1">Graph</span>::<span class="pl-c1">Series</span>.<span class="pl-k">new</span>([<span class="pl-c1">4</span>,<span class="pl-c1">9</span>,<span class="pl-c1">3</span>,<span class="pl-c1">2</span>,<span class="pl-c1">1</span>,<span class="pl-c1">6</span>,<span class="pl-c1">2</span>,<span class="pl-c1">8</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">9</span>,<span class="pl-c1">2</span>], <span class="pl-c1">title:</span> <span class="pl-s"><span class="pl-pds">"</span>A label for a series<span class="pl-pds">"</span></span>, <span class="pl-c1">type:</span> <span class="pl-c1">:bar</span>)
+  series <span class="pl-k">&lt;&lt;</span> <span class="pl-c1">Prawn</span>::<span class="pl-c1">Graph</span>::<span class="pl-c1">Series</span>.<span class="pl-k">new</span>([<span class="pl-c1">5</span>,<span class="pl-c1">4</span>,<span class="pl-c1">3</span>,<span class="pl-c1">2</span>,<span class="pl-c1">7</span>,<span class="pl-c1">9</span>,<span class="pl-c1">2</span>,<span class="pl-c1">8</span>,<span class="pl-c1">7</span>,<span class="pl-c1">5</span>,<span class="pl-c1">4</span>,<span class="pl-c1">9</span>,<span class="pl-c1">2</span>].reverse, <span class="pl-c1">title:</span> <span class="pl-s"><span class="pl-pds">"</span>Another label<span class="pl-pds">"</span></span>, <span class="pl-c1">type:</span> <span class="pl-c1">:line</span>, <span class="pl-c1">mark_average:</span> <span class="pl-c1">true</span>, <span class="pl-c1">mark_minimum:</span> <span class="pl-c1">true</span>)
+  series <span class="pl-k">&lt;&lt;</span> <span class="pl-c1">Prawn</span>::<span class="pl-c1">Graph</span>::<span class="pl-c1">Series</span>.<span class="pl-k">new</span>([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>,<span class="pl-c1">9</span>,<span class="pl-c1">6</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>,<span class="pl-c1">6</span>,<span class="pl-c1">3</span>,<span class="pl-c1">2</span>,<span class="pl-c1">11</span>], <span class="pl-c1">title:</span> <span class="pl-s"><span class="pl-pds">"</span>Yet another label<span class="pl-pds">"</span></span>, <span class="pl-c1">type:</span> <span class="pl-c1">:bar</span>)
+  series <span class="pl-k">&lt;&lt;</span> <span class="pl-c1">Prawn</span>::<span class="pl-c1">Graph</span>::<span class="pl-c1">Series</span>.<span class="pl-k">new</span>([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>,<span class="pl-c1">12</span>,<span class="pl-c1">6</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>,<span class="pl-c1">6</span>,<span class="pl-c1">3</span>,<span class="pl-c1">2</span>,<span class="pl-c1">9</span>].shuffle, <span class="pl-c1">title:</span> <span class="pl-s"><span class="pl-pds">"</span>One final label<span class="pl-pds">"</span></span>, <span class="pl-c1">type:</span> <span class="pl-c1">:line</span>, <span class="pl-c1">mark_average:</span> <span class="pl-c1">true</span>, <span class="pl-c1">mark_maximum:</span> <span class="pl-c1">true</span>)
 
   <span class="pl-c1">Prawn</span>::<span class="pl-c1">Document</span>.generate(<span class="pl-s"><span class="pl-pds">'</span>test.pdf<span class="pl-pds">'</span></span>) <span class="pl-k">do</span>
     graph series, <span class="pl-c1">width:</span> <span class="pl-c1">500</span>, <span class="pl-c1">height:</span> <span class="pl-c1">200</span>, <span class="pl-c1">title:</span> <span class="pl-s"><span class="pl-pds">"</span>A Title for the chart<span class="pl-pds">"</span></span>, <span class="pl-c1">at:</span> [<span class="pl-c1">10</span>,<span class="pl-c1">700</span>]
