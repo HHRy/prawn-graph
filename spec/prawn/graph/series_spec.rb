@@ -23,6 +23,17 @@ describe Prawn::Graph::Series do
       expect(Prawn::Graph::Series.new([1,2,5,4,3]).type).to eq(:bar)
     end
 
+    it "defaults to false for mark_average?" do
+      expect(Prawn::Graph::Series.new([1,2,5,4,3]).mark_average?).to eq(false)
+    end
+    
+    it "defaults to false for mark_minimum?" do
+      expect(Prawn::Graph::Series.new([1,2,5,4,3]).mark_minimum?).to eq(false)
+    end
+    
+    it "defaults to false for mark_maximum?" do
+      expect(Prawn::Graph::Series.new([1,2,5,4,3]).mark_maximum?).to eq(false)
+    end
     
   end
 
@@ -45,6 +56,44 @@ describe Prawn::Graph::Series do
 
     it "defaults to a bar chart" do
       expect(Prawn::Graph::Series.new().type).to eq(:bar)
+    end
+
+    it "defaults to false for mark_average?" do
+      expect(Prawn::Graph::Series.new().mark_average?).to eq(false)
+    end
+    
+    it "defaults to false for mark_minimum?" do
+      expect(Prawn::Graph::Series.new().mark_minimum?).to eq(false)
+    end
+    
+    it "defaults to false for mark_maximum?" do
+      expect(Prawn::Graph::Series.new().mark_maximum?).to eq(false)
+    end
+  end
+
+  describe "when setting the options for rendering averages, maximum points and minimum points" do
+    it "defaults to false for mark_average?" do
+      expect(Prawn::Graph::Series.new().mark_average?).to eq(false)
+    end
+    
+    it "defaults to false for mark_minimum?" do
+      expect(Prawn::Graph::Series.new().mark_minimum?).to eq(false)
+    end
+    
+    it "defaults to false for mark_maximum?" do
+      expect(Prawn::Graph::Series.new().mark_maximum?).to eq(false)
+    end
+
+    it "sets the value as true for mark_average? when you specifiy the option" do
+      expect(Prawn::Graph::Series.new([],{mark_average: true}).mark_average?).to eq(true)
+    end
+    
+    it "sets the value as true for mark_minimum? when you specifiy the option" do
+      expect(Prawn::Graph::Series.new([],{mark_minimum: true}).mark_minimum?).to eq(true)
+    end
+    
+    it "sets the value as true for mark_maximum? when you specifiy the option" do
+      expect(Prawn::Graph::Series.new([],{mark_maximum: true}).mark_maximum?).to eq(true)
     end
   end
 

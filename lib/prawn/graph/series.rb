@@ -71,6 +71,14 @@ module Prawn
         options.mark_average == true
       end
 
+      def mark_minimum?
+        options.mark_minimum == true
+      end
+
+      def mark_maximum?
+        options.mark_maximum == true
+      end
+
       # @deprecated Provided to allow for tempory backwards compatibilty with legacy graph drawing. Do not use.
       # @return [Array] Series represented as an array in the format [ title, val1, val2... ]
       #
