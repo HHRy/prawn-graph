@@ -77,19 +77,14 @@ adventurous - please add it!
 
 ## Using prawn-graph
 
+Graphs can be created by calling the `graph` or its alias, `chart` method with an array of
+`Prawn::Graph::Series` objects representing the data you would like to plot and how it should
+be displayed. It will also take a hash of options, and block which will have the graph yeilded
+to it.
+
 ```ruby
-  require 'prawn-graph'
-
-  series = []
-  series << Prawn::Graph::Series.new([4,9,3,2,1,6,2,8,2,3,4,9,2], title: "A label for a series", type: :bar)
-  series << Prawn::Graph::Series.new([5,4,3,2,7,9,2,8,7,5,4,9,2].reverse, title: "Another label", type: :line, mark_average: true)
-  series << Prawn::Graph::Series.new([1,2,3,4,5,9,6,4,5,6,3,2,11], title: "Yet another label", type: :bar)
-  series << Prawn::Graph::Series.new([1,2,3,4,5,12,6,4,5,6,3,2,9].shuffle, title: "One final label", type: :line, mark_average: true)
-
-  Prawn::Document.generate('test.pdf') do
-    graph series, width: 500, height: 200, title: "A Title for the chart", at: [10,700]
-  end
-``` 
+  graph data, options = {}, &block.
+```
 
 When called with just a set of data, prawn-graph will do its best to make the graph fit in the 
 available space. For a little more control over how the graphs are rendered in the document
@@ -103,6 +98,38 @@ Option      | Data type | Description
 :title      | string    | The overall title for your chart
 :series_key | boolean   | Should we render the series key for multi series graphs? Defaults to true.
 
+The `data` passed to `graph` or `chart` should be an `Array` of `Prawn::Graph::Series` objects, which
+themselves are made up of an array of data points to plot, and a series of options.
+
+```ruby
+  Prawn::Graph::Series.new [1,2,3,4], options = {}
+```
+
+Valid `options` are:
+
+Option        | Data type | Description
+------------- | --------- | -----------
+:mark_average | boolean   | Should we mark a line showing the average value of the series? Defaults to false.
+:mark_minimum | boolean   | Should we mark the minimum value of the series? Defaults to false.
+:mark_maximum | boolean   | Should we mark the maximum value of the series? Defaults to false.
+:title        | string    | The title of this series, which will be shown in the series key.
+:type         | symbol    | How this series should be rendered. Defaults to `:bar`, valid options are `:bar`, `:line`.
+
+### Show me some code!
+
+```ruby
+  require 'prawn-graph'
+
+  series = []
+  series << Prawn::Graph::Series.new([4,9,3,2,1,6,2,8,2,3,4,9,2], title: "A label for a series", type: :bar)
+  series << Prawn::Graph::Series.new([5,4,3,2,7,9,2,8,7,5,4,9,2].reverse, title: "Another label", type: :line, mark_average: true)
+  series << Prawn::Graph::Series.new([1,2,3,4,5,9,6,4,5,6,3,2,11], title: "Yet another label", type: :bar)
+  series << Prawn::Graph::Series.new([1,2,3,4,5,12,6,4,5,6,3,2,9].shuffle, title: "One final label", type: :line, mark_average: true)
+
+  Prawn::Document.generate('test.pdf') do
+    graph series, width: 500, height: 200, title: "A Title for the chart", at: [10,700]
+  end
+``` 
 
 ### Output
 <img src="http://prawn-graph.ryanstenhouse.jp/img/prawn-graph-output.png" alt="Prawn Graph Example Output" width="933" height="420">
