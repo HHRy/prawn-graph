@@ -33,6 +33,9 @@ module Prawn
             prawn.bounding_box [@graph_area.point[0] + 5, @graph_area.point[1] - 20], width: @plot_area_width, height: @plot_area_height do
               j = 2
               prawn.save_graphics_state do  
+                max_marked = false
+                min_marked = false
+
                 @series.values.each_with_index do |v, i|
                   next if i == 0
 
@@ -59,6 +62,36 @@ module Prawn
                   prawn.fill_color = @canvas.theme.markers
                   prawn.fill_ellipse([ ( previous_x_offset), previous_y ], 1)
                   prawn.fill_ellipse([ ( this_x_offset), this_y ], 1)
+
+                  if @series.mark_minimum? && min_marked == false && previous_value == @series.min
+                    prawn.save_graphics_state do
+                      prawn.fill_color = @canvas.theme.min
+                      prawn.stroke_color = @canvas.theme.min
+                      prawn.line_width = 1
+
+                      prawn.dash(2)
+                      prawn.stroke_line([previous_x_offset, 0], [previous_x_offset, previous_y])
+                      prawn.undash
+
+                      prawn.fill_ellipse([ ( previous_x_offset), previous_y ], 2)
+                      min_marked = true
+                    end
+                  end
+
+                  if @series.mark_maximum? && max_marked == false && previous_value == @series.max
+                    prawn.save_graphics_state do
+                      prawn.fill_color = @canvas.theme.max
+                      prawn.stroke_color = @canvas.theme.max
+                      prawn.line_width = 1
+
+                      prawn.dash(2)
+                      prawn.stroke_line([previous_x_offset, 0], [previous_x_offset, previous_y])
+                      prawn.undash
+
+                      prawn.fill_ellipse([ ( previous_x_offset), previous_y ], 2)
+                      max_marked = true
+                    end
+                  end
                   j += 1
                 end
                 
