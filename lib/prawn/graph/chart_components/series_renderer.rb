@@ -63,7 +63,7 @@ module Prawn
                   prawn.fill_ellipse([ ( previous_x_offset), previous_y ], 1)
                   prawn.fill_ellipse([ ( this_x_offset), this_y ], 1)
 
-                  if @series.mark_minimum? && min_marked == false && previous_value == @series.min
+                  if @series.mark_minimum? && min_marked == false && previous_value != 0 && previous_value == @series.min 
                     prawn.save_graphics_state do
                       prawn.fill_color = @canvas.theme.min
                       prawn.stroke_color = @canvas.theme.min
@@ -78,7 +78,7 @@ module Prawn
                     end
                   end
 
-                  if @series.mark_maximum? && max_marked == false && previous_value == @series.max
+                  if @series.mark_maximum? && max_marked == false && previous_value != 0 && previous_value == @series.max
                     prawn.save_graphics_state do
                       prawn.fill_color = @canvas.theme.max
                       prawn.stroke_color = @canvas.theme.max
@@ -89,6 +89,37 @@ module Prawn
                       prawn.undash
 
                       prawn.fill_ellipse([ ( previous_x_offset), previous_y ], 2)
+                      max_marked = true
+                    end
+                  end
+             
+
+                if @series.mark_minimum? && min_marked == false && this_value != 0 && this_value == @series.min 
+                    prawn.save_graphics_state do
+                      prawn.fill_color = @canvas.theme.min
+                      prawn.stroke_color = @canvas.theme.min
+                      prawn.line_width = 1
+
+                      prawn.dash(2)
+                      prawn.stroke_line([this_x_offset, 0], [this_x_offset, this_y])
+                      prawn.undash
+
+                      prawn.fill_ellipse([ ( this_x_offset), this_y ], 2)
+                      min_marked = true
+                    end
+                  end
+
+                  if @series.mark_maximum? && max_marked == false && this_value != 0 && this_value == @series.max
+                    prawn.save_graphics_state do
+                      prawn.fill_color = @canvas.theme.max
+                      prawn.stroke_color = @canvas.theme.max
+                      prawn.line_width = 1
+
+                      prawn.dash(2)
+                      prawn.stroke_line([this_x_offset, 0], [this_x_offset, this_y])
+                      prawn.undash
+
+                      prawn.fill_ellipse([ ( this_x_offset), this_y ], 2)
                       max_marked = true
                     end
                   end
