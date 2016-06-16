@@ -8,6 +8,9 @@
 [![security](https://hakiri.io/github/HHRy/prawn-graph/master.svg)](https://hakiri.io/github/HHRy/prawn-graph/master)
 ![Maintained: yes](https://img.shields.io/badge/maintained-yes-brightgreen.png)
 
+**This readme reflects the state of _master_ which is not the released version of prawn-graph.**
+**We are preparing for the 1.0 release of prawn-graph, which will be removing deprecated features**
+
 An extension for the [prawn pdf library][5] which adds the ability to draw graphs (or charts if
 you perfer) in PDF documents.
 
