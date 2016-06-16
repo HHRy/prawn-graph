@@ -145,6 +145,17 @@ module Prawn
             prawn.stroke_horizontal_line(0, @plot_area_width, at: 0) 
             prawn.stroke_vertical_line(0, @plot_area_height, at: 0) 
             prawn.fill_and_stroke_ellipse [ 0,0], 1
+
+            return if @canvas.options[:xaxis_labels].size.zero?
+
+            width_of_each_label = (@plot_area_width / @canvas.options[:xaxis_labels].size) - 1
+            @canvas.options[:xaxis_labels].each_with_index do |label, i|
+              offset    = i + 1
+              position  = ((offset * width_of_each_label) - width_of_each_label) + 1
+              
+              prawn.text_box  label, at: [ position, -2 ], width: width_of_each_label, height: 6, valign: :center, align: :right,
+                              overflow: :shrink_to_fit
+            end
           end
 
           # Calculates the relative height of a given point based on the maximum value present in
@@ -266,6 +277,17 @@ module Prawn
             prawn.stroke_horizontal_line(0, @plot_area_width, at: 0) 
             prawn.stroke_vertical_line(0, @plot_area_height, at: 0) 
             prawn.fill_and_stroke_ellipse [ 0,0], 1
+
+            return if @canvas.options[:xaxis_labels].size.zero?
+
+            width_of_each_label = (@plot_area_width / @canvas.options[:xaxis_labels].size) - 1
+            @canvas.options[:xaxis_labels].each_with_index do |label, i|
+              offset    = i + 1
+              position  = ((offset * width_of_each_label) - width_of_each_label) + 1
+              
+              prawn.text_box  label, at: [ position, -2 ], width: width_of_each_label, height: 6, valign: :center, align: :right,
+                              overflow: :shrink_to_fit
+            end
           end
 
           # Calculates the relative height of a given point based on the maximum value present in

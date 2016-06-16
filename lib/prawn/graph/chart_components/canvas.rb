@@ -5,7 +5,7 @@ module Prawn
       # as the container in which your chart / graph will be sized to fit within. 
       #
       class Canvas
-        attr_reader :layout, :series, :prawn, :theme
+        attr_reader :layout, :series, :prawn, :theme, :options
 
         # @param series [Array[Prawn::Graph::Series]]
         # @param prawn [Prawn::Document]
@@ -15,7 +15,7 @@ module Prawn
         def initialize(series, prawn, options = {}, &block)
           @series   = series
           verify_series_are_ok!
-          @options  = options.merge({ series_count: series.size })
+          @options  =  {xaxis_labels: []}.merge(options.merge({ series_count: series.size }))
           @prawn    = prawn
           @theme    = Prawn::Graph::Theme::Default
           @layout   = Prawn::Graph::Calculations::LayoutCalculator.new([prawn.bounds.width, prawn.bounds.height], @options, @theme).calculate
