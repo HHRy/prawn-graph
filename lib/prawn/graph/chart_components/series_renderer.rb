@@ -233,7 +233,7 @@ module Prawn
                       prawn.undash
                     end
 
-                    if @series[series_index].mark_minimum? && min_marked == false && @series[series_index].values[point] == @series[series_index].min
+                    if @series[series_index].mark_minimum? && min_marked == false && !@series[series_index].values[point].zero? && @series[series_index].values[point] == @series[series_index].min
                       prawn.save_graphics_state do
                         prawn.fill_color = @canvas.theme.min
                         prawn.stroke_color = @canvas.theme.min
