@@ -39,16 +39,7 @@ We build automatically using Travis CI. Our [.travis.yml][9] file targets the sa
 [prawn itself][5] does.
 
 
-### Legacy support and deprecation notices.
-
-To provide backwards-compatibility (of sorts), `prawn-graph` provides `bar_graph` (aliased as `bar_chart`)
-and `line_graph` (aliased as `line_chart`) methods as part of its interface which function the same as their
-equivalents in version `0.0.4`. These methods are, however, deprecated and **will** be removed when version
-`1.0.0` is released. Using these methods will result in a `warn` level message from Ruby.
-
-These legacy methods will still be buggy as they are using the same rendering methods as before. Where possible
-you should use the new `graph` (aliased as `chart`) interface. Unless serious problems are uncovered, bugs
-reported with legacy rendering **will not be considered**.
+### Removed features:
 
 Unlike previous versions of `prawn-graph`, this version does not at this time include a theme api or the 
 ability to change the colors used to render the graph. 
