@@ -295,7 +295,7 @@ module Prawn
 
             max = @series.collect(&:max).max
             min = @series.collect(&:min).min
-            avg = ((BigDecimal(@series.collect(&:avg).inject(:+), 10) / @series.collect(&:avg).size,).round(2)).to_f
+            avg = ((BigDecimal(@series.collect(&:avg).inject(:+), 10) / @series.collect(&:avg).size).round(2)).to_f
             mid = (min + max) / 2
 
             max_y = (point_height_percentage(max) * @plot_area_height).to_f
