@@ -57,11 +57,11 @@ module Prawn
                   this_x_offset    = ((spacing * j) - spacing) + (spacing / 2.0)
 
 
-                  prawn.stroke_line([previous_x_offset, previous_y], [ this_x_offset, this_y ])
+                  prawn.stroke_line([previous_x_offset, previous_y], [ this_x_offset, this_y ]) unless previous_value.zero? || this_value.zero?
                   
                   prawn.fill_color = @canvas.theme.markers
-                  prawn.fill_ellipse([ ( previous_x_offset), previous_y ], 1)
-                  prawn.fill_ellipse([ ( this_x_offset), this_y ], 1)
+                  prawn.fill_ellipse([ ( previous_x_offset), previous_y ], 1)  unless previous_value.zero? || this_value.zero?
+                  prawn.fill_ellipse([ ( this_x_offset), this_y ], 1)  unless previous_value.zero? || this_value.zero?
 
                   if @series.mark_minimum? && min_marked == false && previous_value != 0 && previous_value == @series.min 
                     prawn.save_graphics_state do
@@ -237,7 +237,7 @@ module Prawn
                     x_position = ( (starting + (series_offset * width) ).to_f - (width / 2.0))
                     y_position = ((point_height_percentage(@series[series_index].values[point]) * @plot_area_height) - 5).to_f
 
-                    prawn.fill_and_stroke_line([ x_position ,0], [x_position ,y_position])
+                    prawn.fill_and_stroke_line([ x_position ,0], [x_position ,y_position]) unless @series[series_index].values[point].zero?
 
                     if @series[series_index].mark_average?
                       average_y_coordinate = (point_height_percentage(@series[series_index].avg) * @plot_area_height) - 5
