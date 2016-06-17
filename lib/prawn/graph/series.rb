@@ -42,7 +42,11 @@ module Prawn
       # @return [Numeric] The smallest value stored in the +values+ of this Series.
       #
       def min
-        @values.min || 0
+        if values.empty?
+          0
+        else
+          values.min(10).sort.collect{ |x| x unless x.zero? }.compact.first
+        end
       end
 
       # @return [Numeric] The largest value stored in the +values+ of this Series.
