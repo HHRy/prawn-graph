@@ -45,7 +45,7 @@ module Prawn
         if values.empty?
           0
         else
-          values.min(10).sort.collect{ |x| x unless x.zero? }.compact.first
+          values.sort.collect{ |x| x unless x.zero? }.compact.first
         end
       end
 
