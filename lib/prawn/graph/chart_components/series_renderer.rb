@@ -57,11 +57,11 @@ module Prawn
                   this_x_offset    = ((spacing * j) - spacing) + (spacing / 2.0)
 
 
-                  prawn.stroke_line([previous_x_offset, previous_y], [ this_x_offset, this_y ])
+                  prawn.stroke_line([previous_x_offset, previous_y], [ this_x_offset, this_y ]) unless previous_value.zero? || this_value.zero?
                   
                   prawn.fill_color = @canvas.theme.markers
-                  prawn.fill_ellipse([ ( previous_x_offset), previous_y ], 1)
-                  prawn.fill_ellipse([ ( this_x_offset), this_y ], 1)
+                  prawn.fill_ellipse([ ( previous_x_offset), previous_y ], 1)  unless previous_value.zero? || this_value.zero?
+                  prawn.fill_ellipse([ ( this_x_offset), this_y ], 1)  unless previous_value.zero? || this_value.zero?
 
                   if @series.mark_minimum? && min_marked == false && previous_value != 0 && previous_value == @series.min 
                     prawn.save_graphics_state do
@@ -146,6 +146,21 @@ module Prawn
             prawn.stroke_vertical_line(0, @plot_area_height, at: 0) 
             prawn.fill_and_stroke_ellipse [ 0,0], 1
 
+            max = @series.max
+            min = @series.min
+            avg = @series.avg
+            mid = (min + max) / 2
+
+            max_y = (point_height_percentage(max) * @plot_area_height).to_f
+            min_y = (point_height_percentage(min) * @plot_area_height).to_f
+            mid_y = (point_height_percentage(mid) * @plot_area_height).to_f
+            avg_y = (point_height_percentage(avg) * @plot_area_height).to_f
+
+            prawn.text_box "#{max}", at: [-14, max_y], height: 5, overflow: :shrink_to_fit, width: 12, valign: :bottom, align: :right
+            prawn.text_box "#{mid}", at: [-14, mid_y], height: 5, overflow: :shrink_to_fit, width: 12, valign: :bottom, align: :right
+            prawn.text_box "#{avg}", at: [-14, avg_y], height: 5, overflow: :shrink_to_fit, width: 12, valign: :bottom, align: :right
+            prawn.text_box "#{min}", at: [-14, min_y], height: 5, overflow: :shrink_to_fit, width: 12, valign: :bottom, align: :right
+
             return if @canvas.options[:xaxis_labels].size.zero?
 
             width_of_each_label = (@plot_area_width / @canvas.options[:xaxis_labels].size) - 1
@@ -222,7 +237,7 @@ module Prawn
                     x_position = ( (starting + (series_offset * width) ).to_f - (width / 2.0))
                     y_position = ((point_height_percentage(@series[series_index].values[point]) * @plot_area_height) - 5).to_f
 
-                    prawn.fill_and_stroke_line([ x_position ,0], [x_position ,y_position])
+                    prawn.fill_and_stroke_line([ x_position ,0], [x_position ,y_position]) unless @series[series_index].values[point].zero?
 
                     if @series[series_index].mark_average?
                       average_y_coordinate = (point_height_percentage(@series[series_index].avg) * @plot_area_height) - 5
@@ -277,6 +292,21 @@ module Prawn
             prawn.stroke_horizontal_line(0, @plot_area_width, at: 0) 
             prawn.stroke_vertical_line(0, @plot_area_height, at: 0) 
             prawn.fill_and_stroke_ellipse [ 0,0], 1
+
+            max = @series.collect(&:max).max
+            min = @series.collect(&:min).min
+            avg = ((BigDecimal(@series.collect(&:avg).inject(:+), 10) / @series.collect(&:avg).size).round(2)).to_f
+            mid = (min + max) / 2
+
+            max_y = (point_height_percentage(max) * @plot_area_height).to_f
+            min_y = (point_height_percentage(min) * @plot_area_height).to_f
+            mid_y = (point_height_percentage(mid) * @plot_area_height).to_f
+            avg_y = (point_height_percentage(avg) * @plot_area_height).to_f
+
+            prawn.text_box "#{max}", at: [-14, max_y], height: 5, overflow: :shrink_to_fit, width: 12, valign: :bottom, align: :right
+            prawn.text_box "#{mid}", at: [-14, mid_y], height: 5, overflow: :shrink_to_fit, width: 12, valign: :bottom, align: :right
+            prawn.text_box "#{avg}", at: [-14, avg_y], height: 5, overflow: :shrink_to_fit, width: 12, valign: :bottom, align: :right
+            prawn.text_box "#{min}", at: [-14, min_y], height: 5, overflow: :shrink_to_fit, width: 12, valign: :bottom, align: :right
 
             return if @canvas.options[:xaxis_labels].size.zero?
 
