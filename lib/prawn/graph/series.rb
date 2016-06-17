@@ -78,14 +78,6 @@ module Prawn
       def mark_maximum?
         options.mark_maximum == true
       end
-
-      # @deprecated Provided to allow for tempory backwards compatibilty with legacy graph drawing. Do not use.
-      # @return [Array] Series represented as an array in the format [ title, val1, val2... ]
-      #
-      def to_a
-        warn "[DEPRECATION] Series#to_a is deprecated and will be removed in a future version of prawn-graph."
-        [options.title, @values].compact.flatten
-      end
     end
   end
 end

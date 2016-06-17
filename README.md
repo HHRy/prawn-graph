@@ -11,6 +11,9 @@
 **This readme reflects the state of _master_ which is not the released version of prawn-graph.**
 **We are preparing for the 1.0 release of prawn-graph, which will be removing deprecated features**
 
+**The code being used to cut gems for release is the `stable` Branch, please make pull requests for**
+**bug fixes from that branch.**
+
 An extension for the [prawn pdf library][5] which adds the ability to draw graphs (or charts if
 you perfer) in PDF documents.
 

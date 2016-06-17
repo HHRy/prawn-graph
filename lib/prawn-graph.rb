@@ -8,7 +8,6 @@ require "prawn/graph/chart_components"
 
 require "prawn/graph/theme"
 require "prawn/graph/series"
-require "prawn/graph/charts"
 
 require "prawn/graph/extension"
 
