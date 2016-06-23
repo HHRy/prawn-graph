@@ -63,7 +63,7 @@ module Prawn
       end
 
       def default
-        Prawn::Graph::Theme::DEFAULT_TEXT_COLOR
+       "000000"
       end
 
       def stroke_grid_lines?
