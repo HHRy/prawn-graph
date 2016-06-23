@@ -40,6 +40,7 @@ module Prawn
       #    `:at`          - The point from where the graph will be drawn. `[<Integer>x, <Integer>y]`
       #    `:title`       - The title for this chart. Must be a string. `<String>`
       #    `:series_key`  - Should we render the key to series in this chart? `<Boolean>`
+      #    `:theme`       - The theme to be used, will default to our grey theme? `<Prawn::Graph::Theme>`
       #
       def graph(series, options = {}, &block)
         canvas = Prawn::Graph::ChartComponents::Canvas.new(series, self, options, &block)
