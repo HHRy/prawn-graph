@@ -62,6 +62,10 @@ module Prawn
         series[@series_counter - 1]
       end
 
+      def default
+        text
+      end
+
       def stroke_grid_lines?
         !!stroke_grid_lines
       end
