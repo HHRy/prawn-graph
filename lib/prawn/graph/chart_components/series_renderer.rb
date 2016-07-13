@@ -146,20 +146,20 @@ module Prawn
             prawn.stroke_vertical_line(0, @plot_area_height, at: 0) 
             prawn.fill_and_stroke_ellipse [ 0,0], 1
 
-            max = @series.max
-            min = @series.min
-            avg = @series.avg
-            mid = (min + max) / 2
+            max = @series.max || 0
+            min = @series.min || 0
+            avg = @series.avg || 0
+            mid = (min + max) / 2 rescue 0
 
-            max_y = (point_height_percentage(max) * @plot_area_height).to_f
-            min_y = (point_height_percentage(min) * @plot_area_height).to_f
-            mid_y = (point_height_percentage(mid) * @plot_area_height).to_f
-            avg_y = (point_height_percentage(avg) * @plot_area_height).to_f
+            max_y = (point_height_percentage(max) * @plot_area_height)
+            min_y = (point_height_percentage(min) * @plot_area_height)
+            mid_y = (point_height_percentage(mid) * @plot_area_height)
+            avg_y = (point_height_percentage(avg) * @plot_area_height)
 
-            prawn.text_box "#{max}", at: [-14, max_y], height: 5, overflow: :shrink_to_fit, width: 12, valign: :bottom, align: :right
-            prawn.text_box "#{mid}", at: [-14, mid_y], height: 5, overflow: :shrink_to_fit, width: 12, valign: :bottom, align: :right
-            prawn.text_box "#{avg}", at: [-14, avg_y], height: 5, overflow: :shrink_to_fit, width: 12, valign: :bottom, align: :right
-            prawn.text_box "#{min}", at: [-14, min_y], height: 5, overflow: :shrink_to_fit, width: 12, valign: :bottom, align: :right
+            prawn.text_box "#{max}", at: [-14, max_y], height: 5, overflow: :shrink_to_fit, width: 12, valign: :bottom, align: :right unless max.zero?
+            prawn.text_box "#{mid}", at: [-14, mid_y], height: 5, overflow: :shrink_to_fit, width: 12, valign: :bottom, align: :right unless mid.zero?
+            prawn.text_box "#{avg}", at: [-14, avg_y], height: 5, overflow: :shrink_to_fit, width: 12, valign: :bottom, align: :right unless avg.zero?
+            prawn.text_box "#{min}", at: [-14, min_y], height: 5, overflow: :shrink_to_fit, width: 12, valign: :bottom, align: :right unless min.zero?
 
             return if @canvas.options[:xaxis_labels].size.zero?
 
@@ -177,7 +177,7 @@ module Prawn
           # the series.
           #
           def point_height_percentage(value)
-            ((BigDecimal(value, 10)/BigDecimal(@canvas.series.collect(&:max).max, 10)) * BigDecimal(1)).round(2)
+            ((BigDecimal(value, 10)/BigDecimal(@canvas.series.collect(&:max).max, 10)) * BigDecimal(1)).round(2) rescue 0
           end
 
           def prawn
@@ -219,8 +219,8 @@ module Prawn
            
               prawn.save_graphics_state do  
                 num_points        = @series[0].size
-                width_per_point   = (@plot_area_width / num_points).round(2).to_f
-                width             = ((width_per_point * BigDecimal('0.9')) / @series.size).round(2).to_f
+                width_per_point   = (@plot_area_width / num_points)
+                width             = (((width_per_point * 0.9) / @series.size).round(2)).to_f
                 min_marked        = false
                 max_marked        = false
 
@@ -293,20 +293,20 @@ module Prawn
             prawn.stroke_vertical_line(0, @plot_area_height, at: 0) 
             prawn.fill_and_stroke_ellipse [ 0,0], 1
 
-            max = @series.collect(&:max).max
-            min = @series.collect(&:min).min
-            avg = ((BigDecimal(@series.collect(&:avg).inject(:+), 10) / @series.collect(&:avg).size).round(2)).to_f
-            mid = (min + max) / 2
+            max = @series.collect(&:max).max || 0
+            min = @series.collect(&:min).min  || 0
+            avg = ((BigDecimal(@series.collect(&:avg).inject(:+), 10) / @series.collect(&:avg).size).round(2)).to_f || 0
+            mid = (min + max) / 2 || 0
 
-            max_y = (point_height_percentage(max) * @plot_area_height).to_f
-            min_y = (point_height_percentage(min) * @plot_area_height).to_f
-            mid_y = (point_height_percentage(mid) * @plot_area_height).to_f
-            avg_y = (point_height_percentage(avg) * @plot_area_height).to_f
+            max_y = (point_height_percentage(max) * @plot_area_height)
+            min_y = (point_height_percentage(min) * @plot_area_height)
+            mid_y = (point_height_percentage(mid) * @plot_area_height)
+            avg_y = (point_height_percentage(avg) * @plot_area_height)
 
-            prawn.text_box "#{max}", at: [-14, max_y], height: 5, overflow: :shrink_to_fit, width: 12, valign: :bottom, align: :right
-            prawn.text_box "#{mid}", at: [-14, mid_y], height: 5, overflow: :shrink_to_fit, width: 12, valign: :bottom, align: :right
-            prawn.text_box "#{avg}", at: [-14, avg_y], height: 5, overflow: :shrink_to_fit, width: 12, valign: :bottom, align: :right
-            prawn.text_box "#{min}", at: [-14, min_y], height: 5, overflow: :shrink_to_fit, width: 12, valign: :bottom, align: :right
+            prawn.text_box "#{max}", at: [-14, max_y], height: 5, overflow: :shrink_to_fit, width: 12, valign: :bottom, align: :right unless max.zero?
+            prawn.text_box "#{mid}", at: [-14, mid_y], height: 5, overflow: :shrink_to_fit, width: 12, valign: :bottom, align: :right unless mid.zero?
+            prawn.text_box "#{avg}", at: [-14, avg_y], height: 5, overflow: :shrink_to_fit, width: 12, valign: :bottom, align: :right unless avg.zero?
+            prawn.text_box "#{min}", at: [-14, min_y], height: 5, overflow: :shrink_to_fit, width: 12, valign: :bottom, align: :right unless min.zero?
 
             return if @canvas.options[:xaxis_labels].size.zero?
 
@@ -324,7 +324,9 @@ module Prawn
           # the series.
           #
           def point_height_percentage(value)
-            ((BigDecimal(value, 10)/BigDecimal(@series.collect(&:max).max, 10)) * BigDecimal(1)).round(2)
+            pc = ((BigDecimal(value, 10)/BigDecimal(@series.collect(&:max).max, 10)) * BigDecimal(1)).round(2)
+            pc = 0 if pc.nan?
+            pc
           end
 
           def prawn
