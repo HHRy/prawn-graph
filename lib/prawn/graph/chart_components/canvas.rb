@@ -122,17 +122,6 @@ module Prawn
           end
         end
         
-        # From prawn-svg - creates a cipped retangle, which we will then use to draw the graphs
-        # upon.
-        #
-        def clip_graph_to_bounds(x, y, width, height)
-          prawn.move_to x, y
-          prawn.line_to x + width, y
-          prawn.line_to x + width, y + height
-          prawn.line_to x, y + height
-          prawn.close_path
-          prawn.add_content "W n"
-        end
       end
     end
   end
