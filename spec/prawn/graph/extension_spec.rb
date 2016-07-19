@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Prawn graph when loaded and createing a new document, allows a Prawn::Document to" do
+describe "Prawn graph when loaded and creating a new document, allows a Prawn::Document to" do
 
   let(:enabled_methods){ [:graph] }
   let(:enabled_aliases){ [:chart] }
@@ -18,3 +18,14 @@ describe "Prawn graph when loaded and createing a new document, allows a Prawn::
   end
 end
 
+describe "The extension itself" do
+  let(:canvas) { double("canvas", draw: true) }
+
+  it "builds a new canvas" do
+    expect(Prawn::Graph::ChartComponents::Canvas).to receive(:new).and_return(canvas)
+
+    g = Prawn::Document.new
+
+    g.graph([Prawn::Graph::Series.new()])
+  end
+end
