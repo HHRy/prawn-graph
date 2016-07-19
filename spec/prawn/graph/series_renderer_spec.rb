@@ -12,7 +12,7 @@ describe Prawn::Graph::ChartComponents::SeriesRenderer do
         canvas = Prawn::Graph::ChartComponents::Canvas.new([Prawn::Graph::Series.new], prawn)
 
         expect {
-          Prawn::Graph::ChartComponents::SeriesRenderer.render(series, prawn)
+          Prawn::Graph::ChartComponents::SeriesRenderer.new(series, prawn).render
         }.to raise_error(ArgumentError, "series must be a Prawn::Graph::Series")
       end
 
@@ -21,7 +21,7 @@ describe Prawn::Graph::ChartComponents::SeriesRenderer do
         canvas = Object.new
 
         expect {
-          Prawn::Graph::ChartComponents::SeriesRenderer.render(series, prawn)
+          Prawn::Graph::ChartComponents::SeriesRenderer.new(series, prawn).render
         }.to raise_error(ArgumentError, "canvas must be a Prawn::Graph::ChartComponents::Canvas")
       end
     end

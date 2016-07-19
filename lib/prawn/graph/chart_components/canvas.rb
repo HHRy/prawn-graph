@@ -56,11 +56,11 @@ module Prawn
           bar_charts    = series.collect{ |s| s if s.type == :bar }.compact
           others        = series - bar_charts
 
-          BarChartRenderer.render(bar_charts, self, theme.series[0..(bar_charts.size - 1)]) unless bar_charts.empty?
+          BarChartRenderer.new.render(bar_charts, self, theme.series[0..(bar_charts.size - 1)]) unless bar_charts.empty?
 
           i = bar_charts.size
           others.each do |series|
-            SeriesRenderer.render(series, self, theme.series[i])
+            SeriesRenderer.new.render(series, self, theme.series[i])
             i+=1
           end
         end
