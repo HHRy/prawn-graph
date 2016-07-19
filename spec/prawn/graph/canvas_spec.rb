@@ -57,5 +57,20 @@ describe Prawn::Graph::ChartComponents::Canvas do
         expect(subject.position).to eq([100,200])
       end
     end
+
+    describe "#draw" do
+
+      it "calls the specic" do
+        subject = Prawn::Graph::ChartComponents::Canvas.new([Prawn::Graph::Series.new], Prawn::Document.new)
+        
+        expect(subject).to receive(:apply_theme!)
+        expect(subject).to receive(:render_title_area!)
+        expect(subject).to receive(:render_series_keys!)
+        expect(subject).to receive(:render_graph_area!)
+
+        subject.draw
+      end
+
+    end
   end
 end
