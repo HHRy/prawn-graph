@@ -60,9 +60,9 @@ describe Prawn::Graph::ChartComponents::Canvas do
 
     describe "#draw" do
 
-      it "calls the specic" do
+      it "calls the specific drawing methods in the correct order" do
         subject = Prawn::Graph::ChartComponents::Canvas.new([Prawn::Graph::Series.new], Prawn::Document.new)
-        
+
         expect(subject).to receive(:apply_theme!)
         expect(subject).to receive(:render_title_area!)
         expect(subject).to receive(:render_series_keys!)
