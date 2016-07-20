@@ -24,23 +24,19 @@ module Prawn
         end
 
         def mark_maximum_point(series_index, point, max_marked, x_position, y_position)
-          mm = max_marked.dup
-
           if @series[series_index].mark_maximum? && mm == false && @series[series_index].values[point] == @series[series_index].max
-            mm = draw_marker_point(@canvas.theme.max, x_position, y_position)
+            max_marked = draw_marker_point(@canvas.theme.max, x_position, y_position)
           end
 
-          mm
+          max_marked
         end
 
         def mark_minimum_point(series_index, point, min_marked, x_position, y_position)
-          mm = min_marked.dup
-
           if @series[series_index].mark_minimum? && mm == false && !@series[series_index].values[point].zero? && @series[series_index].values[point] == @series[series_index].min
-            mm = draw_marker_point(@canvas.theme.min, x_position, y_position)
+            min_marked = draw_marker_point(@canvas.theme.min, x_position, y_position)
           end
 
-          mm
+          min_marked
         end
 
         def render_the_chart
