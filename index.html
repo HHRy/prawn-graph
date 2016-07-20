@@ -56,26 +56,24 @@ with prawn versions should be treated as bugs and added to the <a href="https://
 <a href="http://github.com/prawnpdf/prawn/">prawn itself</a> does.</p>
 
 <h3>
-<a id="legacy-support-and-deprecation-notices" class="anchor" href="#legacy-support-and-deprecation-notices" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Legacy support and deprecation notices.</h3>
-
-<p>To provide backwards-compatibility (of sorts), <code>prawn-graph</code> provides <code>bar_graph</code> (aliased as <code>bar_chart</code>)
-and <code>line_graph</code> (aliased as <code>line_chart</code>) methods as part of its interface which function the same as their
-equivalents in version <code>0.0.4</code>. These methods are, however, deprecated and <strong>will</strong> be removed when version
-<code>1.0.0</code> is released. Using these methods will result in a <code>warn</code> level message from Ruby.</p>
-
-<p>These legacy methods will still be buggy as they are using the same rendering methods as before. Where possible
-you should use the new <code>graph</code> (aliased as <code>chart</code>) interface. Unless serious problems are uncovered, bugs
-reported with legacy rendering <strong>will not be considered</strong>.</p>
+<a id="removed-features" class="anchor" href="#removed-features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Removed features:</h3>
 
 <p>Unlike previous versions of <code>prawn-graph</code>, this version does not at this time include a theme api or the 
 ability to change the colors used to render the graph. </p>
+
+<h3>
+<a id="removed-deprecated-methods" class="anchor" href="#removed-deprecated-methods" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Removed deprecated methods</h3>
+
+<p>The <code>bar_chart</code>, <code>line_chart</code>, <code>bar_graph</code>, and <code>line_graph</code> methods have been removed. This means that this
+version of prawn-graph is no-longer backwards compatible. If you <em>must</em> use those old methods, then please 
+use version <code>0.9.10</code> and <strong>upgrade your calls to prawn graph to use the new <code>graph</code> methods as soon as possible</strong>.</p>
 
 <h2>
 <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
 
 <p>To use prawn-graph, you can add the following to your <code>Gemfile</code>:</p>
 
-<pre lang="Gemfile"><code> gem 'prawn-graph', ' ~&gt; 0.9'
+<pre lang="Gemfile"><code> gem 'prawn-graph', ' ~&gt; 1.0'
 </code></pre>
 
 <p>Alternatively, you can use Rubygems directly: <code>gem install prawn-graph</code>.</p>
@@ -203,13 +201,15 @@ themselves are made up of an array of data points to plot, and a series of optio
 <div class="highlight highlight-source-ruby"><pre>  <span class="pl-k">require</span> <span class="pl-s"><span class="pl-pds">'</span>prawn-graph<span class="pl-pds">'</span></span>
 
   series <span class="pl-k">=</span> []
-  series <span class="pl-k">&lt;&lt;</span> <span class="pl-c1">Prawn</span>::<span class="pl-c1">Graph</span>::<span class="pl-c1">Series</span>.<span class="pl-k">new</span>([<span class="pl-c1">4</span>,<span class="pl-c1">9</span>,<span class="pl-c1">3</span>,<span class="pl-c1">2</span>,<span class="pl-c1">1</span>,<span class="pl-c1">6</span>,<span class="pl-c1">2</span>,<span class="pl-c1">8</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">9</span>,<span class="pl-c1">2</span>], <span class="pl-c1">title:</span> <span class="pl-s"><span class="pl-pds">"</span>A label for a series<span class="pl-pds">"</span></span>, <span class="pl-c1">type:</span> <span class="pl-c1">:bar</span>)
-  series <span class="pl-k">&lt;&lt;</span> <span class="pl-c1">Prawn</span>::<span class="pl-c1">Graph</span>::<span class="pl-c1">Series</span>.<span class="pl-k">new</span>([<span class="pl-c1">5</span>,<span class="pl-c1">4</span>,<span class="pl-c1">3</span>,<span class="pl-c1">2</span>,<span class="pl-c1">7</span>,<span class="pl-c1">9</span>,<span class="pl-c1">2</span>,<span class="pl-c1">8</span>,<span class="pl-c1">7</span>,<span class="pl-c1">5</span>,<span class="pl-c1">4</span>,<span class="pl-c1">9</span>,<span class="pl-c1">2</span>].reverse, <span class="pl-c1">title:</span> <span class="pl-s"><span class="pl-pds">"</span>Another label<span class="pl-pds">"</span></span>, <span class="pl-c1">type:</span> <span class="pl-c1">:line</span>, <span class="pl-c1">mark_average:</span> <span class="pl-c1">true</span>, <span class="pl-c1">mark_minimum:</span> <span class="pl-c1">true</span>)
+  series <span class="pl-k">&lt;&lt;</span> <span class="pl-c1">Prawn</span>::<span class="pl-c1">Graph</span>::<span class="pl-c1">Series</span>.<span class="pl-k">new</span>([<span class="pl-c1">4</span>,<span class="pl-c1">9</span>,<span class="pl-c1">3</span>,<span class="pl-c1">2</span>,<span class="pl-c1">1</span>,<span class="pl-c1">6</span>,<span class="pl-c1">2</span>,<span class="pl-c1">8</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">9</span>,<span class="pl-c1">2</span>],  <span class="pl-c1">title:</span> <span class="pl-s"><span class="pl-pds">"</span>A label for a series<span class="pl-pds">"</span></span>, <span class="pl-c1">type:</span> <span class="pl-c1">:bar</span>)
+  series <span class="pl-k">&lt;&lt;</span> <span class="pl-c1">Prawn</span>::<span class="pl-c1">Graph</span>::<span class="pl-c1">Series</span>.<span class="pl-k">new</span>([<span class="pl-c1">5</span>,<span class="pl-c1">4</span>,<span class="pl-c1">3</span>,<span class="pl-c1">2</span>,<span class="pl-c1">7</span>,<span class="pl-c1">9</span>,<span class="pl-c1">2</span>,<span class="pl-c1">8</span>,<span class="pl-c1">7</span>,<span class="pl-c1">5</span>,<span class="pl-c1">4</span>,<span class="pl-c1">9</span>,<span class="pl-c1">2</span>],  <span class="pl-c1">title:</span> <span class="pl-s"><span class="pl-pds">"</span>Another label<span class="pl-pds">"</span></span>, <span class="pl-c1">type:</span> <span class="pl-c1">:line</span>, <span class="pl-c1">mark_average:</span> <span class="pl-c1">true</span>, <span class="pl-c1">mark_minimum:</span> <span class="pl-c1">true</span>)
   series <span class="pl-k">&lt;&lt;</span> <span class="pl-c1">Prawn</span>::<span class="pl-c1">Graph</span>::<span class="pl-c1">Series</span>.<span class="pl-k">new</span>([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>,<span class="pl-c1">9</span>,<span class="pl-c1">6</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>,<span class="pl-c1">6</span>,<span class="pl-c1">3</span>,<span class="pl-c1">2</span>,<span class="pl-c1">11</span>], <span class="pl-c1">title:</span> <span class="pl-s"><span class="pl-pds">"</span>Yet another label<span class="pl-pds">"</span></span>, <span class="pl-c1">type:</span> <span class="pl-c1">:bar</span>)
   series <span class="pl-k">&lt;&lt;</span> <span class="pl-c1">Prawn</span>::<span class="pl-c1">Graph</span>::<span class="pl-c1">Series</span>.<span class="pl-k">new</span>([<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>,<span class="pl-c1">12</span>,<span class="pl-c1">6</span>,<span class="pl-c1">4</span>,<span class="pl-c1">5</span>,<span class="pl-c1">6</span>,<span class="pl-c1">3</span>,<span class="pl-c1">2</span>,<span class="pl-c1">9</span>].shuffle, <span class="pl-c1">title:</span> <span class="pl-s"><span class="pl-pds">"</span>One final label<span class="pl-pds">"</span></span>, <span class="pl-c1">type:</span> <span class="pl-c1">:line</span>, <span class="pl-c1">mark_average:</span> <span class="pl-c1">true</span>, <span class="pl-c1">mark_maximum:</span> <span class="pl-c1">true</span>)
 
+  xaxis_labels <span class="pl-k">=</span> [<span class="pl-s"><span class="pl-pds">'</span>0900<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1000<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1100<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1200<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1300<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1400<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1500<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1600<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1700<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1800<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1900<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>2000<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>2100<span class="pl-pds">'</span></span>]
+
   <span class="pl-c1">Prawn</span>::<span class="pl-c1">Document</span>.generate(<span class="pl-s"><span class="pl-pds">'</span>test.pdf<span class="pl-pds">'</span></span>) <span class="pl-k">do</span>
-    graph series, <span class="pl-c1">width:</span> <span class="pl-c1">500</span>, <span class="pl-c1">height:</span> <span class="pl-c1">200</span>, <span class="pl-c1">title:</span> <span class="pl-s"><span class="pl-pds">"</span>A Title for the chart<span class="pl-pds">"</span></span>, <span class="pl-c1">at:</span> [<span class="pl-c1">10</span>,<span class="pl-c1">700</span>]
+    graph series, <span class="pl-c1">width:</span> <span class="pl-c1">500</span>, <span class="pl-c1">height:</span> <span class="pl-c1">200</span>, <span class="pl-c1">title:</span> <span class="pl-s"><span class="pl-pds">"</span>A Title for the chart<span class="pl-pds">"</span></span>, <span class="pl-c1">at:</span> [<span class="pl-c1">10</span>,<span class="pl-c1">700</span>], <span class="pl-c1">xaxis_labels:</span> xaxis_labels
   <span class="pl-k">end</span></pre></div>
 
 <h3>
