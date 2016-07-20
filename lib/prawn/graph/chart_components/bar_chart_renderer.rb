@@ -23,46 +23,39 @@ module Prawn
           end
         end
 
-        def mark_maximum_point(series_index, point, max_marked)
+        def mark_maximum_point(series_index, point, max_marked, x_position, y_position)
           mm = max_marked.dup
 
-          if @series[series_index].mark_maximum? && max_marked == false && @series[series_index].values[point] == @series[series_index].max
-            prawn.save_graphics_state do
-              prawn.fill_color = @canvas.theme.max
-              prawn.stroke_color = @canvas.theme.max
-              prawn.line_width = 1
-
-              prawn.dash(2)
-              prawn.stroke_line([x_position, 0], [x_position, y_position])
-              prawn.undash
-
-              prawn.fill_ellipse([x_position, y_position ], 2)
-              mm = true
-            end
+          if @series[series_index].mark_maximum? && mm == false && @series[series_index].values[point] == @series[series_index].max
+            mm = draw_marker_point(@canvas.theme.max, x_position, y_position)
           end
 
           mm
         end
 
-        def mark_minimum_point(series_index, point, min_marked)
+        def mark_minimum_point(series_index, point, min_marked, x_position, y_position)
           mm = min_marked.dup
 
-          if @series[series_index].mark_minimum? && min_marked == false && !@series[series_index].values[point].zero? && @series[series_index].values[point] == @series[series_index].min
-            prawn.save_graphics_state do
-              prawn.fill_color = @canvas.theme.min
-              prawn.stroke_color = @canvas.theme.min
-              prawn.line_width = 1
-
-              prawn.dash(2)
-              prawn.stroke_line([x_position, 0], [x_position, y_position])
-              prawn.undash
-
-              prawn.fill_ellipse([x_position, y_position ], 2)
-              mm = true
-            end
+          if @series[series_index].mark_minimum? && mm == false && !@series[series_index].values[point].zero? && @series[series_index].values[point] == @series[series_index].min
+            mm = draw_marker_point(@canvas.theme.min, x_position, y_position)
           end
 
           mm
+        end
+
+        def draw_marker_point(color, x_position, y_position)
+          prawn.save_graphics_state do
+            prawn.fill_color = color
+            prawn.stroke_color = color
+            prawn.line_width = 1
+
+            prawn.dash(2)
+            prawn.stroke_line([x_position, 0], [x_position, y_position])
+            prawn.undash
+
+            prawn.fill_ellipse([x_position, y_position ], 2)
+            return true
+          end
         end
 
         def render_the_chart
@@ -91,8 +84,8 @@ module Prawn
                   prawn.fill_and_stroke_line([ x_position ,0], [x_position ,y_position]) unless @series[series_index].values[point].zero?
 
                   mark_average_line(series_index)
-                  max_marked = mark_maximum_point(series_index, point, max_marked)
-                  min_marked = mark_minimum_point(series_index, point, min_marked)
+                  max_marked = mark_maximum_point(series_index, point, max_marked, x_position, y_position)
+                  min_marked = mark_minimum_point(series_index, point, min_marked, x_position, y_position)
                 end
 
               end
