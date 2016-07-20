@@ -8,11 +8,6 @@
 [![security](https://hakiri.io/github/HHRy/prawn-graph/master.svg)](https://hakiri.io/github/HHRy/prawn-graph/master)
 ![Maintained: yes](https://img.shields.io/badge/maintained-yes-brightgreen.png)
 
-**This readme reflects the state of _master_ which is not the released version of prawn-graph.**
-
-**The code being used to cut gems for release is the `stable` Branch, please make pull requests for**
-**bug fixes from that branch.**
-
 An extension for the [prawn pdf library][5] which adds the ability to draw graphs (or charts if
 you perfer) in PDF documents.
 
