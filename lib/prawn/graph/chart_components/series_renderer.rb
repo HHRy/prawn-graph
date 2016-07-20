@@ -10,7 +10,11 @@ module Prawn
         # @param canvas [Prawn::Graph::ChartComponents::Canvas]
         #
         def initialize(series, canvas, color = '000000')
-          raise ArgumentError.new("series must be a Prawn::Graph::Series") unless series.is_a?(Prawn::Graph::Series)
+          if series.is_a?(Array)
+            raise ArgumentError.new("series must be a Prawn::Graph::Series") unless series.first.is_a?(Prawn::Graph::Series)
+          else
+            raise ArgumentError.new("series must be a Prawn::Graph::Series") unless series.is_a?(Prawn::Graph::Series)
+          end
           raise ArgumentError.new("canvas must be a Prawn::Graph::ChartComponents::Canvas") unless canvas.is_a?(Prawn::Graph::ChartComponents::Canvas)
 
           @series = series
