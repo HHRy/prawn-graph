@@ -43,6 +43,13 @@ We build automatically using Travis CI. Our [.travis.yml][9] file targets the sa
 Unlike previous versions of `prawn-graph`, this version does not at this time include a theme api or the 
 ability to change the colors used to render the graph. 
 
+### Removed deprecated methods
+
+The `bar_chart`, `line_chart`, `bar_graph`, and `line_graph` methods have been removed. This means that this
+version of prawn-graph is no-longer backwards compatible. If you _must_ use those old methods, then please 
+use version `0.9.10` and **upgrade your calls to prawn graph to use the new `graph` methods as soon as possible**.
+
+
 ## Installation
 
 To use prawn-graph, you can add the following to your `Gemfile`:
