@@ -82,12 +82,12 @@ module Prawn
                 previous_x_offset = ((spacing * (j - 1)) - spacing) + (spacing / 2.0)
                 this_x_offset    = ((spacing * j) - spacing) + (spacing / 2.0)
 
-
-                prawn.stroke_line([previous_x_offset, previous_y], [ this_x_offset, this_y ]) unless previous_value.zero? || this_value.zero?
-                
-                prawn.fill_color = @canvas.theme.markers
-                prawn.fill_ellipse([ ( previous_x_offset), previous_y ], 1)  unless previous_value.zero? || this_value.zero?
-                prawn.fill_ellipse([ ( this_x_offset), this_y ], 1)  unless previous_value.zero? || this_value.zero?
+                unless previous_value.zero? || this_value.zero?
+                  prawn.stroke_line([previous_x_offset, previous_y], [ this_x_offset, this_y ])  
+                  prawn.fill_color = @canvas.theme.markers
+                  prawn.fill_ellipse([ ( previous_x_offset), previous_y ], 1) 
+                  prawn.fill_ellipse([ ( this_x_offset), this_y ], 1)
+                end
 
                 min_marked = mark_previous_as_minimum(min_marked, previous_value, previous_x_offset, previous_y)
                 min_marked = mark_current_as_minimum(min_marked, this_value, this_x_offset, this_y)
