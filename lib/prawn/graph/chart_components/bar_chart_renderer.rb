@@ -24,7 +24,7 @@ module Prawn
         end
 
         def mark_maximum_point(series_index, point, max_marked, x_position, y_position)
-          if @series[series_index].mark_maximum? && mm == false && @series[series_index].values[point] == @series[series_index].max
+          if @series[series_index].mark_maximum? && max_marked == false && @series[series_index].values[point] == @series[series_index].max
             max_marked = draw_marker_point(@canvas.theme.max, x_position, y_position)
           end
 
@@ -32,7 +32,7 @@ module Prawn
         end
 
         def mark_minimum_point(series_index, point, min_marked, x_position, y_position)
-          if @series[series_index].mark_minimum? && mm == false && !@series[series_index].values[point].zero? && @series[series_index].values[point] == @series[series_index].min
+          if @series[series_index].mark_minimum? && min_marked == false && !@series[series_index].values[point].zero? && @series[series_index].values[point] == @series[series_index].min
             min_marked = draw_marker_point(@canvas.theme.min, x_position, y_position)
           end
 
