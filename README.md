@@ -9,7 +9,6 @@
 ![Maintained: yes](https://img.shields.io/badge/maintained-yes-brightgreen.png)
 
 **This readme reflects the state of _master_ which is not the released version of prawn-graph.**
-**We are preparing for the 1.0 release of prawn-graph, which will be removing deprecated features**
 
 **The code being used to cut gems for release is the `stable` Branch, please make pull requests for**
 **bug fixes from that branch.**
@@ -49,7 +48,7 @@ ability to change the colors used to render the graph.
 To use prawn-graph, you can add the following to your `Gemfile`:
 
 ```Gemfile
- gem 'prawn-graph', ' ~> 0.9'
+ gem 'prawn-graph', ' ~> 1.0'
 ```
 
 Alternatively, you can use Rubygems directly: `gem install prawn-graph`.
