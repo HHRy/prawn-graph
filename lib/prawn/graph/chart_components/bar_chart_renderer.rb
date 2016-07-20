@@ -84,6 +84,18 @@ module Prawn
           end
         end
 
+        def max 
+          @series.collect(&:max).max || 0
+        end
+
+        def min
+          @series.collect(&:min).min || 0
+        end
+
+        def avg
+          @series.collect(&:avg).inject(:+) / @series.size rescue 0
+        end
+
       end
     end
   end

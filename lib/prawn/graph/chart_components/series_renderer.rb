@@ -45,11 +45,6 @@ module Prawn
           prawn.stroke_vertical_line(0, @plot_area_height, at: 0) 
           prawn.fill_and_stroke_ellipse [ 0,0], 1
 
-          max = @series.max || 0
-          min = @series.min || 0
-          avg = @series.avg || 0
-          mid = (min + max) / 2 rescue 0
-
           add_y_axis_label(max)
           add_y_axis_label(min)
           add_y_axis_label(avg)
@@ -87,6 +82,23 @@ module Prawn
         def prawn
           @prawn
         end
+
+        def max 
+          @series.max || 0
+        end
+
+        def min
+          @series.min || 0
+        end
+
+        def avg
+          @series.avg || 0
+        end
+
+        def mid
+          (min + max) / 2 rescue 0
+        end
+
       end
     end
   end
