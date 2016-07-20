@@ -26,8 +26,8 @@ module Prawn
 
                 @series.size.times do |series_index|
                   series_offset = series_index + 1
-                  prawn.fill_color    = @colors[series_index]
-                  prawn.stroke_color  = @colors[series_index]
+                  prawn.fill_color    = @color[series_index]
+                  prawn.stroke_color  = @color[series_index]
                   prawn.line_width  = width
 
                   starting = (prawn.bounds.left + (point * width_per_point))
@@ -40,7 +40,7 @@ module Prawn
                   if @series[series_index].mark_average?
                     average_y_coordinate = (point_height_percentage(@series[series_index].avg) * @plot_area_height) - 5
                     prawn.line_width = 1
-                    prawn.stroke_color = @colors[series_index]
+                    prawn.stroke_color = @color[series_index]
                     prawn.dash(2)
                     prawn.stroke_line([0, average_y_coordinate], [ @plot_area_width, average_y_coordinate ])
                     prawn.undash
