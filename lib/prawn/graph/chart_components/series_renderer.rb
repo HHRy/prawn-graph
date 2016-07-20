@@ -99,6 +99,21 @@ module Prawn
           (min + max) / 2 rescue 0
         end
 
+        def draw_marker_point(color, x_position, y_position)
+          prawn.save_graphics_state do
+            prawn.fill_color = color
+            prawn.stroke_color = color
+            prawn.line_width = 1
+
+            prawn.dash(2)
+            prawn.stroke_line([x_position, 0], [x_position, y_position])
+            prawn.undash
+
+            prawn.fill_ellipse([x_position, y_position ], 2)
+            return true
+          end
+        end
+
       end
     end
   end
