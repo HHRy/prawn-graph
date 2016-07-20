@@ -13,33 +13,17 @@ module Prawn
 
         private
 
-        def mark_previous_as_minimum(min_marked, previous_value, previous_x_offset, previous_y)
-          if @series.mark_minimum? && min_marked == false && previous_value != 0 && previous_value == @series.min 
-            draw_marker_point(@canvas.theme.min, previous_x_offset, previous_y)
+        def mark_minimum_value(min_marked, value, x, y)
+          if @series.mark_minimum? && min_marked == false && value != 0 && value == @series.min 
+            draw_marker_point(@canvas.theme.min, x, y)
             min_marked = true
           end
           min_marked
         end
 
-        def mark_current_as_minimum(min_marked, this_value, this_x_offset, this_y)
-          if @series.mark_minimum? && min_marked == false && this_value != 0 && this_value == @series.min 
-            draw_marker_point(@canvas.theme.min, this_x_offset, this_y)
-            min_marked = true
-          end
-          min_marked
-        end
-
-        def mark_previous_as_maximum(max_marked, previous_value, previous_x_offset, previous_y)
-          if @series.mark_maximum? && max_marked == false && previous_value != 0 && previous_value == @series.max
-            draw_marker_point(@canvas.theme.max, previous_x_offset, previous_y)
-            max_marked = true
-          end
-          max_marked
-        end
-
-        def mark_current_as_maximum(max_marked, this_value, this_x_offset, this_y)
-          if @series.mark_maximum? && max_marked == false && this_value != 0 && this_value == @series.max
-            draw_marker_point(@canvas.theme.max, this_x_offset, this_y)
+        def mark_maximum_value(max_marked, value, x, y)
+          if @series.mark_maximum? && max_marked == false && value != 0 && value == @series.max
+            draw_marker_point(@canvas.theme.max, x, y)
             max_marked = true
           end
           max_marked
@@ -89,10 +73,10 @@ module Prawn
                   prawn.fill_ellipse([ ( this_x_offset), this_y ], 1)
                 end
 
-                min_marked = mark_previous_as_minimum(min_marked, previous_value, previous_x_offset, previous_y)
-                min_marked = mark_current_as_minimum(min_marked, this_value, this_x_offset, this_y)
-                max_marked = mark_previous_as_maximum(max_marked, previous_value, previous_x_offset, previous_y)
-                max_marked = mark_current_as_maximum(max_marked, this_value, this_x_offset, this_y)
+                min_marked = mark_minimum_value(min_marked, previous_value, previous_x_offset, previous_y)
+                min_marked = mark_minimum_value(min_marked, this_value, this_x_offset, this_y)
+                max_marked = mark_maximum_value(max_marked, previous_value, previous_x_offset, previous_y)
+                max_marked = mark_maximum_value(max_marked, this_value, this_x_offset, this_y)
 
                 j += 1
               end
