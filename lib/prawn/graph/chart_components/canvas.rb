@@ -60,7 +60,7 @@ module Prawn
 
           i = bar_charts.size
           others.each do |series|
-            LineChartRenderer.new(series, self, theme.series[i]).render
+            LineChartRenderer.new(series, self, theme.next_series_color).render
             i+=1
           end
         end
