@@ -13,21 +13,14 @@ module Prawn
 
         private
 
-        def mark_minimum_value(min_marked, value, x, y)
-          if @series.mark_minimum? && min_marked == false && value != 0 && value == @series.min 
-            draw_marker_point(@canvas.theme.min, x, y)
-            min_marked = true
+        def apply_marker_to_graph(value_marked, value, x, y, color)
+          if @series.mark_maximum? && value_marked == false && value != 0 && value == @series.max
+            draw_marker_point(color, x, y)
+            value_marked = true
           end
-          min_marked
+          value_marked
         end
 
-        def mark_maximum_value(max_marked, value, x, y)
-          if @series.mark_maximum? && max_marked == false && value != 0 && value == @series.max
-            draw_marker_point(@canvas.theme.max, x, y)
-            max_marked = true
-          end
-          max_marked
-        end
 
         def mark_average_line
           if @series.mark_average?
@@ -73,10 +66,10 @@ module Prawn
                   prawn.fill_ellipse([ ( this_x_offset), this_y ], 1)
                 end
 
-                min_marked = mark_minimum_value(min_marked, previous_value, previous_x_offset, previous_y)
-                min_marked = mark_minimum_value(min_marked, this_value, this_x_offset, this_y)
-                max_marked = mark_maximum_value(max_marked, previous_value, previous_x_offset, previous_y)
-                max_marked = mark_maximum_value(max_marked, this_value, this_x_offset, this_y)
+                min_marked = apply_marker_to_graph(min_marked, previous_value, previous_x_offset, previous_y, @canvas.theme.min)
+                min_marked = apply_marker_to_graph(min_marked, this_value, this_x_offset, this_y, @canvas.theme.min)
+                max_marked = apply_marker_to_graph(max_marked, previous_value, previous_x_offset, previous_y, @canvas.theme.max)
+                max_marked = apply_marker_to_graph(max_marked, this_value, this_x_offset, this_y, @canvas.theme.max)
 
                 j += 1
               end
