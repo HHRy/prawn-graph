@@ -8,6 +8,11 @@
 [![security](https://hakiri.io/github/HHRy/prawn-graph/master.svg)](https://hakiri.io/github/HHRy/prawn-graph/master)
 ![Maintained: yes](https://img.shields.io/badge/maintained-yes-brightgreen.png)
 
+**This readme reflects the state of _master_ which is not the released version of prawn-graph.**
+
+**The code being used to cut gems for release is the `stable` Branch, please make pull requests for**
+**bug fixes from that branch.**
+
 An extension for the [prawn pdf library][5] which adds the ability to draw graphs (or charts if
 you perfer) in PDF documents.
 
@@ -33,26 +38,24 @@ We build automatically using Travis CI. Our [.travis.yml][9] file targets the sa
 [prawn itself][5] does.
 
 
-### Legacy support and deprecation notices.
-
-To provide backwards-compatibility (of sorts), `prawn-graph` provides `bar_graph` (aliased as `bar_chart`)
-and `line_graph` (aliased as `line_chart`) methods as part of its interface which function the same as their
-equivalents in version `0.0.4`. These methods are, however, deprecated and **will** be removed when version
-`1.0.0` is released. Using these methods will result in a `warn` level message from Ruby.
-
-These legacy methods will still be buggy as they are using the same rendering methods as before. Where possible
-you should use the new `graph` (aliased as `chart`) interface. Unless serious problems are uncovered, bugs
-reported with legacy rendering **will not be considered**.
+### Removed features:
 
 Unlike previous versions of `prawn-graph`, this version does not at this time include a theme api or the 
 ability to change the colors used to render the graph. 
+
+### Removed deprecated methods
+
+The `bar_chart`, `line_chart`, `bar_graph`, and `line_graph` methods have been removed. This means that this
+version of prawn-graph is no-longer backwards compatible. If you _must_ use those old methods, then please 
+use version `0.9.10` and **upgrade your calls to prawn graph to use the new `graph` methods as soon as possible**.
+
 
 ## Installation
 
 To use prawn-graph, you can add the following to your `Gemfile`:
 
 ```Gemfile
- gem 'prawn-graph', ' ~> 0.9'
+ gem 'prawn-graph', ' ~> 1.0'
 ```
 
 Alternatively, you can use Rubygems directly: `gem install prawn-graph`.
