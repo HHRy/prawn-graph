@@ -60,6 +60,11 @@ module Prawn
       def text
         @text ||= Prawn::Graph::Theme::DEFAULT_TEXT_COLOR
       end
+      alias default text
+
+      def default=(text)
+        @text = text
+      end
 
       def background
         @background ||= Prawn::Graph::Theme::DEFAULT_BACKGROUND_COLOR
