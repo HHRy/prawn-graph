@@ -5,21 +5,11 @@ module Prawn
     #
     class Theme
       DEFAULT_SERIES_COLORS           = [
-                                          'EBEDEF',
-                                          'D6DBDF',
-                                          '85929E',
-                                          '34495E',
                                           '1B2631',
                                           'EBEDEF',
                                           'D6DBDF',
                                           '85929E',
-                                          '34495E',
-                                          '1B2631',
-                                          'EBEDEF',
-                                          'D6DBDF',
-                                          '85929E',
-                                          '34495E',
-                                          '1B2631',
+                                          '34495E'
                                         ]
       DEFAULT_TITLE_COLOR             = '17202A'
       DEFAULT_BACKGROUND_COLOR        = 'FFFFFF'
