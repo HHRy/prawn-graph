@@ -23,7 +23,7 @@ module Prawn
 
       Default = Prawn::Graph::Theme.new
 
-      attr_accessor :series, :min, :max, :title, :text, :background, :grid,
+      attr_writer :series, :min, :max, :title, :text, :background, :grid,
                     :axes, :markers, :stroke_grid_lines
 
       def initialize(theme = {})
@@ -39,6 +39,46 @@ module Prawn
         @stroke_grid_lines  = theme[:stroke_grid_lines]   || Prawn::Graph::Theme::DEFAULT_STROKE_GRID_LINES
 
         @series_counter     = 0
+      end
+
+      def series
+        @series ||= Prawn::Graph::Theme::DEFAULT_SERIES_COLORS
+      end
+
+      def max
+        @max ||= Prawn::Graph::Theme::DEFAULT_MAX_COLOR
+      end
+
+      def min
+        @min ||= Prawn::Graph::Theme::DEFAULT_MIN_COLOR
+      end
+
+      def title
+        @title ||= Prawn::Graph::Theme::DEFAULT_TITLE_COLOR
+      end
+
+      def text
+        @text ||= Prawn::Graph::Theme::DEFAULT_TEXT_COLOR
+      end
+
+      def background
+        @background ||= Prawn::Graph::Theme::DEFAULT_BACKGROUND_COLOR
+      end
+
+      def grid
+        @grid ||= Prawn::Graph::Theme::DEFAULT_GRID_COLOR
+      end
+
+      def axes
+        @axes ||= Prawn::Graph::Theme::DEFAULT_AXES_COLOR
+      end
+
+      def markers
+        @markers ||= Prawn::Graph::Theme::DEFAULT_MARKERS_STROKE_COLOR
+      end
+
+      def stroke_grid_lines
+        @stroke_grid_lines ||= Prawn::Graph::Theme::DEFAULT_STROKE_GRID_LINES
       end
 
       def next_series_color
