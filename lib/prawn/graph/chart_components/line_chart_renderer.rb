@@ -14,7 +14,7 @@ module Prawn
         private
 
         def apply_marker_to_graph(value_marked, value, x, y, color)
-          if @series.mark_maximum? && value_marked == false && value != 0 && value == @series.max
+          if value_marked == false && value != 0 && value == @series.max
             draw_marker_point(color, x, y)
             value_marked = true
           end
@@ -66,10 +66,15 @@ module Prawn
                   prawn.fill_ellipse([ ( this_x_offset), this_y ], 1)
                 end
 
-                min_marked = apply_marker_to_graph(min_marked, previous_value, previous_x_offset, previous_y, @canvas.theme.min)
-                min_marked = apply_marker_to_graph(min_marked, this_value, this_x_offset, this_y, @canvas.theme.min)
-                max_marked = apply_marker_to_graph(max_marked, previous_value, previous_x_offset, previous_y, @canvas.theme.max)
-                max_marked = apply_marker_to_graph(max_marked, this_value, this_x_offset, this_y, @canvas.theme.max)
+                if @series.mark_minimum?
+                  min_marked = apply_marker_to_graph(min_marked, previous_value, previous_x_offset, previous_y, @canvas.theme.min)
+                  min_marked = apply_marker_to_graph(min_marked, this_value, this_x_offset, this_y, @canvas.theme.min)
+                end
+
+                if @series.mark_maximum?
+                  max_marked = apply_marker_to_graph(max_marked, previous_value, previous_x_offset, previous_y, @canvas.theme.max)
+                  max_marked = apply_marker_to_graph(max_marked, this_value, this_x_offset, this_y, @canvas.theme.max)
+                end
 
                 j += 1
               end
