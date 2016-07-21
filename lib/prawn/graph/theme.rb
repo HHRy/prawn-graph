@@ -87,7 +87,7 @@ module Prawn
       end
 
       def next_series_color
-        @series_counter = @series_counter > (@series.size - 1) ? 0 : @series_counter
+        @series_counter = @series_counter > (series.size - 1) ? 0 : @series_counter
         s = series[@series_counter]
         @series_counter += 1
         s
