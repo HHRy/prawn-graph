@@ -54,14 +54,19 @@ module Prawn
 
         def plot_series!
           bar_charts    = series.collect{ |s| s if s.type == :bar }.compact
-          others        = series - bar_charts
+          pie_charts    = series.collect{ |s| s if s.type == :pie }.compact
+          lin_charts    = series - bar_charts - pie_charts
 
           BarChartRenderer.new(bar_charts, self, theme.series[0..(bar_charts.size - 1)]).render unless bar_charts.empty?
 
           i = bar_charts.size
-          others.each do |series|
+          lin_charts.each do |series|
             LineChartRenderer.new(series, self, theme.series[i]).render
             i+=1
+          end
+
+          pie_charts.each do |series|
+            PieChartRenderer.new(series, self, theme.series).render
           end
         end
 

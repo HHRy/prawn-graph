@@ -36,6 +36,8 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency "prawn", ">= 0.11.1", "< 3"
 
+  spec.add_runtime_dependency "prawn_shapes", ">= 1.2", "< 2"
+
   spec.metadata = { 
     "issue_tracker" => "https://github.com/HHRy/prawn-graph/issues",
     "source_code" => "https://github.com/HHRy/prawn-graph"
