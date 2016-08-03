@@ -74,6 +74,7 @@ This version of Prawn::Graph supports the following graph / chart types:
 
   *  Bar Charts 
   *  Line Charts
+  *  Pie Charts
 
 Is your favourite chart type not supported yet? [Please request it][2], or if you are feeling particularly
 adventurous - please add it!
@@ -116,7 +117,7 @@ Option        | Data type | Description
 :mark_minimum | boolean   | Should we mark the minimum value of the series? Defaults to false.
 :mark_maximum | boolean   | Should we mark the maximum value of the series? Defaults to false.
 :title        | string    | The title of this series, which will be shown in the series key.
-:type         | symbol    | How this series should be rendered. Defaults to `:bar`, valid options are `:bar`, `:line`.
+:type         | symbol    | How this series should be rendered. Defaults to `:bar`, valid options are `:bar`, `:line`, `:pie`.
 
 ### Show me some code!
 
@@ -126,7 +127,7 @@ Option        | Data type | Description
   series = []
   series << Prawn::Graph::Series.new([4,9,3,2,1,6,2,8,2,3,4,9,2],  title: "A label for a series", type: :bar)
   series << Prawn::Graph::Series.new([5,4,3,2,7,9,2,8,7,5,4,9,2],  title: "Another label", type: :line, mark_average: true, mark_minimum: true)
-  series << Prawn::Graph::Series.new([1,2,3,4,5,9,6,4,5,6,3,2,11], title: "Yet another label", type: :bar)
+  series << Prawn::Graph::Series.new([1,2,3,4,5,9,6,4,5,6,3,2,11], title: "Yet another label", type: :pie)
   series << Prawn::Graph::Series.new([1,2,3,4,5,12,6,4,5,6,3,2,9].shuffle, title: "One final label", type: :line, mark_average: true, mark_maximum: true)
 
   xaxis_labels = ['0900', '1000', '1100', '1200', '1300', '1400', '1500', '1600', '1700', '1800', '1900', '2000', '2100']
