@@ -18,26 +18,22 @@ module Prawn
           prawn.bounding_box [@graph_area.point[0] + 5, @graph_area.point[1] - 20], width: @plot_area_width, height: @plot_area_height do
             total = @series.values.inject(:+)
             start_angle = BigDecimal(0)
+            anc = prawn.bounds.bottom_left
+            x = (anc[0] + (@plot_area_width / 2)).to_f
+            y = (anc[1] + (@plot_area_height / 2)).to_f
+            r = (@plot_area_height / 2.2)
    
             @series.values.each_with_index do |v, i|
-              pc                  = percentage_of(v, total)
-              size_of_pie_angles  = pc * 3.6
-
-              end_angle = (start_angle + size_of_pie_angles)
-
-              prawn.fill_color    = @color[i] rescue '#000000'
-              prawn.stroke_color  = @color[i] rescue '#000000'
-
-              anc = prawn.bounds.bottom_left
-
-              x = (anc[0] + (@plot_area_width / 2)).to_f
-              y = (anc[1] + (@plot_area_height / 2)).to_f
-
-              r = (@plot_area_height / 2.2)
-
-              prawn.fill_pie_slice([x, y], radius: r, start_angle: start_angle.to_f, end_angle: end_angle.to_f)
-
-              start_angle = end_angle
+              prawn.save_graphics_state do
+                pc                  = percentage_of(v, total)
+                size_of_pie_angles  = pc * 3.6
+                end_angle = (start_angle + size_of_pie_angles)
+                prawn.fill_color    = @color[i] rescue '000000'
+                prawn.fill_pie_slice([x, y], radius: r, start_angle: start_angle.to_f, end_angle: end_angle.to_f)
+                start_angle = end_angle
+              end
+              prawn.stroke_arc_around([x,y], radius: r, start_angle: 0, end_angle: 360)
+              
             end 
         
           end
