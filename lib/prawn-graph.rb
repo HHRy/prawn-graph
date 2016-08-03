@@ -1,6 +1,8 @@
 require "ostruct"
 require "bigdecimal"
 require "prawn"
+require "prawn_shapes/arc"
+
 require "prawn/graph/version"
 require "prawn/graph/calculations"
 

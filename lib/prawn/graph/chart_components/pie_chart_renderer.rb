@@ -20,10 +20,9 @@ module Prawn
             total = @series.values.inject(:+)
             start_angle = BigDecimal(0)
    
-
             @series.values.each_with_index do |v, i|
               pc                  = percentage_of(v, total)
-              size_of_pie_angles  = pc * 36
+              size_of_pie_angles  = pc * 3.6
 
               end_angle = (start_angle + size_of_pie_angles)
 
@@ -46,12 +45,6 @@ module Prawn
         end
 
         def percentage_of(value, of_total)
-          puts <<-TXT
-
-            value:    #{value.inspect}
-            total:    #{of_total.inspect}
-
-          TXT
           (BigDecimal(value, 10) / BigDecimal(of_total, 10)) * 100
         end
 
