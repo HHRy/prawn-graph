@@ -31,11 +31,10 @@ module Prawn
                 prawn.fill_color    = @color[i] rescue '000000'
                 prawn.fill_pie_slice([x, y], radius: r, start_angle: start_angle.to_f, end_angle: end_angle.to_f)
                 start_angle = end_angle
-              end
-              prawn.stroke_arc_around([x,y], radius: r, start_angle: 0, end_angle: 360)
-              
+              end              
             end 
-        
+            
+            prawn.stroke_arc_around([x,y], radius: r, start_angle: 0, end_angle: 360)
           end
         end
 
