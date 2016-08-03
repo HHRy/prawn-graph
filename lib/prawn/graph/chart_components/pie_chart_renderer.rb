@@ -16,7 +16,6 @@ module Prawn
 
         def render_the_chart
           prawn.bounding_box [@graph_area.point[0] + 5, @graph_area.point[1] - 20], width: @plot_area_width, height: @plot_area_height do
-            
             total = @series.values.inject(:+)
             start_angle = BigDecimal(0)
    
@@ -29,12 +28,12 @@ module Prawn
               prawn.fill_color    = @color[i] rescue '#000000'
               prawn.stroke_color  = @color[i] rescue '#000000'
 
-              anc = prawn.bounds.anchor
+              anc = prawn.bounds.bottom_left
 
-              x = anc[0] + (@plot_area_width / 2)
-              y = anc[1] + (@plot_area_height / 2)
+              x = (anc[0] + (@plot_area_width / 2)).to_f
+              y = (anc[1] + (@plot_area_height / 2)).to_f
 
-              r = (@plot_area_height / 2.1)
+              r = (@plot_area_height / 2.2)
 
               prawn.fill_pie_slice([x, y], radius: r, start_angle: start_angle.to_f, end_angle: end_angle.to_f)
 
