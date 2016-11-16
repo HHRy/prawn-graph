@@ -1,5 +1,5 @@
 module Prawn
   module Graph
-    VERSION = "1.1.0.pre"
+    VERSION = "1.0.4"
   end
 end
