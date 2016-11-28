@@ -68,7 +68,7 @@ module Prawn
         def add_y_axis_label(value)
           unless value.zero?
             y = (point_height_percentage(value) * @plot_area_height)
-            prawn.text_box "#{max}", at: [-14, y], height: 5, overflow: :shrink_to_fit, width: 12, valign: :bottom, align: :right 
+            prawn.text_box "#{value}", at: [-14, y], height: 5, overflow: :shrink_to_fit, width: 12, valign: :bottom, align: :right 
           end
         end
 
