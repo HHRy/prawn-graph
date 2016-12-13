@@ -26,7 +26,7 @@ module Prawn
           if @series.mark_average?
             average_y_coordinate = (point_height_percentage(@series.avg) * @plot_area_height) - 5
             prawn.line_width = 1
-            prawn.stroke_color = @color
+            prawn.stroke_color = @canvas.theme.color_for(@series) #@color
             prawn.dash(2)
             prawn.stroke_line([0, average_y_coordinate], [ @plot_area_width, average_y_coordinate ])
             prawn.undash
@@ -47,8 +47,8 @@ module Prawn
                 spacing = width_per_point
 
                 prawn.line_width = 2
-                prawn.fill_color    = @color
-                prawn.stroke_color  = @color
+                prawn.fill_color    =  @canvas.theme.color_for(@series)
+                prawn.stroke_color  =  @canvas.theme.color_for(@series)
 
                 previous_value = @series.values[i - 1]
                 this_value = v

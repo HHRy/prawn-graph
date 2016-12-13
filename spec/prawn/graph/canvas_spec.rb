@@ -40,7 +40,7 @@ describe Prawn::Graph::ChartComponents::Canvas do
 
         expect(subject.instance_variable_get :@prawn).to eq(prawn)
         expect(subject.instance_variable_get :@layout).to be_a(Prawn::Graph::Calculations::LayoutCalculator)
-        expect(subject.instance_variable_get :@theme).to eq(Prawn::Graph::Theme::Default)
+        expect(subject.instance_variable_get :@theme).to eq(Prawn::Graph::Theme.default)
       end
     end
   end

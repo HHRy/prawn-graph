@@ -5,7 +5,7 @@ module Prawn
     # on a chart.
     #
     class Series
-      attr_accessor :values, :options
+      attr_accessor :values, :options, :uuid
 
       DEFAULT_OPTIONS = {
         title:            nil,
@@ -18,6 +18,7 @@ module Prawn
       def initialize(values = [], options = {})
         @values   = values
         @options  = OpenStruct.new(DEFAULT_OPTIONS.merge(options))
+        @uuid = SecureRandom.uuid
       end
 
       # @return [String] The value of +options.title+.

@@ -16,7 +16,7 @@ module Prawn
           end
         end
 
-        def initialize(bounds, attributes = nil, theme = Prawn::Graph::Theme::Default)
+        def initialize(bounds, attributes = nil, theme = Prawn::Graph::Theme.default)
           @bounds = bounds
           @graph_area       = Dimensions.new({ width: 0, height: 0, x: 0, y: 0 })
           @title_area       = Dimensions.new({ width: 0, height: 0, x: 0, y: 0 })

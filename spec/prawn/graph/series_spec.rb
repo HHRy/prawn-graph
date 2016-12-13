@@ -34,6 +34,10 @@ describe Prawn::Graph::Series do
     it "defaults to false for mark_maximum?" do
       expect(Prawn::Graph::Series.new([1,2,5,4,3]).mark_maximum?).to eq(false)
     end
+
+    it "has a uuid" do
+      expect(Prawn::Graph::Series.new([1,2,5,4,3]).uuid).to_not be_nil
+    end
     
   end
 
