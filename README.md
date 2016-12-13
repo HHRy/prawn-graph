@@ -94,6 +94,7 @@ Option      | Data type | Description
 :height     | integer   | Desired height of the graph.  Defaults to vertical space available.
 :title      | string    | The overall title for your chart
 :series_key | boolean   | Should we render the series key for multi series graphs? Defaults to true.
+:theme      | Prawn::Graph::Theme | An instance of the Theme object which should be used to style this chart. Default is a greyscale theme for printing.
 
 The `data` passed to `graph` or `chart` should be an `Array` of `Prawn::Graph::Series` objects, which
 themselves are made up of an array of data points to plot, and a series of options.
@@ -129,6 +130,51 @@ Option        | Data type | Description
     graph series, width: 500, height: 200, title: "A Title for the chart", at: [10,700], xaxis_labels: xaxis_labels
   end
 ``` 
+
+### Theming
+
+You can pass an instnace of `Prawn::Graph::Theme` using the `:theme` option to the `graph` and `chart` methods. The 
+theme expects to be initialised with a Hash in the following format:
+
+```ruby
+{
+  series:
+    [
+      'EBEDEF',
+      'D6DBDF', 
+      '85929E', 
+      '34495E', 
+      '1B2631' 
+    ], 
+  title:'17202A', 
+  background:'FFFFFF', 
+  grid:'F2F4F4', 
+  axes:'17202A', 
+  markers:'34495E', 
+  stroke_grid_lines:true, 
+  default:'333333', 
+  average:'34495E', 
+  max:'17202A',
+  min:'17202A' 
+}
+```
+
+Valid keys are:
+
+Option              | Data type          | Description
+------------------- | ------------------ | -----------
+:series             | Array of Strings   | HEX code colours used to draw a series on the chart. Will cycle through these are too many series for colors
+:title              | string             | HEX color code used to color this part of the chart
+:background         | string             | HEX color code used to color this part of the chart
+:grid               | string             | HEX color code used to color this part of the chart
+:axes               | string             | HEX color code used to color this part of the chart
+:markers            | string             | HEX color code used to color this part of the chart
+:stroke_grid_lines  | boolean            | Should the grid lines be stroked?
+:default            | string             | HEX color code used to color this part of the chart
+:average            | string             | HEX color code used to color this part of the chart
+:max                | string             | HEX color code used to color this part of the chart
+:min                | string             | HEX color code used to color this part of the chart
+
 
 ### Output
 <img src="http://prawn-graph.ryanstenhouse.jp/img/prawn-graph-output.png" alt="Prawn Graph Example Output" width="933" height="420">
