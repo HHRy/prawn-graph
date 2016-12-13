@@ -14,7 +14,7 @@ module Prawn
         private
 
         def apply_marker_to_graph(value_marked, value, x, y, color)
-          if @series.mark_maximum? && value_marked == false && value != 0 && value == @series.max
+          if value_marked == false && value != 0 && value == @series.max
             draw_marker_point(color, x, y)
             value_marked = true
           end
@@ -26,7 +26,7 @@ module Prawn
           if @series.mark_average?
             average_y_coordinate = (point_height_percentage(@series.avg) * @plot_area_height) - 5
             prawn.line_width = 1
-            prawn.stroke_color = @color
+            prawn.stroke_color = @canvas.theme.color_for(@series) #@color
             prawn.dash(2)
             prawn.stroke_line([0, average_y_coordinate], [ @plot_area_width, average_y_coordinate ])
             prawn.undash
@@ -47,8 +47,8 @@ module Prawn
                 spacing = width_per_point
 
                 prawn.line_width = 2
-                prawn.fill_color    = @color
-                prawn.stroke_color  = @color
+                prawn.fill_color    =  @canvas.theme.color_for(@series)
+                prawn.stroke_color  =  @canvas.theme.color_for(@series)
 
                 previous_value = @series.values[i - 1]
                 this_value = v
@@ -66,10 +66,15 @@ module Prawn
                   prawn.fill_ellipse([ ( this_x_offset), this_y ], 1)
                 end
 
-                min_marked = apply_marker_to_graph(min_marked, previous_value, previous_x_offset, previous_y, @canvas.theme.min)
-                min_marked = apply_marker_to_graph(min_marked, this_value, this_x_offset, this_y, @canvas.theme.min)
-                max_marked = apply_marker_to_graph(max_marked, previous_value, previous_x_offset, previous_y, @canvas.theme.max)
-                max_marked = apply_marker_to_graph(max_marked, this_value, this_x_offset, this_y, @canvas.theme.max)
+                if @series.mark_minimum?
+                  min_marked = apply_marker_to_graph(min_marked, previous_value, previous_x_offset, previous_y, @canvas.theme.min)
+                  min_marked = apply_marker_to_graph(min_marked, this_value, this_x_offset, this_y, @canvas.theme.min)
+                end
+
+                if @series.mark_maximum?
+                  max_marked = apply_marker_to_graph(max_marked, previous_value, previous_x_offset, previous_y, @canvas.theme.max)
+                  max_marked = apply_marker_to_graph(max_marked, this_value, this_x_offset, this_y, @canvas.theme.max)
+                end
 
                 j += 1
               end

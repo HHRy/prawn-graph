@@ -17,7 +17,7 @@ module Prawn
           verify_series_are_ok!
           @options  =  {xaxis_labels: []}.merge(options.merge({ series_count: series.size }))
           @prawn    = prawn
-          @theme    = Prawn::Graph::Theme::Default
+          @theme    = options[:theme].nil? ? Prawn::Graph::Theme.default : options[:theme]
           @layout   = Prawn::Graph::Calculations::LayoutCalculator.new([prawn.bounds.width, prawn.bounds.height], @options, @theme).calculate
 
           yield self if block_given?
