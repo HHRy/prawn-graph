@@ -13,7 +13,7 @@ module Prawn
       def initialize(arg)
         @series_map = {}
         @current_series_color = 0
-        @theme = OpenStruct.new(arg)
+        @theme = OpenStruct.new(Prawn::Graph::Theme::Default.merge(arg))
       end
 
       def number_of_colors
