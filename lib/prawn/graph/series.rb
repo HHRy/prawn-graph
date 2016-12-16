@@ -1,3 +1,5 @@
+require "securerandom"
+
 module Prawn
   module Graph
     
