@@ -41,7 +41,6 @@ module Prawn
         def render_axes
           prawn.stroke_color  = @canvas.theme.axes
           prawn.fill_color  = @canvas.theme.axes
-          prawn.stroke_horizontal_line(0, @plot_area_width, at: 0) 
 
           if BigDecimal(min, 2) < BigDecimal(0)
             bot_y = calculate_y_coord(min)
@@ -49,6 +48,10 @@ module Prawn
             bot_y = 0
           end
 
+          old = prawn.line_width 
+          prawn.line_width = 1
+
+          prawn.stroke_horizontal_line(0, @plot_area_width, at: 0) 
           prawn.stroke_vertical_line(bot_y, @plot_area_height, at: 0) 
           prawn.fill_and_stroke_ellipse [ 0,0], 1
 
@@ -58,6 +61,8 @@ module Prawn
           add_y_axis_label(mid)
 
           add_x_axis_labels
+
+          prawn.line_width = old
         end
 
         def add_x_axis_labels 
