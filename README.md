@@ -32,12 +32,6 @@ with prawn versions should be treated as bugs and added to the [issue tracker][2
 We build automatically using Travis CI. Our [.travis.yml][9] file targets the same Ruby versions as
 [prawn itself][5] does.
 
-
-### Removed features:
-
-Unlike previous versions of `prawn-graph`, this version does not at this time include a theme api or the 
-ability to change the colors used to render the graph. 
-
 ### Removed deprecated methods
 
 The `bar_chart`, `line_chart`, `bar_graph`, and `line_graph` methods have been removed. This means that this
